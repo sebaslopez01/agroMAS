@@ -1,7 +1,6 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Quicksand, DM_Serif_Display } from "@next/font/google";
-import { SessionProvider } from "next-auth/react";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -19,10 +18,8 @@ export default function App({
   pageProps: { session, ...pageProps },
 }: AppProps) {
   return (
-    <SessionProvider session={session}>
-      <main className={`${quicksand.variable} font-sans`}>
-        <Component {...pageProps} />
-      </main>
-    </SessionProvider>
+    <main className={`${quicksand.variable} font-sans`}>
+      <Component {...pageProps} />
+    </main>
   );
 }
