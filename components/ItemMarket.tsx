@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function ItemMarket () {
     return (
         <>
-          <div className="flex h-96 w-96 flex-col">
+          <div className="flex h-96 w-96 flex-col m-5">
             <div className="flex h-80 w-96 bg-[url('/pera.jpg')] bg-cover rounded-xl absolute"></div>
             <div id="card" className="flex h-contain w-[95%] mt-[60%] rounded-xl flex-col relative self-center">
                 <span className="mt-2 px-3 text-4xl font-semibold blur-none">Pera dulce</span>

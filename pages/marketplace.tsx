@@ -22,7 +22,8 @@ export default function marketplace () {
             <div className='flex p-10 pt-20 pl-20'>
                 <span className='text-3xl font-semibold'>Resultados de Búsqueda</span>
             </div>
-            <div className='flex p-10 py-16 justify-evenly'>
+            <div className='flex p-10 py-16 justify-evenly flex-wrap'>
+                <ItemMarket />
                 <ItemMarket />
                 <ItemMarket />
                 <ItemMarket />
