@@ -4,7 +4,7 @@ import NavBar from "./NavBar"
 
 export default function Header({ children }: any) {
     return (
-        <div className="bg-[url('/backgrounds.png')] bg-cover h-screen bg-fixed">
+        <div className="bg-[url('/background.jpg')] bg-cover h-screen bg-fixed">
             <NavBar></NavBar>
             <div className="flex flex-col items-end justify-center h-[100%] space-y-14">
                 <div className="w-[60%] mt-36">
