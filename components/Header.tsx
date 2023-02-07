@@ -1,20 +1,22 @@
-import Image from "next/image"
 import Link from "next/link"
-import NavBar from "./NavBar"
 
 export default function Header () {
     return (
-        <div className="bg-[url('/background.jpg')] bg-cover h-screen bg-fixed">
-            <div className="flex flex-col items-end justify-center h-[100%] space-y-14">
-                <div className="w-[60%] mt-36">
-                    <span id="phrase" className="text-8xl text-white">¡La mejor forma de apoyar el campo!</span>
+        <div className="bg-[url('/background.jpg')] bg-cover bg-center h-screen">
+            <div className="flex flex-col justify-center h-screen space-y-36 lg:items-end">
+
+                {/* Phrase */}
+                <div className="w-[100%] p-5 text-center lg:w-[60%] xl:text-left">
+                    <span id="phrase" className="text-4xl text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">¡La mejor forma de apoyar el campo!</span>
                 </div>
-                <div className="flex w-[50%] space-x-14 ml-12 mr-0 items-end p-10">
-                    <Link href="marketplace" className="bg-green-800 p-5 text-3xl text-white rounded-tl-3xl rounded-br-3xl">
-                        <button className="w-60">Compra ahora</button>
+
+                {/* Buttons */}
+                <div className="flex w-[100%] flex-col items-center justify-center space-y-4 lg:w-[60%] lg:flex-row lg:space-y-0 lg:space-x-5">
+                    <Link href="marketplace" className="bg-green-800 p-3 text-xl text-white rounded-2xl text-center lg:text-2xl lg:p-4">
+                        Compra ahora
                     </Link>
-                    <Link href="nosotros" className="bg-green-800 p-5 text-3xl text-white rounded-tl-3xl rounded-br-3xl">
-                        <button className="w-60">Saber más</button>
+                    <Link href="nosotros" className="bg-green-800 p-3 text-xl text-white rounded-2xl text-center lg:text-2xl lg:p-4">
+                        Saber más
                     </Link>
                 </div>
             </div>
