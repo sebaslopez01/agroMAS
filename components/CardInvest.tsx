@@ -25,7 +25,7 @@ export default function CardInvest() {
         </div>
 
         <div className="flex mb-6 flex-row items-center justify-center">
-          <div className="w-[80%] bg-gray-200 h-5 rounded-lg">
+          <div className="w-[80%] bg-gray-200 h-5 rounded-xl">
             <div className="bg-red-400 h-5 w-[65%] rounded-xl"></div>
           </div>
           <div className="w-[10%] text-center">
