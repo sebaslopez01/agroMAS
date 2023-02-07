@@ -2,10 +2,9 @@ import Image from "next/image"
 import Link from "next/link"
 import NavBar from "./NavBar"
 
-export default function Header({ children }: any) {
+export default function Header () {
     return (
         <div className="bg-[url('/background.jpg')] bg-cover h-screen bg-fixed">
-            <NavBar></NavBar>
             <div className="flex flex-col items-end justify-center h-[100%] space-y-14">
                 <div className="w-[60%] mt-36">
                     <span id="phrase" className="text-8xl text-white">¡La mejor forma de apoyar el campo!</span>
