@@ -16,12 +16,21 @@ export default function CardInvest() {
           </div>
         </div>
 
-        <div className="px-5 mb-5">
+        <div className="w-[90%] mb-5 mx-auto">
           <span className="text-xl font-medium">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
             voluptatibus sapiente modi totam rem! Recusandae quo rerum tempora
             delectus fuga minima voluptate, facilis culpa corrupti?
           </span>
+        </div>
+
+        <div className="flex mb-6 flex-row items-center justify-center">
+          <div className="w-[80%] bg-gray-200 h-5 rounded-lg">
+            <div className="bg-red-400 h-5 w-[65%] rounded-xl"></div>
+          </div>
+          <div className="w-[10%] text-center">
+            <span className="font-semibold text-lg">65%</span>
+          </div>
         </div>
       </div>
     </>
