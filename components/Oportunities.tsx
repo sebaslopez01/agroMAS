@@ -5,7 +5,9 @@ export default function Oportunities() {
     <>
       <div
         id="oportunities"
-        className="flex p-10 h-fit w-full bg-[url('/prueba.jpg')] bg-cover justify-evenly">
+        className="flex p-3 h-fit w-full bg-[url('/prueba.jpg')] bg-cover justify-evenly flex-wrap">
+        <CardInvest />
+        <CardInvest />
         <CardInvest />
       </div>
     </>
