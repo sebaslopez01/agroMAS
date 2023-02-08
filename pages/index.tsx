@@ -1,13 +1,13 @@
-import Header from "@/components/Header";
+import Header from "@/components/home/Header";
 import Meta from "@/components/Meta";
-import Footer from "@/components/Footer";
-import ItemMarket from "@/components/ItemMarket";
+import Footer from "@/components/navigation/Footer";
+import ItemMarket from "@/components/cards/ItemMarket";
 import Layout from "@/components/Layout";
-import CardInvest from "@/components/CardInvest";
-import Categories from "@/components/Categories";
-import Featured from "@/components/Featured";
-import Oportunities from "@/components/Oportunities";
-import InvestDetail from "@/components/InvestDetail";
+import CardInvest from "@/components/cards/CardInvest";
+import Categories from "@/components/home/Categories";
+import Featured from "@/components/home/Featured";
+import Oportunities from "@/components/home/Oportunities";
+import InvestDetail from "@/components/cards/InvestDetail";
 
 export default function Home() {
   return (
@@ -16,10 +16,10 @@ export default function Home() {
       <Layout>
         <Header></Header>
         <div className="flex pt-20 justify-center flex-col bg-[#ECECEA]">
-          <Categories />
-          <Featured />
-          <InvestDetail />
+          {/* <Categories /> */}
+          {/* <Featured /> */}
           <Oportunities />
+          <InvestDetail />
         </div>
       </Layout>
     </>
