@@ -6,11 +6,16 @@ html, body {
     font-family: 'Quicksand', sans-serif;
     max-width: 100%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 #phrase {
     font-family: 'Old Standard TT', serif;
     text-shadow: black 0 0 12px;
+}
+
+#shadow {
+    text-shadow: black 0 0 15px;
 }
 
 #bg-Navbar {
