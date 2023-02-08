@@ -7,6 +7,7 @@ import CardInvest from "@/components/CardInvest";
 import Categories from "@/components/Categories";
 import Featured from "@/components/Featured";
 import Oportunities from "@/components/Oportunities";
+import InvestDetail from "@/components/InvestDetail";
 
 export default function Home() {
   return (
@@ -14,9 +15,10 @@ export default function Home() {
       <Meta></Meta>
       <Layout>
         <Header></Header>
-        <div className="flex pt-20 p-10 justify-center flex-col bg-[#ECECEA]">
+        <div className="flex pt-20 justify-center flex-col bg-[#ECECEA]">
           <Categories />
           <Featured />
+          <InvestDetail />
           <Oportunities />
         </div>
       </Layout>
