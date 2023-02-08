@@ -1,7 +1,7 @@
 import NavBar from '@/components/NavBar'
 import Meta from '@/components/Meta'
-import Footer from '@/components/Footer'
-import ItemMarket from '@/components/ItemMarket'
+import Footer from '@/components/navigation/Footer'
+import ItemMarket from '@/components/cards/ItemMarket'
 import Layout from '@/components/Layout'
 import Image from 'next/image'
 
