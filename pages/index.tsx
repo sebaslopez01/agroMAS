@@ -19,7 +19,7 @@ export default function Home() {
           {/* <Categories /> */}
           {/* <Featured /> */}
           <Oportunities />
-          <InvestDetail />
+          {/* <InvestDetail /> */}
         </div>
       </Layout>
     </>
