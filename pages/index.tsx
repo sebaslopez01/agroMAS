@@ -12,9 +12,9 @@ import InvestDetail from "@/components/cards/InvestDetail";
 export default function Home() {
   return (
     <>
-      <Meta></Meta>
+      <Meta />
       <Layout>
-        <Header></Header>
+        <Header />
         <div className="flex pt-20 justify-center flex-col bg-[#ECECEA]">
           {/* <Categories /> */}
           {/* <Featured /> */}
