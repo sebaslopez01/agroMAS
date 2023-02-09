@@ -1,35 +1,50 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
+import { useState } from "react";
+import pera from '@/public/pera.jpg'
 
-export default function ItemMarket() {
+interface ItemMarketProps {
+  nameProduct: string;
+  priceProduct: number;
+  productLocation: string;
+  productImage: StaticImageData;
+}
+
+export default function ItemMarket({ nameProduct, priceProduct, productLocation, productImage }: ItemMarketProps) {
+
+  const [count, setCount] = useState(0)
+
   return (
     <>
-      <div className="flex h-96 w-96 flex-col m-5">
+
+      <div className="flex flex-col h-[26rem] w-96 m-5 relative">
 
         {/* Product image */}
-        <div className="flex h-80 w-96 bg-[url('/pera.jpg')] bg-cover rounded-xl absolute"></div>
+        <div className="flex h-[85%] w-full rounded-2xl relative">
+            <Image className="rounded-2xl" src='/pera.jpg' alt="Perita" fill/>
+        </div>
 
         {/* Product description */}
-        <div id="card" className="flex h-contain w-[95%] mt-[60%] rounded-xl flex-col relative self-center">
-          <span className="mt-2 px-3 text-4xl font-semibold blur-none">Pera dulce</span>
+        <div id="card" className="flex h-contain w-[95%] rounded-xl flex-col absolute bottom-0 left-[50%] translate-x-[-50%]">
+          <span className="mt-2 px-3 text-4xl font-medium blur-none">{nameProduct}</span>
 
           {/* Location */}
           <div className="flex flex-row items-center mt-3">
             <Image className="mr-2 ml-3" src="/location.png" alt="location-icon" width={20} height={20} />
-            <span className="">Medellín, Antioquia</span>
+            <span className="">{productLocation}</span>
           </div>
 
           <div className="flex flex-row px-2 my-5 justify-center items-center">
 
             {/* Price */}
             <div className="h-10 w-2/5 p-1">
-              <span className="text-2xl">$1.500 Kg</span>
+              <span className="text-2xl">${priceProduct} Kg</span>
             </div>
 
             {/* Counter Buttons */}
             <div className="flex h-10 w-2/5 justify-evenly items-center mr-2">
-              <button className="flex items-center justify-center h-10 w-[33%] bg-red-400  rounded-l-xl text-white text-4xl">-</button>
-              <input className="flex items-center justify-center h-10 w-[33%] bg-white text-2xl text-center box-border focus:outline-none" type="text" defaultValue={0} maxLength={2} />
-              <button className="flex items-center justify-center h-10 w-[33%] bg-red-400 rounded-r-xl text-white text-4xl">+</button>
+              <button onClick={() => count >= 1 ? setCount(count - 1) : count == 0} className="flex items-center justify-center h-10 w-[33%] bg-red-400  rounded-l-xl text-white text-4xl">-</button>
+              <input onChange={(e) => setCount(+e.target.value)} className="flex items-center justify-center h-10 w-[33%] bg-inherit text-2xl text-center focus:outline-none" defaultValue={count} maxLength={2} />
+              <button onClick={() => { setCount(count + 1) }} className="flex items-center justify-center h-10 w-[33%] bg-red-400 rounded-r-xl text-white text-4xl">+</button>
             </div>
 
             {/* Cart Button */}
