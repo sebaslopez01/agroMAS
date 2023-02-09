@@ -15,49 +15,113 @@ enum Role {
   BUYER
 }
 
+enum DocumentType {
+  CC
+  CE
+  PP
+}
+
+enum PaymentState {
+  COMPLETED
+  WAITING
+  CANCELLED
+}
+
 model Product {
-  id            String @id @default(cuid())
-  name          String @db.VarChar(60)
+  id            String    @id @default(cuid())
+  name          String    @db.VarChar(60)
   price         Float
-  discountPrice Float? @map("discount_price")
-  description   String @db.VarChar(250)
-  sellerId      String @map("seller_id")
-  seller        Seller @relation(fields: [sellerId], references: [id])
+  quantity      Int
+  discountPrice Float?    @map("discount_price")
+  description   String    @db.VarChar(250)
+  city          String    @db.VarChar(60)
+  region        String    @db.VarChar(60)
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+  sellerId      String    @map("seller_id")
+  purchaseId    String?   @map("purchase_id")
+  seller        Seller    @relation(fields: [sellerId], references: [id])
+  purchase      Purchase? @relation(fields: [purchaseId], references: [id])
 
   @@map("products")
 }
 
+model Purchase {
+  id           String       @id @default(cuid())
+  paymentId    String       @map("payment_id")
+  referenceId  String       @map("reference_id") @db.VarChar(25)
+  products     Product[]
+  paymentValue Float        @map("payment_value")
+  paymentState PaymentState @map("payment_state")
+  createdAt    DateTime     @default(now()) @map("created_at")
+  buyerId      String       @map("buyer_id")
+  buyer        Buyer        @relation(fields: [buyerId], references: [id])
+}
+
 model Seller {
-  id       String    @id @default(cuid())
-  userId   String    @unique @map("user_id")
-  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  products Product[]
+  id          String       @id @default(cuid())
+  sellCity    String       @map("sell_city")
+  address     String
+  products    Product[]
+  investments Investment[]
+  userId      String       @unique @map("user_id")
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("sellers")
 }
 
 model Buyer {
-  id     String @id @default(cuid())
-  userId String @unique @map("user_id")
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id              String     @id @default(cuid())
+  purchases       Purchase[]
+  investmentTerms Boolean    @default(false) @map("investment_terms")
+  userId          String     @unique @map("user_id")
+  user            User       @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("buyers")
 }
 
 model User {
-  id        String   @id @default(cuid())
-  firstName String   @map("first_name") @db.VarChar(60)
-  lastName  String   @map("last_name") @db.VarChar(60)
-  phone     String?  @db.VarChar(20)
-  email     String   @unique @db.VarChar(250)
-  password  String   @db.VarChar(250)
-  isActive  Boolean  @default(false) @map("is_active")
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt
-  image     String?
-  role      Role
-  buyer     Buyer?
-  seller    Seller?
+  id             String       @id @default(cuid())
+  firstName      String       @map("first_name") @db.VarChar(60)
+  lastName       String       @map("last_name") @db.VarChar(60)
+  documentType   DocumentType @map("document_type")
+  documentNumber String       @map("document_number") @db.VarChar(20)
+  city           String       @db.VarChar(60)
+  state          String       @db.VarChar(60)
+  phone          String?      @db.VarChar(20)
+  terms          Boolean      @default(false)
+  email          String       @unique @db.VarChar(80)
+  password       String       @db.VarChar(50)
+  isActive       Boolean      @default(false) @map("is_active")
+  createdAt      DateTime     @default(now()) @map("created_at")
+  updatedAt      DateTime     @updatedAt @map("updated_at")
+  image          String?
+  role           Role
+  buyer          Buyer?
+  seller         Seller?
 
   @@map("users")
+}
+
+model Investment {
+  id               String   @id @default(cuid())
+  title            String   @db.VarChar(60)
+  investmentTarget Float    @map("investment_target")
+  invested         Float    @default(0.0)
+  startDate        DateTime @map("start_date")
+  city             String   @db.VarChar(60)
+  state            String   @db.VarChar(60)
+  image            String
+  photos           String[] @default([])
+  videos           String[] @default([])
+  description      String   @db.VarChar(1000)
+  shortDescription String   @map("short_description") @db.VarChar(200)
+  isActive         Boolean  @default(true) @map("is_active")
+  isCompleted      Boolean  @default(false) @map("is_completed")
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+  sellerId         String   @map("seller_id")
+  seller           Seller   @relation(fields: [sellerId], references: [id])
+
+  @@map("investments")
 }

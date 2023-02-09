@@ -4,6 +4,7 @@ import { setCookie } from "cookies-next";
 import { hash } from "bcrypt";
 
 import prisma from "@/lib/prisma";
+import { generateToken } from "@/utils/auth";
 
 type Data = {
   message: string;
@@ -45,9 +46,7 @@ export default async function handler(
       },
     });
 
-    const token = jwt.sign({ userId: newUser.id }, process.env.TOKEN_SECRET!, {
-      expiresIn: "1d",
-    });
+    const token = generateToken(newUser);
 
     setCookie("token", token, {
       req,

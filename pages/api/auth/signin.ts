@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { setCookie } from "cookies-next";
 
 import prisma from "@/lib/prisma";
-import { confirmPasswordHash } from "@/utils/auth";
+import { confirmPasswordHash, generateToken } from "@/utils/auth";
 
 type Data = {
   message: string;
@@ -27,11 +27,9 @@ export default async function handler(
     const isValidPassword = await confirmPasswordHash(password, user.password);
 
     if (!isValidPassword)
-      return res.status(422).json({ message: "Wrong password!" });
+      return res.status(422).json({ message: "Wrong password or email!" });
 
-    const token = jwt.sign({ userId: user.id }, process.env.TOKEN_SECRET!, {
-      expiresIn: "1d",
-    });
+    const token = generateToken(user);
 
     setCookie("token", token, {
       req,

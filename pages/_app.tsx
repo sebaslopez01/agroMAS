@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Quicksand, DM_Serif_Display } from "@next/font/google";
+import { StoreProvider } from "@/context/Store";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -18,8 +19,10 @@ export default function App({
   pageProps: { session, ...pageProps },
 }: AppProps) {
   return (
-    <main className={`${quicksand.variable} font-sans`}>
-      <Component {...pageProps} />
-    </main>
+    <StoreProvider>
+      <main className={`${quicksand.variable} font-sans`}>
+        <Component {...pageProps} />
+      </main>
+    </StoreProvider>
   );
 }
