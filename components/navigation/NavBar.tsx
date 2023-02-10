@@ -13,12 +13,12 @@ export default function NavBar() {
   return (
     <div
       id="bg-Navbar"
-      className="w-[100%] flex justify-between items-center p-5 z-50"
+      className="w-[100%] h-[10%] flex justify-between items-center px-5 z-50"
     >
       {/* Nostros - Invierte */}
       <div className="w-[33%] space-x-16 pl-10 hidden lg:flex">
         <Link href="nosotros" className="text-white text-2xl font-bold">
-          Nosotros{" "}
+          Nosotros
         </Link>
         <Link href="investments" className="text-white text-2xl font-bold">
           Invierte
@@ -37,10 +37,7 @@ export default function NavBar() {
       </Link>
 
       {/* Menu and Cart icon */}
-      <div
-        className="flex justify-end items-center space-x-5 w-[33%] lg:hidden text-white md:justify-evenly"
-        onClick={handleMenu}
-      >
+      <div className="flex justify-end items-center space-x-5 w-[33%] lg:hidden text-white md:justify-evenly">
         <Link href="marketplace">
           <Image
             className="md:w-[50px]"
@@ -57,6 +54,7 @@ export default function NavBar() {
             alt="Agro-logo"
             width={25}
             height={25}
+            onClick={handleMenu}
           />
         ) : (
           <Image
@@ -65,6 +63,7 @@ export default function NavBar() {
             alt="Agro-logo"
             width={25}
             height={25}
+            onClick={handleMenu}
           />
         )}
       </div>

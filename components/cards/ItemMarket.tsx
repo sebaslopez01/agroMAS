@@ -58,7 +58,7 @@ export default function ItemMarket({
                 onClick={() => {
                   if (count >= 1) setCount((c) => c - 1);
                 }}
-                className="flex items-center justify-center h-10 w-[33%] bg-red-400  rounded-l-xl text-white text-4xl"
+                className="flex items-center justify-center h-10 w-[33%] bg-secondary  rounded-l-xl text-white text-4xl"
               >
                 -
               </button>
@@ -73,14 +73,14 @@ export default function ItemMarket({
               />
               <button
                 onClick={() => setCount((c) => c + 1)}
-                className="flex items-center justify-center h-10 w-[33%] bg-red-400 rounded-r-xl text-white text-4xl"
+                className="flex items-center justify-center h-10 w-[33%] bg-secondary  rounded-r-xl text-white text-4xl"
               >
                 +
               </button>
             </div>
 
             {/* Cart Button */}
-            <button className="flex h-10 w-1/5 bg-red-400 rounded-xl items-center">
+            <button className="flex h-10 w-1/5 bg-secondary rounded-xl items-center">
               <img className="scale-50" src="addtocart.png" alt="add-icon" />
             </button>
           </div>

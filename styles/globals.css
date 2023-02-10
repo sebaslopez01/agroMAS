@@ -15,13 +15,9 @@ html, body {
     text-shadow: black 0 0 12px;
 }
 
-#shadow {
-    text-shadow: black 0 0 15px;
-}
-
 #bg-Navbar {
     position: fixed;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, black 120%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 30%, black 150%);
 }
 
 #card {
@@ -39,8 +35,4 @@ html, body {
 #cardInvest {
     box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
-}
-
-#exampleModalLong {
-    padding: 0 !important;
 }
