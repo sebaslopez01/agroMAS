@@ -16,7 +16,7 @@ export default function Home() {
       <Layout>
         <Header />
         <div className="flex pt-20 justify-center flex-col bg-[#ECECEA]">
-          {/* <Categories /> */}
+          <Categories />
           {/* <Featured /> */}
           <Oportunities />
           {/* <InvestDetail /> */}
