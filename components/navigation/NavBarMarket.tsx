@@ -37,7 +37,7 @@ export default function NavBarMarket() {
       {/* Search */}
       <div className="flex justify-center h-10 w-[65%] lg:w-[40%]">
         <input
-          id="card"
+          id="glass-bg"
           className="w-[70%] md:w-[70%] p-3 focus:outline-none text-gray-600 placeholder-gray-400 lg:text-xl lg:font-medium rounded-l-xl"
           placeholder="¿Qué buscas?..."
         ></input>
@@ -89,7 +89,7 @@ export default function NavBarMarket() {
 
       {/* Menu flexible sm/md*/}
       <div
-        id="cardInvest"
+        id="glass-bg"
         className={
           !menu
             ? "fixed top-0 left-0 w-[70%] lg:w-[40%] h-screen p-5 ease-in-out duration-500 z-50"

@@ -17,14 +17,14 @@ export default function Header() {
         {/* Buttons */}
         <div className="flex w-[100%] flex-col items-center justify-center space-y-4 lg:w-[60%] lg:h-[40%]">
           <Link
-            id="card"
+            id="glass-bg"
             href="marketplace"
             className="w-[80%] p-3 text-xl text-white rounded-2xl text-center md:text-2xl lg:text-2xl lg:p-4 lg:w-[50%]"
           >
             Compra ahora
           </Link>
           <Link
-            id="card"
+            id="glass-bg"
             href="nosotros"
             className="w-[80%] p-3 text-xl text-white rounded-2xl text-center md:text-2xl lg:text-2xl lg:p-4 lg:w-[50%]"
           >

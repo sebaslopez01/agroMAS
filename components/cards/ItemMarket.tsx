@@ -28,7 +28,7 @@ export default function ItemMarket({
 
         {/* Product description */}
         <div
-          id="card"
+          id="glass-bg"
           className="flex h-contain w-[95%] rounded-xl flex-col absolute bottom-0 left-[50%] translate-x-[-50%]"
         >
           <span className="mt-2 px-3 text-4xl font-medium blur-none">
