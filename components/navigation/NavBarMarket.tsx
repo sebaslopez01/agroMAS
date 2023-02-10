@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useState } from "react";
 import agroIcon from "@/public/agro-icon.ico";
 
-
 export default function NavBarMarket() {
   const [menu, setMenu] = useState(true);
 
@@ -12,7 +11,7 @@ export default function NavBarMarket() {
   };
 
   return (
-    <div className="w-[100%] flex justify-center items-center z-50 h-[60px] lg:h-[80px] p-2 bg-secondary lg:pl-[15%] lg:pr-[15%]">
+    <div className="w-[100%] flex justify-center items-center z-50 h-[60px] lg:h-[80px] p-2 bg-secondary lg:pl-[15%] lg:pr-[12%]">
       {/* Agro logo */}
       <div className="w-[30%] space-x-16 pl-10 hidden lg:flex">
         <Link href="/">
@@ -39,12 +38,12 @@ export default function NavBarMarket() {
       <div className="flex justify-center h-10 w-[65%] lg:w-[40%]">
         <input
           id="card"
-          className="w-[70%] p-3 focus:outline-none text-gray-600 placeholder-gray-400 lg:text-xl lg:font-medium rounded-l-xl"
+          className="w-[70%] md:w-[70%] p-3 focus:outline-none text-gray-600 placeholder-gray-400 lg:text-xl lg:font-medium rounded-l-xl"
           placeholder="¿Qué buscas?..."
         ></input>
         <button
           id="card"
-          className="flex w-[20%] justify-center items-center rounded-r-xl"
+          className="flex w-[20%] md:w-[10%] justify-center items-center rounded-r-xl p-1"
         >
           <Image
             className="scale-50 lg:scale-75"
@@ -69,8 +68,8 @@ export default function NavBarMarket() {
         </Link>
         {!menu ? (
           <Image
-            className="md:w-[35px]"
-            src="/close-icon.png"
+            className="md:w-[30px]"
+            src="/close.png"
             alt="Agro-logo"
             width={25}
             height={25}
@@ -79,7 +78,7 @@ export default function NavBarMarket() {
         ) : (
           <Image
             className="md:w-[30px]"
-            src="/menu-icon.png"
+            src="/menu.png"
             alt="Agro-logo"
             width={25}
             height={25}
@@ -143,7 +142,6 @@ export default function NavBarMarket() {
           </li>
         </ul>
       </div>
-
     </div>
   );
 }
