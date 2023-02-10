@@ -33,6 +33,25 @@ html, body {
 }
 
 #cardInvest {
-    box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
     backdrop-filter: blur(10px);
+}
+
+#cardCategory {
+    box-shadow: inset 0 0 2000px rgba(140, 223, 172, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+#test {
+    border-radius: 31% 69% 70% 30% / 63% 47% 53% 37% ;
+
+} 
+
+#glass-bg {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.9px);
+    -webkit-backdrop-filter: blur(6.9px);
+    border: 1px solid rgba(255, 255, 255, 0.17);
 }
