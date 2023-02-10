@@ -6,6 +6,8 @@ html, body {
     font-family: 'Quicksand', sans-serif;
     max-width: 100%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
 }
 
 #phrase {
@@ -15,7 +17,7 @@ html, body {
 
 #bg-Navbar {
     position: fixed;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, black 120%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 30%, black 150%);
 }
 
 #card {
@@ -40,17 +42,16 @@ html, body {
     backdrop-filter: blur(10px);
 }
 
-
 #test {
     border-radius: 31% 69% 70% 30% / 63% 47% 53% 37% ;
 
 } 
 
 #glass-bg {
-background: rgba(255, 255, 255, 0.3);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(6.9px);
--webkit-backdrop-filter: blur(6.9px);
-border: 1px solid rgba(255, 255, 255, 0.17);
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.9px);
+    -webkit-backdrop-filter: blur(6.9px);
+    border: 1px solid rgba(255, 255, 255, 0.17);
 }

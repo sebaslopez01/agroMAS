@@ -3,7 +3,7 @@ import Link from "next/link"
 export default function Footer () {
     return (
         <>
-        <div className="flex bg-[url('/fondo2.png')] bg-cover">
+        <div className="flex bg-green-700">
 
             {/* Phrase */}
             <div className="flex w-2/3 h-40 justify-center items-center">

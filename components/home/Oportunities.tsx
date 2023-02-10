@@ -5,7 +5,7 @@ export default function Oportunities() {
     <>
       <div
         id="oportunities"
-        className="flex w-full p-5 justify-evenly flex-wrap">
+        className="flex w-full p-5 justify-evenly flex-wrap mb-10">
         <CardInvest />
         <CardInvest />
         <CardInvest />
