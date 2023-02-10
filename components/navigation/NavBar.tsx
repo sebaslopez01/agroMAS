@@ -70,7 +70,7 @@ export default function NavBar() {
 
       {/* Menu flexible*/}
       <div
-        id="card"
+        id="glass-bg"
         className={
           !menu
             ? "fixed top-0 left-0 w-[70%] h-screen p-5 ease-in-out duration-500 lg:hidden"
