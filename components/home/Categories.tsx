@@ -9,7 +9,7 @@ export default function Categories() {
       </div>
 
       {/* <!-- Container for demo purpose --> */}
-      <div className="container my-5 ml-auto mr-0">
+      <div className="container my-5 mx-auto">
         {/* <!-- Section: Design Block --> */}
         <section className="text-gray-800 text-center lg:text-left">
           {/* <!-- Jumbotron --> */}
@@ -63,10 +63,12 @@ export default function Categories() {
         </section>
         {/* <!-- Section: Design Block --> */}
       </div>
+
+
       {/* <!-- Container for demo purpose --> */}
 
       {/* <!-- Container for demo purpose --> */}
-      <div className="container my-5">
+      <div className="container my-5 mx-auto">
         {/* <!-- Section: Design Block --> */}
         <section className="text-gray-800 text-center lg:text-left">
           {/* <!-- Jumbotron --> */}
