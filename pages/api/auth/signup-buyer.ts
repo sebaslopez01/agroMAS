@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import jwt from "jsonwebtoken";
 import { setCookie } from "cookies-next";
 import { hash } from "bcrypt";
 
 import prisma from "@/lib/prisma";
+import { generateToken } from "@/utils/auth";
 
 type Data = {
   message: string;
@@ -43,9 +43,7 @@ export default async function handler(
       },
     });
 
-    const token = jwt.sign({ userId: newUser.id }, process.env.TOKEN_SECRET!, {
-      expiresIn: "1d",
-    });
+    const token = generateToken(newUser);
 
     setCookie("token", token, {
       req,
@@ -54,8 +52,8 @@ export default async function handler(
       path: "/",
     });
 
-    res.status(201).json({ message: "user created!" });
+    res.status(201).json({ message: "User created!" });
   } else {
-    res.status(424).json({ message: "Inavalid method!" });
+    res.status(424).json({ message: "Invalid method!" });
   }
 }
