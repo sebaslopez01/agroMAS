@@ -1,0 +1,121 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table products {
+  id String [pk]
+  name String [not null]
+  price Float [not null]
+  quantity Int [not null]
+  discountPrice Float
+  description String [not null]
+  city String [not null]
+  region String [not null]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  sellerId String [not null]
+  purchaseId String
+  seller sellers [not null]
+  purchase Purchase
+}
+
+Table Purchase {
+  id String [pk]
+  paymentId String [not null]
+  referenceId String [not null]
+  products products [not null]
+  paymentValue Float [not null]
+  paymentState PaymentState [not null]
+  createdAt DateTime [default: `now()`, not null]
+  buyerId String [not null]
+  buyer buyers [not null]
+}
+
+Table sellers {
+  id String [pk]
+  sellCity String [not null]
+  address String [not null]
+  products products [not null]
+  investments investments [not null]
+  userId String [unique, not null]
+  user users [not null]
+}
+
+Table buyers {
+  id String [pk]
+  purchases Purchase [not null]
+  investmentTerms Boolean [not null, default: false]
+  userId String [unique, not null]
+  user users [not null]
+}
+
+Table users {
+  id String [pk]
+  firstName String [not null]
+  lastName String [not null]
+  documentType DocumentType [not null]
+  documentNumber String [not null]
+  city String [not null]
+  state String [not null]
+  phone String
+  terms Boolean [not null, default: false]
+  email String [unique, not null]
+  password String [not null]
+  isActive Boolean [not null, default: false]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  image String
+  role Role [not null]
+  buyer buyers
+  seller sellers
+}
+
+Table investments {
+  id String [pk]
+  title String [not null]
+  investmentTarget Float [not null]
+  invested Float [not null, default: 0]
+  startDate DateTime [not null]
+  city String [not null]
+  state String [not null]
+  image String [not null]
+  photos String[] [not null]
+  videos String[] [not null]
+  description String [not null]
+  shortDescription String [not null]
+  isActive Boolean [not null, default: true]
+  isCompleted Boolean [not null, default: false]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  sellerId String [not null]
+  seller sellers [not null]
+}
+
+Enum Role {
+  SELLER
+  BUYER
+}
+
+Enum DocumentType {
+  CC
+  CE
+  PP
+}
+
+Enum PaymentState {
+  COMPLETED
+  WAITING
+  CANCELLED
+}
+
+Ref: products.sellerId > sellers.id
+
+Ref: products.purchaseId > Purchase.id
+
+Ref: Purchase.buyerId > buyers.id
+
+Ref: sellers.userId - users.id [delete: Cascade]
+
+Ref: buyers.userId - users.id [delete: Cascade]
+
+Ref: investments.sellerId > sellers.id

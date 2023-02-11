@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import jwt from "jsonwebtoken";
 import { setCookie } from "cookies-next";
 
 import prisma from "@/lib/prisma";

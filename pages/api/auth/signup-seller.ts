@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import jwt from "jsonwebtoken";
 import { setCookie } from "cookies-next";
 import { hash } from "bcrypt";
 
@@ -14,49 +13,66 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { firstName, lastName, phone, email, password } = req.body;
-
-  if (req.method === "POST") {
-    const userExists = await prisma.user.findFirst({
-      where: {
-        email,
-      },
-    });
-
-    if (userExists) {
-      return res.status(422).json({ message: "Email already on use!" });
-    }
-
-    const hashedPassword = await hash(password, 10);
-
-    const newUser = await prisma.user.create({
-      data: {
-        firstName,
-        lastName,
-        phone,
-        email,
-        password: hashedPassword,
-        seller: {
-          create: {
-            products: {},
-          },
-        },
-        isActive: true,
-        role: "SELLER",
-      },
-    });
-
-    const token = generateToken(newUser);
-
-    setCookie("token", token, {
-      req,
-      res,
-      maxAge: 60 * 60 * 24,
-      path: "/",
-    });
-
-    res.status(201).json({ message: "user created!" });
-  } else {
+  if (req.method !== "POST")
     res.status(424).json({ message: "Inavalid method!" });
+
+  const {
+    firstName,
+    lastName,
+    city,
+    state,
+    documentType,
+    documentNumber,
+    phone,
+    email,
+    password,
+  } = req.body;
+
+  const userExists = await prisma.user.findFirst({
+    where: {
+      email,
+    },
+  });
+
+  if (userExists) {
+    return res.status(422).json({ message: "Email already on use!" });
   }
+
+  const hashedPassword = await hash(password, 10);
+
+  const newUser = await prisma.user.create({
+    data: {
+      firstName,
+      lastName,
+      city,
+      state,
+      terms: true,
+      documentType,
+      documentNumber,
+      phone,
+      email,
+      password: hashedPassword,
+      seller: {
+        create: {
+          address: "dawd",
+          sellCity: "dawd",
+          products: {},
+          investments: {},
+        },
+      },
+      isActive: true,
+      role: "SELLER",
+    },
+  });
+
+  const token = generateToken(newUser);
+
+  setCookie("token", token, {
+    req,
+    res,
+    maxAge: 60 * 60 * 24,
+    path: "/",
+  });
+
+  res.status(201).json({ message: "user created!" });
 }

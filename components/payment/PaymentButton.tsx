@@ -15,7 +15,7 @@ function PaymentButton({ amount, buyerEmail, legalId }: PaymentButtonProps) {
   const [attrWompi, setAttrWompi] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  const getSignature = async () => {
+  const getSignature = () => {
     axios
       .post("/api/payment/generate-signature", {
         referenceCode,

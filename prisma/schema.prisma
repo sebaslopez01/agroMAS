@@ -56,6 +56,8 @@ model Purchase {
   createdAt    DateTime     @default(now()) @map("created_at")
   buyerId      String       @map("buyer_id")
   buyer        Buyer        @relation(fields: [buyerId], references: [id])
+
+  @@map("purchases")
 }
 
 model Seller {
