@@ -45,13 +45,22 @@ export default function NavBarMarket() {
           id="card"
           className="flex w-[20%] md:w-[10%] justify-center items-center rounded-r-xl p-1"
         >
-          <Image
-            className="scale-50 lg:scale-75"
-            src="/search-icon.png"
-            alt=""
-            width={50}
-            height={50}
-          ></Image>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon icon-tabler icon-tabler-search cursor-pointer"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="white"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+            <path d="M21 21l-6 -6"></path>
+          </svg>
         </button>
       </div>
 
@@ -67,23 +76,42 @@ export default function NavBarMarket() {
           />
         </Link>
         {!menu ? (
-          <Image
-            className="md:w-[30px]"
-            src="/close.png"
-            alt="Agro-logo"
-            width={25}
-            height={25}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon icon-tabler icon-tabler-x cursor-pointer"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="white"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
             onClick={handleMenu}
-          />
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M18 6l-12 12"></path>
+            <path d="M6 6l12 12"></path>
+          </svg>
         ) : (
-          <Image
-            className="md:w-[30px]"
-            src="/menu.png"
-            alt="Agro-logo"
-            width={25}
-            height={25}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon icon-tabler icon-tabler-menu-2 cursor-pointer"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="white"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
             onClick={handleMenu}
-          />
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M4 6l16 0"></path>
+            <path d="M4 12l16 0"></path>
+            <path d="M4 18l16 0"></path>
+          </svg>
         )}
       </div>
 
