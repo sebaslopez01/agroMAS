@@ -1,16 +1,17 @@
 import NavBar from "./navigation/NavBar";
 import Footer from "./navigation/Footer";
-import marketplace from "@/pages/marketplace";
+import { ReactNode } from "react";
 
-export default function Layout({ children }: any) {
-    return (
-        <>
-            <div>
-                <NavBar />
-                <main>{children}</main>
-                <Footer />
-            </div>
-        </>
+interface LayoutProps {
+  children: ReactNode;
+}
 
-    )
+export default function Layout({ children }: LayoutProps) {
+  return (
+    <>
+      <NavBar />
+      <main>{children}</main>
+      <Footer />
+    </>
+  );
 }

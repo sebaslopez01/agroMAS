@@ -64,7 +64,6 @@ export default function Categories() {
         {/* <!-- Section: Design Block --> */}
       </div>
 
-
       {/* <!-- Container for demo purpose --> */}
 
       {/* <!-- Container for demo purpose --> */}
