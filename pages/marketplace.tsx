@@ -17,46 +17,30 @@ export default function marketplace() {
           </div>
           <div className="flex flex-wrap justify-center w-full">
             <ItemMarket
-              nameProduct="Pera"
+              nameProduct="Pera criolla"
+              seller="Jacinto"
               priceProduct={6_000}
-              productLocation="Guarne"
+              undPerItem="Kg"
+              productCity="Guarne"
+              productState="Antioquia"
             />
             <ItemMarket
-              nameProduct="Banano"
+              nameProduct="Banano Dulce"
+              seller="Otro Jacinto"
               priceProduct={2_000}
-              productLocation="Rionegro"
+              undPerItem="Kg"
+              productCity="Rionegro"
+              productState="Antioquia"
             />
             <ItemMarket
-              nameProduct="Manzana"
+              nameProduct="Manzana Royal"
+              seller="Jacinta"
               priceProduct={2_000}
-              productLocation="Cisneros"
-            />
-            <ItemMarket
-              nameProduct="Limón"
-              priceProduct={2_000}
-              productLocation="Uraba"
+              undPerItem="Kg"
+              productCity="Cisneros"
+              productState="Antioquia"
             />
 
-            <ItemMarket
-              nameProduct="Guayaba"
-              priceProduct={2_000}
-              productLocation="Turbo"
-            />
-            <ItemMarket
-              nameProduct="Naranja"
-              priceProduct={2_000}
-              productLocation="Cañas gordas"
-            />
-            <ItemMarket
-              nameProduct="Mandarina"
-              priceProduct={2_000}
-              productLocation="Santa Marta"
-            />
-            <ItemMarket
-              nameProduct="Guanabana"
-              priceProduct={2_000}
-              productLocation="USA"
-            />
           </div>
         </div>
       </div>
