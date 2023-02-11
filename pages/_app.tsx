@@ -1,28 +1,25 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { Quicksand, DM_Serif_Display } from "@next/font/google";
-import { StoreProvider } from "@/context/Store";
+import { Quicksand } from "@next/font/google";
+import { useEffect } from "react";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
   variable: "--font-quicksand",
 });
 
-const dmSerif = DM_Serif_Display({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-dm-serif",
-});
+const importElements = async () => {
+  (await import("tw-elements")).default;
+};
 
-export default function App({
-  Component,
-  pageProps: { session, ...pageProps },
-}: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    importElements();
+  }, []);
+
   return (
-    <StoreProvider>
-      <main className={`${quicksand.variable} font-sans`}>
-        <Component {...pageProps} />
-      </main>
-    </StoreProvider>
+    <main className={`${quicksand.variable} font-sans`}>
+      <Component {...pageProps} />
+    </main>
   );
 }
