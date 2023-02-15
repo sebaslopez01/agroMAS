@@ -15,6 +15,10 @@ input:focus {
     border: none;
 }
 
+label {
+    font-weight: 900;
+}
+
 #phrase {
     font-family: 'Old Standard TT', serif;
     text-shadow: black 0 0 12px;

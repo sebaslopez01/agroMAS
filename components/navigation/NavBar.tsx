@@ -28,7 +28,7 @@ export default function NavBar() {
       {/* Agro logo */}
       <Link href="/">
         <Image
-          className="md:w-[150px]"
+          className="md:w-[100px]"
           src="/agro-logo.png"
           alt="Agro-logo"
           width={100}
@@ -37,34 +37,65 @@ export default function NavBar() {
       </Link>
 
       {/* Menu and Cart icon */}
-      <div className="flex justify-end items-center space-x-5 w-[33%] lg:hidden text-white md:justify-evenly">
+      <div className="flex justify-end items-center space-x-5 w-[33%] lg:hidden text-white">
         <Link href="shoppingCart">
-          <Image
-            className="md:w-[50px]"
-            src="/cart-icon.png"
-            alt="Menu-icon"
-            width={35}
-            height={35}
-          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon icon-tabler icon-tabler-shopping-cart cursor-pointer"
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            stroke-width="1.3"
+            stroke="white"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+            <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+            <path d="M17 17h-11v-14h-2"></path>
+            <path d="M6 5l14 1l-1 7h-13"></path>
+          </svg>
         </Link>
         {!menu ? (
-          <Image
-            className="md:w-[35px]"
-            src="/close-icon.png"
-            alt="Agro-logo"
-            width={25}
-            height={25}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon icon-tabler icon-tabler-menu-2 cursor-pointer"
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="white"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
             onClick={handleMenu}
-          />
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M4 6l16 0"></path>
+            <path d="M4 12l16 0"></path>
+            <path d="M4 18l16 0"></path>
+          </svg>
         ) : (
-          <Image
-            className="md:w-[35px]"
-            src="/menu-icon.png"
-            alt="Agro-logo"
-            width={25}
-            height={25}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon icon-tabler icon-tabler-menu-2 cursor-pointer"
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="white"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
             onClick={handleMenu}
-          />
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M4 6l16 0"></path>
+            <path d="M4 12l16 0"></path>
+            <path d="M4 18l16 0"></path>
+          </svg>
         )}
       </div>
 
@@ -73,11 +104,11 @@ export default function NavBar() {
         id="glass-bg"
         className={
           !menu
-            ? "fixed top-0 left-0 w-[70%] h-screen p-5 ease-in-out duration-500 lg:hidden"
-            : "fixed top-[-100%]"
+            ? "fixed top-0 right-0 w-[70%] md:w-[50%] h-screen p-5 ease-in-out duration-500 lg:hidden"
+            : "fixed right-[-100%]"
         }
       >
-        <div className="w-[100%] mb-5 flex justify-start md:p-5">
+        <div className="w-[100%] mb-5 flex justify-between md:p-5">
           <Link href="/">
             <Image
               className="md:scale-150"
@@ -87,20 +118,32 @@ export default function NavBar() {
               height={100}
             />
           </Link>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon icon-tabler icon-tabler-x cursor-pointer"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="white"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            onClick={handleMenu}
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M18 6l-12 12"></path>
+            <path d="M6 6l12 12"></path>
+          </svg>
         </div>
         <ul>
           <li className="py-2">
-            <button
-              onClick={() => console.log("")}
-              className="text-2xl mt-5 text-white md:text-3xl"
-            >
-              Iniciar sesión
-            </button>
+            <ModalNavbar />
           </li>
           <li className="py-2">
             <Link
               href="nosotros"
-              className="text-2xl mt-5 text-white md:text-3xl"
+              className="text-lg mt-5 text-white md:text-xl"
             >
               Inicio
             </Link>
@@ -108,7 +151,7 @@ export default function NavBar() {
           <li className="py-2">
             <Link
               href="nosotros"
-              className="text-2xl mt-5 text-white md:text-3xl"
+              className="text-lg mt-5 text-white md:text-xl"
             >
               Nosotros
             </Link>
@@ -116,7 +159,7 @@ export default function NavBar() {
           <li className="py-2">
             <Link
               href="investments"
-              className="text-2xl mt-5 text-white md:text-3xl"
+              className="text-lg mt-5 text-white md:text-xl"
             >
               Invierte
             </Link>
