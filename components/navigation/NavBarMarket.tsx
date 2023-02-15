@@ -11,7 +11,7 @@ export default function NavBarMarket() {
   };
 
   return (
-    <div className="w-[100%] flex justify-center items-center z-50 h-[60px] lg:h-[80px] p-2 bg-secondary lg:pl-[15%] lg:pr-[12%]">
+    <div className="w-[100%] flex justify-center items-center z-50 h-[60px] lg:h-[80px] p-2 lg:pl-[15%] lg:pr-[12%] bg-black">
       {/* Agro logo */}
       <div className="w-[30%] space-x-16 pl-10 hidden lg:flex">
         <Link href="/">
@@ -66,7 +66,7 @@ export default function NavBarMarket() {
 
       {/* Menu and Cart */}
       <div className="flex justify-around items-center w-[30%] text-white md:justify-evenly">
-        <Link href="marketplace">
+        <Link href="shoppingCart">
           <Image
             className="md:w-[40px]"
             src="/cart-icon.png"

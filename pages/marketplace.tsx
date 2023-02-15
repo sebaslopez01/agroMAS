@@ -8,7 +8,7 @@ export default function marketplace() {
     <>
       <Meta />
       <NavBarMarket />
-      <div className="bg-gray-200">
+      <div>
         <div className="flex flex-col lg:w-[80%] lg:m-auto">
           <div className="flex justify-center w-full mt-7 mb-5">
             <span className="text-2xl font-semibold text-gray-700">
@@ -40,7 +40,30 @@ export default function marketplace() {
               productCity="Cisneros"
               productState="Antioquia"
             />
-
+            <ItemMarket
+              nameProduct="Manzana Royal"
+              seller="Jacinta"
+              priceProduct={2_000}
+              undPerItem="Kg"
+              productCity="Cisneros"
+              productState="Antioquia"
+            />
+            <ItemMarket
+              nameProduct="Manzana Royal"
+              seller="Jacinta"
+              priceProduct={2_000}
+              undPerItem="Kg"
+              productCity="Cisneros"
+              productState="Antioquia"
+            />
+            <ItemMarket
+              nameProduct="Manzana Royal"
+              seller="Jacinta"
+              priceProduct={2_000}
+              undPerItem="Kg"
+              productCity="Cisneros"
+              productState="Antioquia"
+            />
           </div>
         </div>
       </div>
