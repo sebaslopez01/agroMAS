@@ -12,7 +12,6 @@ const ModalHeader = dynamic(
 );
 
 export default function modalNavbar() {
-
   const [showLogin, setShowLogin] = useState(false);
   const [showSignin, setShowSignin] = useState(false);
 
@@ -65,7 +64,10 @@ export default function modalNavbar() {
           </div>
           <div className="w-[80%] text-sm flex justify-between">
             <div className="space-x-1 flex items-center">
-              <input className="rounded-full checked:bg-gray-500 cursor-pointer" type="checkbox" />
+              <input
+                className="rounded-full checked:bg-gray-500 cursor-pointer"
+                type="checkbox"
+              />
               <label htmlFor="">Recordarme</label>
             </div>
             <button className="underline text-gray-700">
@@ -96,62 +98,76 @@ export default function modalNavbar() {
       {/* Modal SignIn */}
       <Modal
         show={showSignin}
-        size="lg"
+        size="md"
         popup={true}
         onClose={() => setShowSignin(!showSignin)}
+        className="w-full"
       >
         <ModalHeader className="h-0 p-0"></ModalHeader>
-        <div className="w-full flex flex-col items-center justify-center pb-10 pt-5 space-y-3">
+        <div className="w-full flex flex-col items-center justify-center pb-5 pt-3 space-y-2">
           <h1 className="text-xl font-bold">Registro</h1>
           <div className="w-[80%] flex flex-col space-y-3">
-            <label htmlFor="">Nombres</label>
-            <input
-              className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
-              type="text"
-              placeholder="Nombres"
-            />
-            <label htmlFor="">Apellidos</label>
-            <input
-              className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
-              type="text"
-              placeholder="Apellidos"
-            />
-            <label htmlFor="">Tipo de documento</label>
-            <select
-              name="idTypes"
-              id="ids"
-              required
-              className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
-            >
-              <option className="cursor-pointer" value="seleccionar" selected>
-                Seleccionar
-              </option>
-              <option className="cursor-pointer" value="cedula">
-                Cédula de Ciudadanía
-              </option>
-              <option className="cursor-pointer" value="tarjetaDeIdentidad">
-                Cédula de Extranjería
-              </option>
-              <option className="cursor-pointer" value="Contraseña">
-                Pasaporte
-              </option>
-            </select>
-            <label htmlFor="nId">Nº de documento</label>
-            <input
-              className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
-              type="text"
-              placeholder="Nº de documento"
-            />
-            <label htmlFor="">Celular</label>
-            <input
-              className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
-              type="tel"
-              placeholder="Celular"
-            />
+            <div className="flex flex-col">
+              <label htmlFor="">Nombres</label>
+              <input
+                className="rounded-full border-gray-400 focus:ring focus:ring-gray-300"
+                type="text"
+                placeholder="Nombres"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="">Apellidos</label>
+              <input
+                className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
+                type="text"
+                placeholder="Apellidos"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="">Tipo de documento</label>
+              <select
+                name="idTypes"
+                id="ids"
+                required
+                className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
+              >
+                <option className="cursor-pointer" value="seleccionar" selected>
+                  Seleccionar
+                </option>
+                <option className="cursor-pointer" value="cedula">
+                  Cédula de Ciudadanía
+                </option>
+                <option className="cursor-pointer" value="tarjetaDeIdentidad">
+                  Cédula de Extranjería
+                </option>
+                <option className="cursor-pointer" value="Contraseña">
+                  Pasaporte
+                </option>
+              </select>
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="nId">Nº de documento</label>
+              <input
+                className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
+                type="text"
+                placeholder="Nº de documento"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="">Celular</label>
+              <input
+                className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
+                type="tel"
+                placeholder="Celular"
+              />
+            </div>
           </div>
           <div className="w-[80%] space-x-1">
-            <input className="rounded-full appearance-none checked:bg-slate-600 cursor-pointer focus:outline-none" type="checkbox" />
-            <label htmlFor="">
+            <input
+              className="rounded-full appearance-none checked:bg-slate-600 cursor-pointer focus:outline-none"
+              type="checkbox"
+            />
+            <label className="text-sm" htmlFor="">
               He leído y acepto los{" "}
               <Link className="text-gray-500 underline" href="/">
                 términos y condiciones
