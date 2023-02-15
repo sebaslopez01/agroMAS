@@ -2,7 +2,7 @@ import Avatar from "@/components/Avatar";
 import Meta from "@/components/Meta";
 import ProfileMenu from "@/components/navigation/CustomerMenu";
 import MyInvestments from "@/components/Profile/MyInvestments";
-import Purchases from "@/components/Profile/Purchases";
+import CardPurchase from "@/components/cards/CardPurchase";
 import Settings from "@/components/Profile/Settings";
 
 export default function CustomerIndexProfile() {
@@ -33,7 +33,13 @@ export default function CustomerIndexProfile() {
       </div>
       <div className="flex">
         <ProfileMenu userName="Betty Pinzón" role="Cliente" />
-        <Purchases />
+        <CardPurchase
+          purchaseId={3271}
+          purchaseCompleted={true}
+          purchaseDate="01/01/2023"
+          purchaseCity="Medellín"
+          PurchaseState="Antioquia"
+        />
       </div>
     </>
   );
