@@ -8,6 +8,11 @@ html, body {
     overflow-x: hidden;
     scroll-behavior: smooth;
     box-sizing: border-box;
+    background-color: #ECECEA;
+}
+
+input:focus {
+    border: none;
 }
 
 #phrase {
@@ -16,8 +21,12 @@ html, body {
 }
 
 #bg-Navbar {
-    position: fixed;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0) 30%, black 150%);
+}
+
+#bg-Navbar-Market {
+    position: fixed;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 10%, black 150%);
 }
 
 #card {
@@ -53,4 +62,8 @@ html, body {
     backdrop-filter: blur(6.9px);
     -webkit-backdrop-filter: blur(6.9px);
     border: 1px solid rgba(255, 255, 255, 0.17);
+}
+
+.modal {
+    background: rgba(255, 255, 255, 0.3);
 }
