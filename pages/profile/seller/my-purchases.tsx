@@ -1,11 +1,14 @@
 import Meta from "@/components/Meta";
 import CardPurchase from "@/components/cards/CardPurchase";
+import NavBarMarket from "@/components/navigation/NavBarMarket";
+import Footer from "@/components/navigation/Footer";
 
 export default function SellerPurchases() {
   return (
     <>
       <Meta />
-      <div className="grid grid-cols-3 w-full py-3 fixed z-50 h-16">
+      <NavBarMarket />
+      <div className="grid grid-cols-3 w-full py-3 h-16">
         <button onClick={() => window.history.back()}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -24,11 +27,11 @@ export default function SellerPurchases() {
           </svg>
         </button>
         <div className="m-auto col-start-2">
-          <h1 className="text-2xl p-3 font-semibold">Mi perfil</h1>
+          <h1 className="text-2xl p-3 font-semibold">Mis compras</h1>
         </div>
       </div>
       <div className="flex">
-      <div className="flex flex-col p-4 pt-16 w-[100%]">
+      <div className="flex flex-col p-4 w-[100%]">
           <h1 className="text-xl mb-3">Historial de compras</h1>
           <CardPurchase
             purchaseId={3271}
@@ -39,6 +42,7 @@ export default function SellerPurchases() {
           />
         </div>
       </div>
+      <Footer />
     </>
   );
 }
