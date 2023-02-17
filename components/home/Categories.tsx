@@ -20,12 +20,12 @@ export default function Categories() {
           <div className="w-[100%] lg:w-[90%] h-full flex flex-col lg:flex-row justify-center items-center">
             <div
               id="glass-bg"
-              className="w-[90%] h-[100%] lg:w-[60%] lg:h-[60%] rounded-3xl shadow-lg p-7 lg:p-10 flex flex-col justify-between space-y-3 lg:space-y-0"
+              className="w-[90%] h-[100%] lg:w-[60%] md:w-[70%] lg:h-[60%] rounded-3xl shadow-lg p-7 lg:p-10 flex flex-col justify-between space-y-3 lg:space-y-0"
             >
-              <div className="w-[100%] mx-auto lg:w-[40%] h-[50%] rounded-3xl lg:hidden">
+              <div className="w-[100%] mx-auto lg:w-[40%] h-[50%] md:h-[60%] md:w-[100%] rounded-3xl lg:hidden">
                 <Image
                   src={category1}
-                  className="shadow-lg w-[100%] h-[100%] lg:h-[80%] rounded-3xl"
+                  className="shadow-lg w-[100%] h-[100%] lg:h-[80%] object-cover rounded-3xl"
                   alt=""
                 />
               </div>
@@ -66,9 +66,9 @@ export default function Categories() {
             </div>
             <div
               id="glass-bg"
-              className="w-[90%] lg:w-[60%] h-[100%] lg:h-[60%] rounded-3xl shadow-lg lg:-ml-10 p-7 lg:p-10 flex flex-col justify-between space-y-3 lg:space-y-0"
+              className="w-[90%] lg:w-[60%] h-[100%] lg:h-[60%] md:w-[70%] rounded-3xl shadow-lg lg:-ml-10 p-7 lg:p-10 flex flex-col justify-between space-y-3 lg:space-y-0"
             >
-              <div className="w-[100%] mx-auto lg:w-[40%] h-[50%] bg-blue-300 md:h-[70%] rounded-3xl lg:-ml-10 lg:hidden">
+              <div className="w-[100%] mx-auto lg:w-[40%] h-[50%] md:h-[60%] rounded-3xl lg:-ml-10 lg:hidden">
                 <Image
                   src={category2}
                   className="shadow-lg w-[100%] h-[100%] lg:h-[80%] object-cover rounded-3xl"
