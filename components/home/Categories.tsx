@@ -14,21 +14,21 @@ export default function Categories() {
         </h2>
       </div>
 
-      <div className="w-[100%] lg:w-[80%] h-auto space-y-10 lg:space-y-0 flex flex-col justify-center mx-auto bg-blue-400">
+      <div className="w-[100%] lg:w-[80%] h-auto space-y-10 lg:space-y-0 flex flex-col justify-center mx-auto">
         {/* Mercado virtual */}
         <div className="flex justify-end w-[100%] h-[500px]">
           <div className="w-[100%] lg:w-[90%] h-full flex flex-col lg:flex-row justify-center items-center">
-            <div className="w-[60%] md:w-[50%] lg:w-[40%] h-[80%] md:h-[70%] rounded-3xl -mb-10 md:-mb-0 lg:-ml-10 lg:hidden">
-              <Image
-                src={category1}
-                className="shadow-lg w-[100%] h-[80%] object-cover rounded-3xl"
-                alt=""
-              />
-            </div>
             <div
               id="glass-bg"
-              className="w-[90%] lg:w-[60%] h-[60%] rounded-3xl shadow-lg p-7 lg:p-10 flex flex-col justify-between space-y-3 lg:space-y-0"
+              className="w-[90%] h-[100%] lg:w-[60%] lg:h-[60%] rounded-3xl shadow-lg p-7 lg:p-10 flex flex-col justify-between space-y-3 lg:space-y-0"
             >
+              <div className="w-[100%] mx-auto lg:w-[40%] h-[50%] rounded-3xl lg:hidden">
+                <Image
+                  src={category1}
+                  className="shadow-lg w-[100%] h-[100%] lg:h-[80%] rounded-3xl"
+                  alt=""
+                />
+              </div>
               <h2 className="text-transparent bg-clip-text bg-gradient-to-r to-green-800 from-green-500 text-2xl lg:text-4xl font-bold">
                 Mercado virtual
               </h2>
@@ -60,14 +60,21 @@ export default function Categories() {
             <div className="w-[60%] lg:w-[40%] h-[80%] -mb-10 lg:mb-0 rounded-3xl">
               <Image
                 src={category2}
-                className="shadow-lg w-[100%] h-[80%] lg:h-[100%] object-cover rounded-3xl"
+                className="shadow-lg w-[100%] h-[80%] lg:h-[100%] object-cover rounded-3xl hidden lg:block"
                 alt=""
               />
             </div>
             <div
               id="glass-bg"
-              className="w-[90%] lg:w-[60%] h-[60%] rounded-3xl shadow-lg lg:-ml-10 p-7 lg:p-10 flex flex-col justify-between space-y-3 lg:space-y-0"
+              className="w-[90%] lg:w-[60%] h-[100%] lg:h-[60%] rounded-3xl shadow-lg lg:-ml-10 p-7 lg:p-10 flex flex-col justify-between space-y-3 lg:space-y-0"
             >
+              <div className="w-[100%] mx-auto lg:w-[40%] h-[50%] bg-blue-300 md:h-[70%] rounded-3xl lg:-ml-10 lg:hidden">
+                <Image
+                  src={category2}
+                  className="shadow-lg w-[100%] h-[100%] lg:h-[80%] object-cover rounded-3xl"
+                  alt=""
+                />
+              </div>
               <h2 className="text-transparent bg-clip-text bg-gradient-to-r to-green-800 from-green-500 text-2xl lg:text-4xl font-bold">
                 Plataforma de inversión
               </h2>
