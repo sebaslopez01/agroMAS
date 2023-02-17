@@ -8,8 +8,7 @@ export default function CardInvest() {
     <>
       <Meta />
       <div
-        id="glass-bg"
-        className=" h-fit w-[100%] md:w-[80%] lg:w-[47%] xl:w-[32%] rounded-xl m-2 p-1 mx-10"
+        className=" h-fit w-[100%] md:w-[80%] lg:w-[40%] xl:w-[30%] rounded-3xl m-2 p-1 bg-white"
       >
         <div className="flex flex-col justify-center items-center">
           <Avatar />

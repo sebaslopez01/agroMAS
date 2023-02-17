@@ -18,24 +18,23 @@ export default function modalNavbar() {
   return (
     <>
       {/* Icon session */}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="icon icon-tabler icon-tabler-user-circle cursor-pointer"
-        width="45"
-        height="45"
-        viewBox="0 0 24 24"
-        stroke-width="1.3"
-        stroke="white"
-        fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        onClick={() => setShowLogin(!showLogin)}
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
-        <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-        <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
-      </svg>
+      <div className="flex items-center justify-start space-x-2" onClick={() => setShowLogin(!showLogin)}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="icon icon-tabler icon-tabler-user-circle cursor-pointer w-[24px] h-[24px] md:w-[42px] md:h-[42px] stroke-green-900 lg:stroke-white"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+          <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+          <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
+        </svg>
+        <div className="lg:hidden text-xl text-green-900 lg:text-white font-medium">Iniciar sesión</div>
+      </div>
 
       {/* Modal LogIn */}
       <Modal
@@ -43,6 +42,7 @@ export default function modalNavbar() {
         size="md"
         popup={true}
         onClose={() => setShowLogin(!showLogin)}
+        className="h-[120vh]"
       >
         <ModalHeader className="h-0"></ModalHeader>
         <div className="w-full flex flex-col items-center justify-center pb-10 pt-5 space-y-5">
@@ -76,7 +76,7 @@ export default function modalNavbar() {
           </div>
           <button
             type="submit"
-            className="bg-green-400 hover:bg-green-300 p-2 w-[30%] rounded-full text-white font-semibold"
+            className="p-1 border border-black hover:scale-110 duration-500 hover:bg-white w-[30%]"
           >
             Inicar sesión
           </button>
@@ -101,7 +101,7 @@ export default function modalNavbar() {
         size="md"
         popup={true}
         onClose={() => setShowSignin(!showSignin)}
-        className="w-full"
+        className="h-[120vh]"
       >
         <ModalHeader className="h-0 p-0"></ModalHeader>
         <div className="w-full flex flex-col items-center justify-center pb-5 pt-3 space-y-2">
@@ -110,20 +110,41 @@ export default function modalNavbar() {
             <div className="flex flex-col">
               <label htmlFor="">Nombres</label>
               <input
-                className="rounded-full border-gray-400 focus:ring focus:ring-gray-300"
+                className="h-[30px] rounded-full border-gray-400 focus:ring focus:ring-gray-300"
                 type="text"
-                placeholder="Nombres"
               />
             </div>
             <div className="flex flex-col">
               <label htmlFor="">Apellidos</label>
               <input
-                className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
+                className="h-[30px] rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
                 type="text"
-                placeholder="Apellidos"
               />
             </div>
             <div className="flex flex-col">
+              <label htmlFor="">Celular</label>
+              <input
+                className="h-[30px] rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
+                type="number"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="">Registrarte como:</label>
+              <select
+                name="rol"
+                id="roles"
+                required
+                className="h-[30px] p-0 pl-2 text-sm rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
+              >
+                <option value="seleccionar" selected>
+                  Seleccionar
+                </option>
+                <option value="buyer">Cliente</option>
+                <option value="seller">Vendedor</option>
+              </select>
+            </div>
+            {/* Documento */}
+            {/* <div className="flex flex-col">
               <label htmlFor="">Tipo de documento</label>
               <select
                 name="idTypes"
@@ -144,21 +165,27 @@ export default function modalNavbar() {
                   Pasaporte
                 </option>
               </select>
-            </div>
-            <div className="flex flex-col">
+            </div> */}
+            {/* <div className="flex flex-col">
               <label htmlFor="nId">Nº de documento</label>
               <input
                 className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
                 type="text"
                 placeholder="Nº de documento"
               />
+            </div> */}
+            <div className="flex flex-col">
+              <label htmlFor="">Correo electrónico</label>
+              <input
+                className="h-[30px] rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
+                type="email"
+              />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="">Celular</label>
+              <label htmlFor="">Contraseña</label>
               <input
-                className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
-                type="tel"
-                placeholder="Celular"
+                className="h-[30px] rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
+                type="password"
               />
             </div>
           </div>
@@ -177,7 +204,7 @@ export default function modalNavbar() {
           <input
             type="submit"
             value="Registrarse"
-            className="bg-green-400 hover:bg-green-300 p-2 w-[30%] rounded-full text-white font-semibold cursor-pointer"
+            className="p-1 border border-black hover:scale-110 duration-500 hover:bg-white w-[30%] cursor-pointer"
           />
         </div>
       </Modal>

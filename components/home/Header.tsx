@@ -1,38 +1,49 @@
 import Link from "next/link";
+import bg from "@/public/backgrounds/1.jpg";
+import Image from "next/image";
 
 export default function Header() {
   return (
-    <div className="bg-[url('/background.jpg')] bg-cover bg-center h-screen">
-      <div className="flex flex-col justify-evenly h-screen lg:items-end">
-        {/* Phrase */}
-        <div className="flex justify-center items-center flex-1 w-[100%] p-5 text-center mt-12 lg:w-[60%] xl:text-left lg:items-end">
-          <h1
-            id="phrase"
-            className="text-4xl text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
-          >
-            ¡La mejor forma de apoyar el campo!
-          </h1>
-        </div>
+    <div className="w-full h-[110vh] relative">
+      <Image
+        className="w-[100%] h-[93%] object-cover absolute"
+        src={bg}
+        alt="background-home"
+      ></Image>
 
+      <div
+        // id="glass-bg"
+        className="w-[92%] mx-auto lg:w-[47%] h-[100%] rounded-b-3xl flex flex-col relative lg:ml-5"
+      >
+        <div className="w-[90%] lg:w-[90%] h-[50%] lg:h-[70%] mx-auto flex flex-col justify-end lg:justify-end items-center">
+          {/* Phrase */}
+          <div className="w-full flex flex-col justify-center items-start text-7xl md:text-8xl 2xl:text-9xl lg:px-0">
+            <span id="phrase" className="text-white font-bold">
+              El
+            </span>
+            <span id="phrase" className="text-white font-bold">
+              campo
+            </span>
+            <span id="phrase" className="text-white font-bold">
+              más cerca
+            </span>
+          </div>
+        </div>
         {/* Buttons */}
-        <div className="flex w-[100%] flex-col items-center justify-center space-y-4 lg:w-[60%] lg:h-[40%]">
+        <div className="w-[90%] mx-auto flex flex-col lg:flex-row lg:justify-start space-y-4 lg:space-y-0 lg:space-x-5 mt-5">
           <Link
-            id="glass-bg"
-            href="marketplace"
-            className="w-[80%] p-3 text-xl text-white rounded-2xl text-center md:text-2xl lg:text-2xl lg:p-4 lg:w-[50%]"
+            className="w-[100%] lg:w-[37%] h-[50px] border-2 border-white text-white hover:scale-110 duration-500 flex justify-center items-center text-lg md:text-xl font-medium"
+            href="/"
           >
-            Compra ahora
+            Saber más
           </Link>
           <Link
-            id="glass-bg"
-            href="nosotros"
-            className="w-[80%] p-3 text-xl text-white rounded-2xl text-center md:text-2xl lg:text-2xl lg:p-4 lg:w-[50%]"
+            className="w-[100%] lg:w-[37%] h-[50px] border-2 bg-white border-white hover:scale-110 duration-500 text-black flex justify-center items-center text-lg md:text-xl font-medium"
+            href="/"
           >
-            Saber mas
+            Comprar ahora
           </Link>
         </div>
-
-        <div className="w-full h-[100px] bg-[url('/down-arrow.png')] scale-150 bg-no-repeat bg-center"></div>
       </div>
     </div>
   );
