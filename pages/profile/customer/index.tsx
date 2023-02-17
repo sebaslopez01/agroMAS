@@ -1,46 +1,18 @@
-import Avatar from "@/components/Avatar";
 import Meta from "@/components/Meta";
-import ProfileMenu from "@/components/navigation/CustomerMenu";
-import MyInvestments from "@/components/Profile/MyInvestments";
-import CardPurchase from "@/components/cards/CardPurchase";
-import Settings from "@/components/Profile/Settings";
+import CustomerMenu from "@/components/navigation/CustomerMenu";
+import Footer from "@/components/navigation/Footer";
+import NavBarMarket from "@/components/navigation/NavBarMarket";
 
 export default function CustomerIndexProfile() {
   return (
     <>
       <Meta />
-      <div className="grid grid-cols-3 w-full py-3 fixed z-50 h-16">
-        <button onClick={() => window.history.back()}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-chevron-left col-start-1 ml-3"
-            width="48"
-            height="48"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="currentColor"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M15 6l-6 6l6 6"></path>
-          </svg>
-        </button>
-        <div className="m-auto col-start-2">
-          <h1 className="text-2xl p-3 font-semibold">Mi perfil</h1>
-        </div>
+      <NavBarMarket />
+      <div className="flex justify-center items-center mx-auto mt-10">
+        <CustomerMenu userName="Elkin to" role="Comprador" />
       </div>
-      <div className="flex">
-        <ProfileMenu userName="Betty Pinzón" role="Cliente" />
-        <CardPurchase
-          purchaseId={3271}
-          purchaseCompleted={true}
-          purchaseDate="01/01/2023"
-          purchaseCity="Medellín"
-          PurchaseState="Antioquia"
-        />
-      </div>
+      <Footer />
     </>
   );
 }
+
