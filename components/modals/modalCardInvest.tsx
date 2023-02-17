@@ -23,13 +23,13 @@ export default function ModalCard() {
   return (
     <>
       <button
-        className="bg-blue-400 p-2 rounded-lg"
+        className="p-2 border border-black hover:scale-110 duration-500 hover:bg-white"
         onClick={() => setShow(!show)}
       >
-        Conoce más!
+        Conoce más
       </button>
       <Modal show={show} onClose={() => setShow(!show)}>
-        <ModalHeader>Terms of Service</ModalHeader>
+        <ModalHeader>Detalles</ModalHeader>
         <ModalBody>
           <div className="space-y-6">
             <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
@@ -49,13 +49,13 @@ export default function ModalCard() {
         <ModalFooter>
           <div className="flex w-full justify-end space-x-5">
             <button
-              className="bg-green-400 p-2 rounded-lg"
+              className="p-2 border border-black hover:scale-110 duration-500 hover:bg-white"
               onClick={() => setShow(!show)}
             >
               Acepto
             </button>
             <button
-              className="bg-red-400 p-2 rounded-lg"
+              className="p-2 border border-black hover:scale-110 duration-500 hover:bg-white"
               onClick={() => setShow(!show)}
             >
               Cancelar

@@ -21,10 +21,9 @@ export default function modalNavbar() {
       <div className="flex items-center justify-start space-x-2" onClick={() => setShowLogin(!showLogin)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler icon-tabler-user-circle cursor-pointer w-[32px] h-[32px] md:w-[42px] md:h-[42px]"
+          className="icon icon-tabler icon-tabler-user-circle cursor-pointer w-[24px] h-[24px] md:w-[42px] md:h-[42px] stroke-green-900 lg:stroke-white"
           viewBox="0 0 24 24"
-          stroke-width="1.3"
-          stroke="white"
+          stroke-width="1.5"
           fill="none"
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -34,7 +33,7 @@ export default function modalNavbar() {
           <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
           <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
         </svg>
-        <div className="lg:hidden text-lg text-white md:text-xl">Iniciar Sesion</div>
+        <div className="lg:hidden text-xl text-green-900 lg:text-white font-medium">Iniciar sesión</div>
       </div>
 
       {/* Modal LogIn */}
@@ -43,6 +42,7 @@ export default function modalNavbar() {
         size="md"
         popup={true}
         onClose={() => setShowLogin(!showLogin)}
+        className="h-[120vh]"
       >
         <ModalHeader className="h-0"></ModalHeader>
         <div className="w-full flex flex-col items-center justify-center pb-10 pt-5 space-y-5">
@@ -76,7 +76,7 @@ export default function modalNavbar() {
           </div>
           <button
             type="submit"
-            className="bg-green-400 hover:bg-green-300 p-2 w-[30%] rounded-full text-white font-semibold"
+            className="p-1 border border-black hover:scale-110 duration-500 hover:bg-white w-[30%]"
           >
             Inicar sesión
           </button>
@@ -101,7 +101,7 @@ export default function modalNavbar() {
         size="md"
         popup={true}
         onClose={() => setShowSignin(!showSignin)}
-        className="w-full"
+        className="h-[120vh]"
       >
         <ModalHeader className="h-0 p-0"></ModalHeader>
         <div className="w-full flex flex-col items-center justify-center pb-5 pt-3 space-y-2">
@@ -204,7 +204,7 @@ export default function modalNavbar() {
           <input
             type="submit"
             value="Registrarse"
-            className="bg-green-400 hover:bg-green-300 p-2 w-[30%] rounded-full text-white font-semibold cursor-pointer"
+            className="p-1 border border-black hover:scale-110 duration-500 hover:bg-white w-[30%] cursor-pointer"
           />
         </div>
       </Modal>
