@@ -4,9 +4,9 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <div className="w-full h-[110vh] relative">
+    <div className="w-full h-[100vh] relative">
       <Image
-        className="w-[100%] h-[93%] object-cover absolute"
+        className="w-[100%] h-[100%] object-cover absolute"
         src={bg}
         alt="background-home"
       ></Image>
@@ -33,13 +33,13 @@ export default function Header() {
         <div className="w-[90%] mx-auto flex flex-col lg:flex-row lg:justify-start space-y-4 lg:space-y-0 lg:space-x-5 mt-5">
           <Link
             className="w-[100%] lg:w-[37%] h-[50px] border-2 border-white text-white hover:scale-110 duration-500 flex justify-center items-center text-lg md:text-xl font-medium"
-            href="/"
+            href="/#category"
           >
             Saber más
           </Link>
           <Link
             className="w-[100%] lg:w-[37%] h-[50px] border-2 bg-white border-white hover:scale-110 duration-500 text-black flex justify-center items-center text-lg md:text-xl font-medium"
-            href="/"
+            href="marketplace"
           >
             Comprar ahora
           </Link>

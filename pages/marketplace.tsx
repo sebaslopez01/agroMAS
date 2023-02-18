@@ -8,13 +8,12 @@ export default function marketplace() {
     <>
       <Meta />
       <NavBarMarket />
-      <div className="flex flex-col lg:w-[80%] lg:m-auto">
+      <div className="flex flex-col lg:w-[90%] lg:m-auto">
         <div className="flex justify-center w-full mt-7 mb-5">
           <span className="text-2xl font-semibold text-gray-700">
-            Resultados de búsqueda...
           </span>
         </div>
-        <div className="flex flex-wrap justify-center w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-5 lg:gap-8 justify-items-center w-[90%] mx-auto">
           <ItemMarket
             nameProduct="Pera criolla"
             seller="Jacinto"
