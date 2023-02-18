@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import ModalNavbar from "@/components/modals/modalNavBar";
+import ModalNavbar from "@/components/modals/ModalNavbar";
+import agroLogo from "@/public/logo.svg";
 
 export default function NavBar() {
   const [menu, setMenu] = useState(true);
@@ -26,8 +27,8 @@ export default function NavBar() {
     <div
       className={
         backg
-          ? "w-[100%] h-[7%] lg:h-[9%] fixed flex justify-between items-center px-5 pb-2 z-50 bg-green-900/80 rounded-b-xl duration-700"
-          : "w-[100%] h-[7%] lg:h-[10%] fixed flex justify-between items-center px-5 z-50"
+          ? "w-[100%] h-[7%] lg:h-[9%] xl:h-[7%] fixed flex justify-between items-center px-5 pb-2 z-50 bg-green-900/80 rounded-b-xl duration-700"
+          : "w-[100%] h-[7%] lg:h-[10%] xl:h-[8%] fixed flex justify-between items-center px-5 z-50"
       }
     >
       {/* Agro logo */}
@@ -148,32 +149,39 @@ export default function NavBar() {
         id="glass-bg"
         className={
           !menu
-            ? "fixed top-0 right-0 w-[100%] md:w-[50%]5 h-screen p-5 pl-10 ease-in-out duration-500 lg:hidden"
+            ? "fixed top-0 right-0 w-[100%] md:w-[50%]5 h-screen ease-in-out duration-500 lg:hidden px-2"
             : "fixed right-[-100%]"
         }
       >
-        <div className="w-[100%] flex justify-end md:p-5">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-x cursor-pointer stroke-green-900"
-            width="40"
-            height="40"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            onClick={handleMenu}
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M18 6l-12 12"></path>
-            <path d="M6 6l12 12"></path>
-          </svg>
+        <div className="w-[100%] h-[20%] flex flex-col justify-between bg-green-900 p-5 rounded-b-3xl">
+          <div className="w-full h-auto flex justify-between items-center">
+            <Link href="/">
+              <Image
+                src={agroLogo}
+                alt=""
+                className="w-[48px] h-[48px] object-contain"
+              />
+            </Link>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-x cursor-pointer stroke-white"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              onClick={handleMenu}
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M18 6l-12 12"></path>
+              <path d="M6 6l12 12"></path>
+            </svg>
+          </div>
+          <ModalNavbar />
         </div>
-        <ul>
-          <li className="py-2">
-            <ModalNavbar />
-          </li>
+        <ul className="pl-5">
           <li className="py-2">
             <Link
               href="nosotros"

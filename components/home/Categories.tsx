@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function Categories() {
   return (
     <>
-      <div id="category" className="flex justify-center my-3 rounded-xl w-[90%] mx-auto p-4 shadow-md border-orange-100">
+      <div id="category" className="flex justify-center my-3 rounded-xl w-[90%] lg:w-[80%] mx-auto p-4 shadow-md border-orange-100">
         <h2 className="text-lg lg:text-2xl text-center text-gray-500">
           En AgroMas, contamos con dos líneas principales para apoyar el campo
           colombiano. Conócelas a continuación.

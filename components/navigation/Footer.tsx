@@ -3,6 +3,8 @@ import Image from "next/image";
 import logoAgro from "@/public/agro-icon.ico";
 
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <>
       <div className="w-full flex bg-[#ECECEA] mt-10">
@@ -10,7 +12,11 @@ export default function Footer() {
           {/* links */}
           <div className="h-auto w-[60%] my-5">
             <div className="w-full flex justify-center p-3">
-              <Image className="w-[50px] h-[50px] object-contain" src={logoAgro} alt="Iconito" />
+              <Image
+                className="w-[50px] h-[50px] object-contain"
+                src={logoAgro}
+                alt="Iconito"
+              />
             </div>
 
             {/* links */}
@@ -27,8 +33,7 @@ export default function Footer() {
           {/* Copyright */}
           <div className="w-[90%] md:w-[70%] border-t border-gray-300 text-center py-5 pb-10">
             <span className="text-gray-500 text-xs md:text-sm">
-              &copy;Copyrigth Derechos Reservados por Miguel Ramazzotti,
-              Abigail de los Montes y el Pana Facherito Sebastián
+              &copy;Copyrigth Derechos Reservados {year}
             </span>
           </div>
         </div>

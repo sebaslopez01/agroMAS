@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import agroIcon from "@/public/agro-icon.ico";
-import ModalNavbar from "@/components/modals/modalNavBar";
+import ModalNavbarMarket from "@/components/modals/ModalNavbarMarket";
 import agroLogo from "@/public/logo.svg";
 
 export default function NavBarMarket() {
@@ -130,18 +130,18 @@ export default function NavBarMarket() {
           id="glass-bg"
           className={
             !menu
-              ? "fixed top-0 right-0 w-[100%] md:w-[50%] lg:w-[20%] h-screen p-5 ease-in-out duration-500 z-50"
+              ? "fixed top-0 right-0 w-[100%] md:w-[50%] lg:w-[30%] h-screen ease-in-out duration-500 z-50 px-2"
               : "fixed right-[-100%]"
           }
         >
-          <div className="w-[100%] mb-5 flex flex-col items-start space-y-5 bg-black/70 p-1 rounded-3xl">
+          <div className="w-[100%] h-[20%] md:h-[23%] flex flex-col justify-between bg-green-900 p-5 rounded-b-3xl">
             <div className="w-full h-auto flex justify-between items-center">
               <Link href="/">
-                <Image src={agroLogo} alt="" className="w-[48px] h-[48px]" />
+                <Image src={agroLogo} alt="" className="w-[48px] h-[48px] object-contain" />
               </Link>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-x cursor-pointer stroke-green-900"
+                className="icon icon-tabler icon-tabler-x cursor-pointer stroke-white"
                 width="48"
                 height="48"
                 viewBox="0 0 24 24"
@@ -156,9 +156,9 @@ export default function NavBarMarket() {
                 <path d="M6 6l12 12"></path>
               </svg>
             </div>
-            <ModalNavbar />
+            <ModalNavbarMarket />
           </div>
-          <ul>
+          <ul className="pl-5">
             <li className="py-2">
               <Link
                 href="nosotros"

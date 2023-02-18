@@ -1,7 +1,7 @@
 import Avatar from "../Avatar";
 import Image from "next/image";
 import Meta from "../Meta";
-import ModalCard from "@/components/modals/modalCardInvest";
+import ModalCard from "@/components/modals/ModalCardInvest";
 
 export default function CardInvest() {
   return (

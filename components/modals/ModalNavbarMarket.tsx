@@ -19,7 +19,7 @@ export default function modalNavbar() {
     <>
       {/* Icon session */}
       <div
-        className="flex items-center justify-start space-x-2"
+        className="flex justify-start items-center space-x-2 cursor-pointer"
         onClick={() => setShowLogin(!showLogin)}
       >
         <svg
@@ -35,7 +35,7 @@ export default function modalNavbar() {
           <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
           <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
         </svg>
-        <div className="lg:hidden text-2xl text-white font-medium">
+        <div className="text-2xl text-white font-medium">
           Iniciar sesión
         </div>
       </div>
