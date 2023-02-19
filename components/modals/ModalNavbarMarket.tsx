@@ -18,12 +18,14 @@ export default function modalNavbar() {
   return (
     <>
       {/* Icon session */}
-      <div className="flex items-center justify-start space-x-2" onClick={() => setShowLogin(!showLogin)}>
+      <div
+        className="flex justify-start items-center space-x-2 cursor-pointer"
+        onClick={() => setShowLogin(!showLogin)}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler icon-tabler-user-circle cursor-pointer w-[24px] h-[24px] md:w-[42px] md:h-[42px] stroke-green-900 lg:stroke-white"
+          className="icon icon-tabler icon-tabler-user-circle cursor-pointer w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] stroke-white lg:stroke-white stroke-[1.5] lg:stroke-[1.3]"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
           fill="none"
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -33,7 +35,9 @@ export default function modalNavbar() {
           <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
           <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
         </svg>
-        <div className="lg:hidden text-xl text-green-900 lg:text-white font-medium">Iniciar sesión</div>
+        <div className="text-2xl text-white font-medium">
+          Iniciar sesión
+        </div>
       </div>
 
       {/* Modal LogIn */}

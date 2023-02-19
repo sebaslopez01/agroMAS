@@ -7,8 +7,8 @@ import Image from "next/image";
 export default function Categories() {
   return (
     <>
-      <div id="categories" className="flex justify-center my-5">
-        <h2 className="text-2xl w-[80%] lg:w-[60%] text-center">
+      <div id="category" className="flex justify-center my-3 rounded-xl w-[90%] lg:w-[80%] mx-auto p-4 shadow-md border-orange-100">
+        <h2 className="text-lg lg:text-2xl text-center text-gray-500">
           En AgroMas, contamos con dos líneas principales para apoyar el campo
           colombiano. Conócelas a continuación.
         </h2>
@@ -38,7 +38,7 @@ export default function Categories() {
                 intermediarios.
               </p>
               <Link
-                className="w-[60%] lg:w-[37%] h-[40px] lg:h-[50px] border border-green-900 hover:scale-110 duration-500 text-black flex justify-center items-center text-md lg:text-lg font-medium"
+                className="w-[60%] mx-auto lg:mx-0 md:w-[50%] lg:w-[37%] h-[40px] lg:h-[50px] border border-green-900 hover:scale-110 duration-500 text-black flex justify-center items-center text-md lg:text-lg font-medium"
                 href="marketplace"
               >
                 Comprar ahora
@@ -84,7 +84,7 @@ export default function Categories() {
                 intermediarios.
               </p>
               <Link
-                className="w-[60%] lg:w-[37%] h-[40px] lg:h-[50px] border border-green-900 hover:scale-110 duration-500 text-black flex justify-center items-center text-md lg:text-lg font-medium"
+                className="w-[60%] mx-auto md:w-[50%] lg:mx-0 lg:w-[37%] h-[40px] lg:h-[50px] border border-green-900 hover:scale-110 duration-500 text-black flex justify-center items-center text-md lg:text-lg font-medium"
                 href="marketplace"
               >
                 Invierte ahora

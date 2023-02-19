@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import ModalNavbar from "@/components/modals/modalNavBar";
+import ModalNavbar from "@/components/modals/ModalNavbar";
+import agroLogo from "@/public/logo.svg";
 
 export default function NavBar() {
   const [menu, setMenu] = useState(true);
@@ -26,12 +27,12 @@ export default function NavBar() {
     <div
       className={
         backg
-          ? "w-[100%] h-[7%] lg:h-[8%] fixed flex justify-between items-center px-5 z-50 duration-700"
-          : "w-[100%] h-[7%] lg:h-[10%] fixed flex justify-between items-center px-5 z-50"
+          ? "w-[100%] h-[7%] lg:h-[9%] xl:h-[7%] fixed flex justify-between items-center px-5 pb-2 z-50 bg-green-900/80 rounded-b-xl duration-700"
+          : "w-[100%] h-[7%] lg:h-[10%] xl:h-[8%] fixed flex justify-between items-center px-5 z-50"
       }
     >
       {/* Agro logo */}
-      <div className="w-[50%] h-full pl-2 md:pl-5 lg:pl-6 pt-1 xl:pt-0 flex items-center">
+      <div className="w-[30%] h-full pl-2 md:pl-5 lg:pl-6 pt-1 xl:pt-0 flex items-center">
         <Link href="/">
           <Image
             className="md:w-[120px]"
@@ -41,6 +42,43 @@ export default function NavBar() {
             height={100}
           />
         </Link>
+      </div>
+
+      {/* Nosotros Invierte */}
+      <div className="w-[40%] hidden lg:flex justify-center space-x-10">
+        <Link href="nosotros" className="text-white text-2xl font-bold">
+          Nosotros
+        </Link>
+        <Link href="investments" className="text-white text-2xl font-bold">
+          Invierte
+        </Link>
+      </div>
+
+      {/* Cart and user */}
+      <div className="w-[30%] pr-6 justify-between hidden lg:flex">
+        <div className="w-[100%] flex justify-end space-x-10">
+          <Link href="shoppingCart" className="self-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-shopping-cart cursor-pointer"
+              width="42"
+              height="42"
+              viewBox="0 0 24 24"
+              stroke-width="1.3"
+              stroke="white"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+              <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+              <path d="M17 17h-11v-14h-2"></path>
+              <path d="M6 5l14 1l-1 7h-13"></path>
+            </svg>
+          </Link>
+          <ModalNavbar />
+        </div>
       </div>
 
       {/* Menu and Cart icon */}
@@ -111,41 +149,47 @@ export default function NavBar() {
         id="glass-bg"
         className={
           !menu
-            ? "fixed top-0 right-0 w-[100%] md:w-[50%]5 h-screen p-5 pl-10 ease-in-out duration-500 lg:hidden"
+            ? "fixed top-0 right-0 w-[100%] md:w-[50%]5 h-screen ease-in-out duration-500 lg:hidden px-2"
             : "fixed right-[-100%]"
         }
       >
-        <div className="w-[100%] flex justify-end md:p-5">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-x cursor-pointer"
-            width="40"
-            height="40"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="white"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            onClick={handleMenu}
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M18 6l-12 12"></path>
-            <path d="M6 6l12 12"></path>
-          </svg>
+        <div className="w-[100%] h-[20%] flex flex-col justify-between bg-green-900 p-5 rounded-b-3xl">
+          <div className="w-full h-auto flex justify-between items-center">
+            <Link href="/">
+              <Image
+                src={agroLogo}
+                alt=""
+                className="w-[48px] h-[48px] object-contain"
+              />
+            </Link>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-x cursor-pointer stroke-white"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              onClick={handleMenu}
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M18 6l-12 12"></path>
+              <path d="M6 6l12 12"></path>
+            </svg>
+          </div>
+          <ModalNavbar />
         </div>
-        <ul>
-          <li className="py-2">
-            <ModalNavbar />
-          </li>
+        <ul className="pl-5">
           <li className="py-2">
             <Link
               href="nosotros"
-              className="text-xl mt-5 text-green-900 font-medium flex space-x-3"
+              className="text-2xl mt-5 text-green-900 font-medium flex space-x-3"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-home w-[24px] h-[24px] stroke-green-900"
+                className="icon icon-tabler icon-tabler-home w-[30px] h-[30px] stroke-green-900"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 fill="none"
@@ -163,11 +207,11 @@ export default function NavBar() {
           <li className="py-2">
             <Link
               href="nosotros"
-              className="text-xl mt-5 text-green-900 font-medium flex space-x-3"
+              className="text-2xl mt-5 text-green-900 font-medium flex space-x-3"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-users w-[24px] h-[24px] stroke-green-900"
+                className="icon icon-tabler icon-tabler-users w-[30px] h-[30px] stroke-green-900"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 fill="none"
@@ -186,11 +230,11 @@ export default function NavBar() {
           <li className="py-2">
             <Link
               href="investments"
-              className="text-xl mt-5 text-green-900 font-medium flex space-x-3"
+              className="text-2xl mt-5 text-green-900 font-medium flex space-x-3"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-timeline w-[24px] h-[24px] stroke-green-900"
+                className="icon icon-tabler icon-tabler-timeline w-[30px] h-[30px] stroke-green-900"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 fill="none"
@@ -210,11 +254,11 @@ export default function NavBar() {
           <li className="py-2">
             <Link
               href="investments"
-              className="text-xl mt-5 text-green-900 font-medium flex space-x-3"
+              className="text-2xl mt-5 text-green-900 font-medium flex space-x-3"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-message-2 w-[24px] h-[24px] stroke-green-900"
+                className="icon icon-tabler icon-tabler-message-2 w-[30px] h-[30px] stroke-green-900"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 fill="none"
@@ -232,11 +276,11 @@ export default function NavBar() {
           <li className="py-2">
             <Link
               href="investments"
-              className="text-xl mt-5 text-green-900 font-medium flex space-x-3"
+              className="text-2xl mt-5 text-green-900 font-medium flex space-x-3"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-license w-[24px] h-[24px] stroke-green-900"
+                className="icon icon-tabler icon-tabler-license w-[30px] h-[30px] stroke-green-900"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 fill="none"
@@ -248,46 +292,10 @@ export default function NavBar() {
                 <path d="M9 7l4 0"></path>
                 <path d="M9 11l4 0"></path>
               </svg>
-              <span>Politícas</span>
+              <span>Políticas</span>
             </Link>
           </li>
         </ul>
-      </div>
-
-      {/* Middle left Navbar */}
-      <div className="w-[50%] pr-6 justify-between hidden lg:flex">
-        {/* Nosotros Invierte */}
-        <div className="w-[40%] flex justify-start space-x-10">
-          <Link href="nosotros" className="text-white text-2xl font-bold">
-            Nosotros
-          </Link>
-          <Link href="investments" className="text-white text-2xl font-bold">
-            Invierte
-          </Link>
-        </div>
-        <div className="w-[40%] flex justify-end space-x-10">
-          <Link href="shoppingCart" className="self-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-shopping-cart cursor-pointer"
-              width="42"
-              height="42"
-              viewBox="0 0 24 24"
-              stroke-width="1.3"
-              stroke="white"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-              <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-              <path d="M17 17h-11v-14h-2"></path>
-              <path d="M6 5l14 1l-1 7h-13"></path>
-            </svg>
-          </Link>
-          <ModalNavbar />
-        </div>
       </div>
     </div>
   );
