@@ -24,7 +24,7 @@ export default function modalNavbar() {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler icon-tabler-user-circle cursor-pointer w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] stroke-white lg:stroke-white stroke-[1.5] lg:stroke-[1.3]"
+          className="icon icon-tabler icon-tabler-user-circle cursor-pointer w-[30px] h-[30px] lg:w-[32px] lg:h-[32px] stroke-white stroke-[1.5] lg:stroke-[1.3]"
           viewBox="0 0 24 24"
           fill="none"
           stroke-linecap="round"
