@@ -1,12 +1,21 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import agroIcon from "@/public/agro-icon.ico";
 import ModalNavbarMarket from "@/components/modals/ModalNavbarMarket";
 import agroLogo from "@/public/logo.svg";
+import SearchBox from "../marketplace/SearchBox";
+import { Store } from "@/context/Store";
 
-export default function NavBarMarket() {
+function NavBarMarket() {
   const [menu, setMenu] = useState(true);
+  const [cartItemsCount, setCartItemCount] = useState(0);
+  const { state } = useContext(Store);
+  const { cart } = state;
+
+  useEffect(() => {
+    setCartItemCount(cart.reduce((a, c) => a + c.quantity, 0));
+  }, [cart]);
 
   const handleMenu = () => {
     setMenu(!menu);
@@ -38,7 +47,7 @@ export default function NavBarMarket() {
         </Link>
 
         {/* Search */}
-        <div className="flex justify-center h-8 w-[65%] lg:w-[55%]">
+        {/* <div className="flex justify-center h-8 w-[65%] lg:w-[55%]">
           <input
             className="w-[70%] md:w-[70%] p-1 pl-3 focus:outline-none placeholder-gray-400 lg:text-lg lg:font-medium rounded-l-xl"
             placeholder="¿Qué buscas?..."
@@ -60,7 +69,8 @@ export default function NavBarMarket() {
               <path d="M21 21l-6 -6"></path>
             </svg>
           </button>
-        </div>
+        </div> */}
+        <SearchBox />
 
         {/* Menu and Cart */}
         <div className="flex justify-end items-center w-[25%] text-white md:justify-end space-x-3 pr-5 md:space-x-5">
@@ -83,6 +93,7 @@ export default function NavBarMarket() {
               <path d="M17 17h-11v-14h-2"></path>
               <path d="M6 5l14 1l-1 7h-13"></path>
             </svg>
+            {cartItemsCount > 0 && <span>{cartItemsCount}</span>}
           </Link>
           {!menu ? (
             <svg
@@ -137,7 +148,11 @@ export default function NavBarMarket() {
           <div className="w-[100%] h-[20%] md:h-[23%] flex flex-col justify-between bg-green-900 p-5 rounded-b-3xl">
             <div className="w-full h-auto flex justify-between items-center">
               <Link href="/">
-                <Image src={agroLogo} alt="" className="w-[48px] h-[48px] object-contain" />
+                <Image
+                  src={agroLogo}
+                  alt=""
+                  className="w-[48px] h-[48px] object-contain"
+                />
               </Link>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -279,3 +294,5 @@ export default function NavBarMarket() {
     </>
   );
 }
+
+export default NavBarMarket;

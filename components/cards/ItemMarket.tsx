@@ -1,11 +1,15 @@
 import Image, { StaticImageData } from "next/image";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import fruta1 from "@/public/frura1.jpg";
 
+import { Store } from "@/context/Store";
+import { StoreActionKind } from "@/lib/enums";
+
 interface ItemMarketProps {
-  nameProduct: string;
+  productId: string;
+  productName: string;
   seller: string;
-  priceProduct: number;
+  productPrice: number;
   undPerItem: string;
   productCity: string;
   productState: string;
@@ -13,15 +17,26 @@ interface ItemMarketProps {
 }
 
 export default function ItemMarket({
-  nameProduct,
+  productId,
+  productName,
   seller,
-  priceProduct,
+  productPrice,
   undPerItem,
   productCity,
   productState,
   productImage,
 }: ItemMarketProps) {
-  const [count, setCount] = useState(0);
+  const { state, dispatch } = useContext(Store);
+  const [count, setCount] = useState(
+    state.cart.find((item) => item.id === productId)?.quantity || 0
+  );
+
+  const addToCartHandler = (quantity: number) => {
+    dispatch({
+      type: StoreActionKind.CART_ADD_ITEM,
+      payload: { id: productId, quantity },
+    });
+  };
 
   return (
     <>
@@ -37,13 +52,10 @@ export default function ItemMarket({
           />
         </div>
         <div className="h-[40%] w-full flex flex-col justify-between">
-
-
           <div className="flex justify-between items-end">
             <span className="text-xl font-semibold text-gray-700">
               {nameProduct}
             </span>
-          </div>
 
           <div className="flex items-center">
             <svg
@@ -52,11 +64,11 @@ export default function ItemMarket({
               width="17"
               height="17"
               viewBox="0 0 24 24"
-              stroke-width="1"
+              strokeWidth="1"
               stroke="black"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
               <path d="M12 11m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
@@ -66,7 +78,6 @@ export default function ItemMarket({
               {productCity}, {productState}
             </span>
           </div>
-
           <div className="flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -74,11 +85,11 @@ export default function ItemMarket({
               width="18"
               height="18"
               viewBox="0 0 24 24"
-              stroke-width="1"
+              strokeWidth="1"
               stroke="black"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
               <path d="M12 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
@@ -104,7 +115,7 @@ export default function ItemMarket({
                 </p>
               </div>
             </div>
-
+          </div>
             <div className="flex flex-col w-2/5">
               {/* Counter Buttons */}
               <div className="flex h-6 justify-between items-center">
@@ -133,6 +144,15 @@ export default function ItemMarket({
                 </button>
               </div>
             </div>
+
+            {/* Add Cart Button */}
+            <button
+              title="Agregar al carrito"
+              className="flex h-8 bg-secondary rounded-xl items-center justify-center mb-1"
+              onClick={() => addToCartHandler(count)}
+            >
+              <p className="text-white font-medium">Agregar</p>
+            </button>
           </div>
           <div className="w-full">
             {/* Add Cart Button */}
@@ -145,6 +165,6 @@ export default function ItemMarket({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

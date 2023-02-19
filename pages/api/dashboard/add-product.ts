@@ -13,12 +13,14 @@ export default async function handler(
   if (req.method !== "POST")
     res.status(424).json({ message: "Invalid method!" });
 
-  await prisma.user.update({
-    where: {
-      email: req.body.email,
+  const { name } = req.body;
+
+  await prisma.product.create({
+    data: {
+      ...req.body,
+      name: name.toLowerCase(),
     },
-    data: req.body.data,
   });
 
-  res.status(200).json({ message: "Datos de usuario actualizado" });
+  res.status(201).json({ message: "Producto creado con éxito" });
 }

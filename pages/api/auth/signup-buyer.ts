@@ -15,45 +15,43 @@ export default async function handler(
 ) {
   const { firstName, lastName, phone, email, password } = req.body;
 
-  if (req.method === "POST") {
-    const userExists = await prisma.user.findFirst({
-      where: {
-        email,
-      },
-    });
-
-    if (userExists) {
-      return res.status(422).json({ message: "Email already on use!" });
-    }
-
-    const hashedPassword = await hash(password, 10);
-
-    const newUser = await prisma.user.create({
-      data: {
-        firstName,
-        lastName,
-        phone,
-        email,
-        password: hashedPassword,
-        buyer: {
-          create: {},
-        },
-        isActive: true,
-        role: "BUYER",
-      },
-    });
-
-    const token = generateToken(newUser);
-
-    setCookie("token", token, {
-      req,
-      res,
-      maxAge: 60 * 60 * 24,
-      path: "/",
-    });
-
-    res.status(201).json({ message: "User created!" });
-  } else {
+  if (req.method !== "POST")
     res.status(424).json({ message: "Invalid method!" });
+  const userExists = await prisma.user.findFirst({
+    where: {
+      email,
+    },
+  });
+
+  if (userExists) {
+    return res.status(422).json({ message: "Email already on use!" });
   }
+
+  const hashedPassword = await hash(password, 10);
+
+  const newUser = await prisma.user.create({
+    data: {
+      firstName,
+      lastName,
+      phone,
+      email,
+      password: hashedPassword,
+      buyer: {
+        create: {},
+      },
+      isActive: true,
+      role: "BUYER",
+    },
+  });
+
+  const token = generateToken(newUser);
+
+  setCookie("token", token, {
+    req,
+    res,
+    maxAge: 60 * 60 * 24,
+    path: "/",
+  });
+
+  res.status(201).json({ message: "User created!" });
 }

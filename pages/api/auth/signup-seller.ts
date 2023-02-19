@@ -14,7 +14,7 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   if (req.method !== "POST")
-    res.status(424).json({ message: "Inavalid method!" });
+    res.status(424).json({ message: "Invalid method!" });
 
   const {
     firstName,

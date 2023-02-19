@@ -1,46 +1,54 @@
-import { createContext, ReactNode, useReducer } from "react";
+import { createContext, Dispatch, ReactNode, useReducer } from "react";
 import { getCookie, hasCookie, setCookie } from "cookies-next";
+import { StoreActionKind } from "@/lib/enums";
 
-export const Store = createContext({});
+interface ReducerData {
+  state: StoreState;
+  dispatch: Dispatch<StoreAction>;
+}
 
-const initialState = {
-  cart: hasCookie("cart") ? JSON.parse(getCookie("cart")?.toString()!) : [],
-};
-
-enum StoreActionKind {
-  CART_ADD_ITEM = "CART_ADD_ITEM",
-  CART_REMOVE_ITEM = "CART_REMOVE_ITEM",
-  CART_RESET = "CART_RESET",
+interface CarData {
+  id: string;
+  quantity: number;
 }
 
 interface StoreAction {
   type: StoreActionKind;
-  payload: { id: string; quantity: number };
+  payload: CarData;
 }
 
 interface StoreState {
-  cart: { id: string; quantity: number }[];
+  cart: CarData[];
 }
+
+export const Store = createContext<ReducerData>({} as ReducerData);
+
+const initialState: StoreState = {
+  cart: hasCookie("cart") ? JSON.parse(getCookie("cart")?.toString()!) : [],
+};
 
 function reducer(state: StoreState, action: StoreAction) {
   switch (action.type) {
     case StoreActionKind.CART_ADD_ITEM: {
       const newItem = action.payload;
+
       const existItem = state.cart.find((item) => item.id === newItem.id);
+
       const cartItems = existItem
         ? state.cart.map((item) => (item.id === existItem.id ? newItem : item))
         : [...state.cart, newItem];
 
-      setCookie("cart", JSON.stringify([...state.cart, ...cartItems]));
-      return { ...state, cart: [...state.cart, ...cartItems] };
+      setCookie("cart", JSON.stringify(cartItems));
+
+      return { ...state, cart: cartItems };
     }
     case StoreActionKind.CART_REMOVE_ITEM: {
       const cartItems = state.cart.filter(
         (item) => item.id !== action.payload.id
       );
 
-      setCookie("cart", JSON.stringify([...state.cart, ...cartItems]));
-      return { ...state, cart: [...state.cart, ...cartItems] };
+      setCookie("cart", JSON.stringify(cartItems));
+      return { ...state, cart: cartItems };
     }
     case StoreActionKind.CART_RESET: {
       setCookie("cart", "[]");
