@@ -9,8 +9,8 @@ export default function Meta() {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       <link
+        href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&family=Old+Standard+TT&family=Quicksand:wght@500&display=swap"
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Quicksand&family=Old+Standard+TT:wght@500&display=swap"
       />
     </Head>
   );

@@ -1,15 +1,13 @@
 import Avatar from "../Avatar";
 import Image from "next/image";
 import Meta from "../Meta";
+import ModalCard from "@/components/modals/ModalCardInvest";
 
 export default function CardInvest() {
   return (
     <>
       <Meta />
-      <div
-        id="glass-bg"
-        className=" h-fit w-[100%] md:w-[80%] lg:w-[47%] xl:w-[32%] rounded-xl m-2 p-1 mx-10"
-      >
+      <div className=" h-fit w-[100%] md:w-[80%] lg:w-[40%] xl:w-[30%] rounded-3xl m-2 p-1 bg-white">
         <div className="flex flex-col justify-center items-center">
           <Avatar />
           <div className="flex flex-col justify-center items-center m-2 w-[90%]">
@@ -37,16 +35,8 @@ export default function CardInvest() {
         </div>
 
         {/* Conoce mas button */}
-        <div className="flex w-[100%] h-10 mb-5 justify-center">
-          {/* <!-- Button trigger modal --> */}
-          <button
-            type="button"
-            className="inline-block px-6 py-2.5 bg-red-400 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModalCenter"
-          >
-            Conoce más
-          </button>
+        <div className="flex w-[100%] h-[80px] justify-center items-center">
+          <ModalCard />
         </div>
       </div>
     </>

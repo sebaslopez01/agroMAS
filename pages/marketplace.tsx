@@ -8,40 +8,60 @@ export default function marketplace() {
     <>
       <Meta />
       <NavBarMarket />
-      <div className="bg-gray-200">
-        <div className="flex flex-col lg:w-[80%] lg:m-auto">
-          <div className="flex justify-center w-full mt-7 mb-5">
-            <span className="text-2xl font-semibold text-gray-700">
-              Resultados de búsqueda...
-            </span>
-          </div>
-          <div className="flex flex-wrap justify-center w-full">
-            <ItemMarket
-              nameProduct="Pera criolla"
-              seller="Jacinto"
-              priceProduct={6_000}
-              undPerItem="Kg"
-              productCity="Guarne"
-              productState="Antioquia"
-            />
-            <ItemMarket
-              nameProduct="Banano Dulce"
-              seller="Otro Jacinto"
-              priceProduct={2_000}
-              undPerItem="Kg"
-              productCity="Rionegro"
-              productState="Antioquia"
-            />
-            <ItemMarket
-              nameProduct="Manzana Royal"
-              seller="Jacinta"
-              priceProduct={2_000}
-              undPerItem="Kg"
-              productCity="Cisneros"
-              productState="Antioquia"
-            />
-
-          </div>
+      <div className="flex flex-col lg:w-[90%] lg:m-auto">
+        <div className="flex justify-center w-full mt-7 mb-5">
+          <span className="text-2xl font-semibold text-gray-700">
+          </span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-5 lg:gap-8 justify-items-center w-[90%] mx-auto">
+          <ItemMarket
+            nameProduct="Pera criolla"
+            seller="Jacinto"
+            priceProduct={6_000}
+            undPerItem="Kg"
+            productCity="Guarne"
+            productState="Antioquia"
+          />
+          <ItemMarket
+            nameProduct="Banano Dulce"
+            seller="Otro Jacinto"
+            priceProduct={2_000}
+            undPerItem="Kg"
+            productCity="Rionegro"
+            productState="Antioquia"
+          />
+          <ItemMarket
+            nameProduct="Manzana Royal"
+            seller="Jacinta"
+            priceProduct={2_000}
+            undPerItem="Kg"
+            productCity="Cisneros"
+            productState="Antioquia"
+          />
+          <ItemMarket
+            nameProduct="Manzana Royal"
+            seller="Jacinta"
+            priceProduct={2_000}
+            undPerItem="Kg"
+            productCity="Cisneros"
+            productState="Antioquia"
+          />
+          <ItemMarket
+            nameProduct="Manzana Royal"
+            seller="Jacinta"
+            priceProduct={2_000}
+            undPerItem="Kg"
+            productCity="Cisneros"
+            productState="Antioquia"
+          />
+          <ItemMarket
+            nameProduct="Manzana Royal"
+            seller="Jacinta"
+            priceProduct={2_000}
+            undPerItem="Kg"
+            productCity="Cisneros"
+            productState="Antioquia"
+          />
         </div>
       </div>
       <Footer />

@@ -10,11 +10,9 @@ export default function Home() {
       <Meta />
       <Layout>
         <Header />
-        <div className="flex pt-20 justify-center flex-col bg-[#ECECEA]">
+        <div className="flex pt-20 justify-center flex-col">
           <Categories />
-          {/* <Featured /> */}
           <Oportunities />
-          {/* <InvestDetail /> */}
         </div>
       </Layout>
     </>

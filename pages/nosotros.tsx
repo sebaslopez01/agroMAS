@@ -1,12 +1,11 @@
-import Link from "next/link"
 import Layout from "@/components/Layout"
 
 export default function nosotros(){
     return (
         <Layout>
             <div>
-                <h1 className="text-3xl">Nosotros</h1>
-                <Link href="/">Home</Link>
+                <div className="w-full h-[96px]"></div>
+                <button className="bg-gray-500 p-3 m-3 rounded-lg" onClick={() => window.history.back()}> &lt;---- Pa tra</button>
             </div>
         </Layout>
         
