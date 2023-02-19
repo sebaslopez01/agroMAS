@@ -8,6 +8,6 @@ export function getFetcher(url: string) {
   return axios.get(url).then((res) => res.data);
 }
 
-export function postFetcher(url: string, data: any) {
-  return axios.post(url, data).then((res) => res.data);
+export function postFetcher(url: string, { arg }: any) {
+  return axios.post(url, arg).then((res) => res.data);
 }

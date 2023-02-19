@@ -2,8 +2,8 @@ import Meta from "@/components/Meta";
 import ItemCart from "@/components/marketplace/ItemCart";
 import Footer from "@/components/navigation/Footer";
 import NavBarMarket from "@/components/navigation/NavBarMarket";
-import { useContext, useState } from "react";
-import useSWR from "swr";
+import { useContext, useState, useEffect } from "react";
+import useSWRMutation from "swr/mutation";
 import { Store } from "@/context/Store";
 import { capitalizeString, postFetcher } from "@/utils/helpers";
 import { Product } from "@prisma/client";
@@ -13,11 +13,10 @@ import { StoreActionKind } from "@/lib/enums";
 export default function shoppingCart() {
   const { state, dispatch } = useContext(Store);
   const [subTotal, setSubTotal] = useState(0);
-  const { data, isLoading } = useSWR(
-    ["/api/marketplace/list-cart", state.cart.map((prod) => prod.id)],
+  const { data, trigger, error, isMutating } = useSWRMutation(
+    "/api/marketplace/list-cart",
     postFetcher
   );
-  const products: Product[] = data.products;
 
   const resetCartHandler = () => {
     dispatch({
@@ -26,12 +25,19 @@ export default function shoppingCart() {
     });
   };
 
-  if (isLoading)
+  useEffect(() => {
+    trigger(state.cart.map((prod) => prod.id));
+  }, [state]);
+
+  if (!data) {
     return (
       <div>
-        <span>Cargango....</span>
+        <span>Cargando...</span>
       </div>
     );
+  }
+
+  const products: Product[] = data.products;
 
   return (
     <>
@@ -61,6 +67,7 @@ export default function shoppingCart() {
           {/* Items */}
           {products.map((product: Product) => (
             <ItemCart
+              key={product.id}
               productId={product.id}
               productName={product.name}
               productPrice={product.price}

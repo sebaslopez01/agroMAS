@@ -46,6 +46,7 @@ export default function ItemCart({
 
   useEffect(() => {
     setSubTotal((currentTotal) => currentTotal + productPrice * count);
+    console.log(count);
   }, [count]);
 
   return (
