@@ -1,10 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import agroIcon from "@/public/agro-icon.ico";
+import SearchBox from "../marketplace/SearchBox";
+import { Store } from "@/context/Store";
 
-export default function NavBarMarket() {
+function NavBarMarket() {
   const [menu, setMenu] = useState(true);
+  const [cartItemsCount, setCartItemCount] = useState(0);
+  const { state } = useContext(Store);
+  const { cart } = state;
+
+  useEffect(() => {
+    setCartItemCount(cart.reduce((a, c) => a + c.quantity, 0));
+  }, [cart]);
 
   const handleMenu = () => {
     setMenu(!menu);
@@ -35,7 +44,7 @@ export default function NavBarMarket() {
       </Link>
 
       {/* Search */}
-      <div className="flex justify-center h-10 w-[65%] lg:w-[40%]">
+      {/* <div className="flex justify-center h-10 w-[65%] lg:w-[40%]">
         <input
           id="glass-bg"
           className="w-[70%] md:w-[70%] p-3 focus:outline-none text-gray-600 placeholder-gray-400 lg:text-xl lg:font-medium rounded-l-xl"
@@ -51,22 +60,23 @@ export default function NavBarMarket() {
             width="24"
             height="24"
             viewBox="0 0 24 24"
-            stroke-width="2"
+            strokeWidth="2"
             stroke="white"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
             <path d="M21 21l-6 -6"></path>
           </svg>
         </button>
-      </div>
+      </div> */}
+      <SearchBox />
 
       {/* Menu and Cart */}
       <div className="flex justify-around items-center w-[30%] text-white md:justify-evenly">
-        <Link href="marketplace">
+        <Link href="/marketplace">
           <Image
             className="md:w-[40px]"
             src="/cart-icon.png"
@@ -74,7 +84,9 @@ export default function NavBarMarket() {
             width={35}
             height={35}
           />
+          {cartItemsCount > 0 && <span>{cartItemsCount}</span>}
         </Link>
+
         {!menu ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -82,11 +94,11 @@ export default function NavBarMarket() {
             width="40"
             height="40"
             viewBox="0 0 24 24"
-            stroke-width="2"
+            strokeWidth="2"
             stroke="white"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             onClick={handleMenu}
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -100,11 +112,11 @@ export default function NavBarMarket() {
             width="40"
             height="40"
             viewBox="0 0 24 24"
-            stroke-width="2"
+            strokeWidth="2"
             stroke="white"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             onClick={handleMenu}
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -173,3 +185,5 @@ export default function NavBarMarket() {
     </div>
   );
 }
+
+export default NavBarMarket;

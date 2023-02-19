@@ -27,21 +27,29 @@ enum PaymentState {
   CANCELLED
 }
 
+enum Measure {
+  KG
+  LB
+  UND
+}
+
 model Product {
   id            String    @id @default(cuid())
   name          String    @db.VarChar(60)
   price         Float
-  quantity      Int
+  measure       Measure   @default(KG)
+  quantity      Float
+  quantitySold  Int       @default(0) @map("quantity_sold")
   discountPrice Float?    @map("discount_price")
   description   String    @db.VarChar(250)
   city          String    @db.VarChar(60)
-  region        String    @db.VarChar(60)
+  state         String    @db.VarChar(60)
   createdAt     DateTime  @default(now()) @map("created_at")
   updatedAt     DateTime  @updatedAt @map("updated_at")
   sellerId      String    @map("seller_id")
+  seller        Seller    @relation(fields: [sellerId], references: [id], onDelete: Cascade)
   purchaseId    String?   @map("purchase_id")
-  seller        Seller    @relation(fields: [sellerId], references: [id])
-  purchase      Purchase? @relation(fields: [purchaseId], references: [id])
+  purchase      Purchase? @relation(fields: [purchaseId], references: [id], onDelete: SetNull)
 
   @@map("products")
 }
@@ -54,8 +62,8 @@ model Purchase {
   paymentValue Float        @map("payment_value")
   paymentState PaymentState @map("payment_state")
   createdAt    DateTime     @default(now()) @map("created_at")
-  buyerId      String       @map("buyer_id")
-  buyer        Buyer        @relation(fields: [buyerId], references: [id])
+  buyerId      String?      @map("buyer_id")
+  buyer        Buyer?       @relation(fields: [buyerId], references: [id], onDelete: SetNull)
 
   @@map("purchases")
 }
@@ -73,11 +81,11 @@ model Seller {
 }
 
 model Buyer {
-  id              String     @id @default(cuid())
-  purchases       Purchase[]
-  investmentTerms Boolean    @default(false) @map("investment_terms")
-  userId          String     @unique @map("user_id")
-  user            User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id          String                @id @default(cuid())
+  purchases   Purchase[]
+  userId      String                @unique @map("user_id")
+  user        User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  investments BuyersOnInvestments[]
 
   @@map("buyers")
 }
@@ -93,7 +101,7 @@ model User {
   phone          String?      @db.VarChar(20)
   terms          Boolean      @default(false)
   email          String       @unique @db.VarChar(80)
-  password       String       @db.VarChar(50)
+  password       String       @db.VarChar(255)
   isActive       Boolean      @default(false) @map("is_active")
   createdAt      DateTime     @default(now()) @map("created_at")
   updatedAt      DateTime     @updatedAt @map("updated_at")
@@ -106,24 +114,37 @@ model User {
 }
 
 model Investment {
-  id               String   @id @default(cuid())
-  title            String   @db.VarChar(60)
-  investmentTarget Float    @map("investment_target")
-  invested         Float    @default(0.0)
-  startDate        DateTime @map("start_date")
-  city             String   @db.VarChar(60)
-  state            String   @db.VarChar(60)
+  id               String                @id @default(cuid())
+  title            String                @db.VarChar(60)
+  investmentTarget Float                 @map("investment_target")
+  invested         Float                 @default(0.0)
+  startDate        DateTime              @map("start_date")
+  city             String                @db.VarChar(60)
+  state            String                @db.VarChar(60)
   image            String
-  photos           String[] @default([])
-  videos           String[] @default([])
-  description      String   @db.VarChar(1000)
-  shortDescription String   @map("short_description") @db.VarChar(200)
-  isActive         Boolean  @default(true) @map("is_active")
-  isCompleted      Boolean  @default(false) @map("is_completed")
-  createdAt        DateTime @default(now()) @map("created_at")
-  updatedAt        DateTime @updatedAt @map("updated_at")
-  sellerId         String   @map("seller_id")
-  seller           Seller   @relation(fields: [sellerId], references: [id])
+  photos           String[]              @default([])
+  videos           String[]              @default([])
+  description      String                @db.VarChar(1000)
+  shortDescription String                @map("short_description") @db.VarChar(200)
+  isActive         Boolean               @default(true) @map("is_active")
+  isCompleted      Boolean               @default(false) @map("is_completed")
+  createdAt        DateTime              @default(now()) @map("created_at")
+  updatedAt        DateTime              @updatedAt @map("updated_at")
+  investors        BuyersOnInvestments[]
+  sellerId         String                @map("seller_id")
+  seller           Seller                @relation(fields: [sellerId], references: [id], onDelete: Cascade)
 
   @@map("investments")
+}
+
+model BuyersOnInvestments {
+  investmentId    String     @map("investment_id")
+  investment      Investment @relation(fields: [investmentId], references: [id])
+  buyerId         String     @map("buyer_id")
+  buyer           Buyer      @relation(fields: [buyerId], references: [id])
+  investmentTerms Boolean    @default(false) @map("investment_terms")
+  assignedAt      DateTime   @default(now()) @map("assigned_at")
+
+  @@id([investmentId, buyerId])
+  @@map("buyers_on_investments")
 }
