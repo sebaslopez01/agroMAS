@@ -2,7 +2,7 @@ import { Product } from "@prisma/client";
 import { useState } from "react";
 import Turnstone from "turnstone";
 import useSWR from "swr";
-import { fetcher } from "@/utils/helpers";
+import { getFetcher } from "@/utils/helpers";
 import { useRouter } from "next/router";
 
 const styles = {
@@ -18,7 +18,10 @@ const styles = {
 function SearchBox() {
   const router = useRouter();
   const [item, setItem] = useState("");
-  const { data, isLoading } = useSWR("/api/marketplace/list-products", fetcher);
+  const { data, isLoading } = useSWR(
+    "/api/marketplace/list-products",
+    getFetcher
+  );
 
   if (isLoading)
     return (

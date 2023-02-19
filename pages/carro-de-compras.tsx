@@ -2,8 +2,37 @@ import Meta from "@/components/Meta";
 import ItemCart from "@/components/marketplace/ItemCart";
 import Footer from "@/components/navigation/Footer";
 import NavBarMarket from "@/components/navigation/NavBarMarket";
+import { useContext, useState } from "react";
+import useSWR from "swr";
+import { Store } from "@/context/Store";
+import { capitalizeString, postFetcher } from "@/utils/helpers";
+import { Product } from "@prisma/client";
+import PaymentButton from "@/components/payment/PaymentButton";
+import { StoreActionKind } from "@/lib/enums";
 
 export default function shoppingCart() {
+  const { state, dispatch } = useContext(Store);
+  const [subTotal, setSubTotal] = useState(0);
+  const { data, isLoading } = useSWR(
+    ["/api/marketplace/list-cart", state.cart.map((prod) => prod.id)],
+    postFetcher
+  );
+  const products: Product[] = data.products;
+
+  const resetCartHandler = () => {
+    dispatch({
+      type: StoreActionKind.CART_RESET,
+      payload: { id: "", quantity: 0 },
+    });
+  };
+
+  if (isLoading)
+    return (
+      <div>
+        <span>Cargango....</span>
+      </div>
+    );
+
   return (
     <>
       <Meta />
@@ -18,7 +47,7 @@ export default function shoppingCart() {
             <h2 className="text-xs md:text-sm lg:text-md col-start-1 row-start-1 justify-self-start">
               Productos
             </h2>
-            <h2 className="text-xs md:text-sm lg:text-md col-start-3 text row-start-1">
+            <h2 className="text-xs md:text-sm lg:text-md col-start-3 row-start-1">
               Cantidad
             </h2>
             <h2 className="text-xs md:text-sm lg:text-md col-start-4 row-start-1">
@@ -30,31 +59,15 @@ export default function shoppingCart() {
           </div>
 
           {/* Items */}
-          <ItemCart
-            productName="Pera Bandida"
-            priceProduct={1_800}
-            undPerProduct="Kg"
-          />
-          <ItemCart
-            productName="Banano Soplado"
-            priceProduct={2_000}
-            undPerProduct="Lb"
-          />
-          <ItemCart
-            productName="Manzana Colesterol"
-            priceProduct={3_000}
-            undPerProduct="Lb"
-          />
-          <ItemCart
-            productName="Manzana Colesterol"
-            priceProduct={3_000}
-            undPerProduct="Lb"
-          />
-          <ItemCart
-            productName="Manzana Colesterol"
-            priceProduct={3_000}
-            undPerProduct="Lb"
-          />
+          {products.map((product: Product) => (
+            <ItemCart
+              productId={product.id}
+              productName={product.name}
+              productPrice={product.price}
+              productUndPer={capitalizeString(product.measure)}
+              setSubTotal={setSubTotal}
+            />
+          ))}
         </div>
 
         {/* container for information about shopping */}
@@ -69,7 +82,7 @@ export default function shoppingCart() {
             <hr />
             <div className="w-[100%] flex justify-between">
               <h2 className="text-gray-500">Subtotal</h2>
-              <span>$ 50.000</span>
+              <span>$ {subTotal}</span>
             </div>
             <div className="w-[100%] flex justify-between">
               <h2 className="text-gray-500">Envío</h2>
@@ -82,10 +95,18 @@ export default function shoppingCart() {
             </div>
 
             <div className="w-[100%] lg:h-[100px] flex justify-evenly xl:justify-between lg:flex-col lg:items-center xl:flex-row 2xl:justify-evenly">
-              <button className="w-[45%] lg:w-[90%] xl:w-[40%] bg-green-300 hover:bg-green-200 rounded-full p-1">
+              {/* <button className="w-[45%] lg:w-[90%] xl:w-[40%] bg-green-300 hover:bg-green-200 rounded-full p-1">
                 Ir a pagar
-              </button>
-              <button className="w-[45%] lg:w-[90%] xl:w-[48%] 2xl:w-[45%] bg-red-300 hover:bg-red-200 rounded-full p-1">
+              </button> */}
+              <PaymentButton
+                amount={subTotal}
+                buyerEmail="hjola"
+                legalId="1007778331"
+              />
+              <button
+                onClick={resetCartHandler}
+                className="w-[45%] lg:w-[90%] xl:w-[48%] 2xl:w-[45%] bg-red-300 hover:bg-red-200 rounded-full p-1"
+              >
                 Borrar pedido
               </button>
             </div>
