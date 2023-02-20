@@ -27,15 +27,15 @@ export default function NavBar() {
     <div
       className={
         backg
-          ? "w-[100%] h-[7%] lg:h-[9%] xl:h-[7%] fixed flex justify-between items-center px-5 pb-2 z-50 bg-green-900/80 rounded-b-xl duration-700"
-          : "w-[100%] h-[7%] lg:h-[10%] xl:h-[8%] fixed flex justify-between items-center px-5 z-50"
+          ? "w-[100%] h-[7%] lg:h-[9%] 2xl:h-[7%] fixed flex justify-between items-center px-5 pb-2 z-50 bg-[#6D9773] duration-700"
+          : "w-[100%] h-[7%] lg:h-[10%] 2xl:h-[8%] fixed flex justify-between items-center px-5 z-50"
       }
     >
       {/* Agro logo */}
-      <div className="w-[30%] h-full pl-2 md:pl-5 lg:pl-6 pt-1 xl:pt-0 flex items-center">
+      <div className="w-[30%] h-full flex items-center pl-2 md:pl-5 lg:pl-6 xl:pt-0">
         <Link href="/">
           <Image
-            className="md:w-[120px]"
+            className="md:w-[100px] "
             src="/agro-logo.png"
             alt="Agro-logo"
             width={100}
@@ -61,8 +61,8 @@ export default function NavBar() {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="icon icon-tabler icon-tabler-shopping-cart cursor-pointer"
-              width="42"
-              height="42"
+              width="32"
+              height="32"
               viewBox="0 0 24 24"
               stroke-width="1.3"
               stroke="white"
@@ -149,11 +149,11 @@ export default function NavBar() {
         id="glass-bg"
         className={
           !menu
-            ? "fixed top-0 right-0 w-[100%] md:w-[50%]5 h-screen ease-in-out duration-500 lg:hidden px-2"
+            ? "fixed top-0 right-0 w-[100%] md:w-[50%] h-screen ease-in-out duration-500 lg:hidden px-2"
             : "fixed right-[-100%]"
         }
       >
-        <div className="w-[100%] h-[20%] flex flex-col justify-between bg-green-900 p-5 rounded-b-3xl">
+        <div className="w-[100%] h-[160px] flex flex-col justify-between bg-[#6D9773] p-5">
           <div className="w-full h-auto flex justify-between items-center">
             <Link href="/">
               <Image
@@ -165,8 +165,8 @@ export default function NavBar() {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="icon icon-tabler icon-tabler-x cursor-pointer stroke-white"
-              width="48"
-              height="48"
+              width="35"
+              height="35"
               viewBox="0 0 24 24"
               stroke-width="2"
               fill="none"
@@ -184,7 +184,7 @@ export default function NavBar() {
         <ul className="pl-5">
           <li className="py-2">
             <Link
-              href="nosotros"
+              href="/"
               className="text-2xl mt-5 text-green-900 font-medium flex space-x-3"
             >
               <svg
@@ -253,7 +253,7 @@ export default function NavBar() {
           </li>
           <li className="py-2">
             <Link
-              href="investments"
+              href="contact"
               className="text-2xl mt-5 text-green-900 font-medium flex space-x-3"
             >
               <svg
@@ -275,7 +275,7 @@ export default function NavBar() {
           </li>
           <li className="py-2">
             <Link
-              href="investments"
+              href="policy"
               className="text-2xl mt-5 text-green-900 font-medium flex space-x-3"
             >
               <svg

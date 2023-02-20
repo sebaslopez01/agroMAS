@@ -74,10 +74,10 @@ export default function shoppingCart() {
             </div>
 
             <div className="w-[100%] lg:h-[100px] flex justify-evenly xl:justify-between lg:flex-col lg:items-center xl:flex-row 2xl:justify-evenly">
-              <button className="w-[45%] lg:w-[90%] xl:w-[40%] bg-green-300 hover:bg-green-200 rounded-full p-1">
+              <button className="w-[45%] lg:w-[90%] xl:w-[40%] bg-[#6D9773] hover:scale-110 duration-300 p-1 text-white">
                 Ir a pagar
               </button>
-              <button className="w-[45%] lg:w-[90%] xl:w-[48%] 2xl:w-[45%] bg-red-300 hover:bg-red-200 rounded-full p-1">
+              <button className="w-[45%] lg:w-[90%] xl:w-[48%] 2xl:w-[45%] bg-[#6D9773] text-white hover:scale-110 duration-300 p-1">
                 Borrar pedido
               </button>
             </div>
