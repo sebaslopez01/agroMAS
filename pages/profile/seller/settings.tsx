@@ -21,20 +21,7 @@ export default function Settings() {
             />
 
       <div className="w-[90%] mx-auto mt-10">
-        {/* <h1 className="text-2xl my-5">Configuración de la cuenta</h1> */}
-
         <div className="flex w-[100%]">
-          {/* profile picture */}
-          {/* <div className="flex flex-col w-[20%]">
-            <Image
-              src={pic}
-              alt="profile pic"
-              className="rounded-xl z-10 mt-2"
-            />
-
-
-            <div className="w-80 bg-[#OC3B2E]/80 h-44 mt-10 rounded-r-xl absolute left-0"></div>
-          </div> */}
 
           <div className="w-[80%] flex flex-col mx-auto">
             {/* personal data */}
