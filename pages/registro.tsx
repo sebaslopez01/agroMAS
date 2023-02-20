@@ -8,7 +8,7 @@ export default function Registro() {
       <NavBarMarket />
       <div className="w-[80%] mx-auto mt-5 flex flex-col items-center justify-center p-3 bg-blue-300">
         <h1 className="text-xl font-bold">Registro</h1>
-        <div className="w-[80%] flex flex-col space-y-3">
+        <div className="w-[80%] flex flex-col space-y-3 bg-orange-200">
           <div className="flex flex-col">
             <label htmlFor="">Nombres</label>
             <input
