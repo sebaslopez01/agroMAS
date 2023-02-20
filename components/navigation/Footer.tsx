@@ -22,10 +22,18 @@ export default function Footer() {
             {/* links */}
             <div className="w-[80%] m-auto mt-2 md:mt-5">
               <ul className="flex flex-col md:flex-row justify-between text-gray-500 uppercase text-sm font-semibold text-center">
-                <li className="my-1">Contacto</li>
-                <li className="my-1">Políticas</li>
-                <li className="my-1">Tienda</li>
-                <li className="my-1">Redes</li>
+                <li className="my-1">
+                  <Link href="/contact">Contacto </Link>
+                </li>
+                <li className="my-1">
+                  <Link href="policy">Políticas </Link>
+                </li>
+                <li className="my-1">
+                  <Link href="marketplace">Tienda </Link>
+                </li>
+                <li className="my-1">
+                  <Link href="/">Redes </Link>
+                </li>
               </ul>
             </div>
           </div>

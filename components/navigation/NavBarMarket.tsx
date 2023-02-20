@@ -14,7 +14,7 @@ export default function NavBarMarket() {
 
   return (
     <>
-      <div className="w-[100%] fixed flex items-center bg-green-900/80 rounded-b-xl z-50 h-[60px] py-1">
+      <div className="w-[100%] fixed flex items-center bg-[#6D9773] z-50 h-[60px] py-1">
         {/* Agro logo */}
         <div className="w-[20%] hidden lg:flex lg:pl-5">
           <Link href="/">
@@ -134,7 +134,7 @@ export default function NavBarMarket() {
               : "fixed right-[-100%]"
           }
         >
-          <div className="w-[100%] h-[20%] md:h-[23%] flex flex-col justify-between bg-green-900 p-5 rounded-b-3xl">
+          <div className="w-[100%] h-[160px] xl:h-[180px] flex flex-col justify-between bg-[#6D9773] p-5">
             <div className="w-full h-auto flex justify-between items-center">
               <Link href="/">
                 <Image src={agroLogo} alt="" className="w-[48px] h-[48px] object-contain" />
@@ -142,8 +142,8 @@ export default function NavBarMarket() {
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="icon icon-tabler icon-tabler-x cursor-pointer stroke-white"
-                width="48"
-                height="48"
+                width="40"
+                height="40"
                 viewBox="0 0 24 24"
                 stroke-width="2"
                 fill="none"
@@ -161,7 +161,7 @@ export default function NavBarMarket() {
           <ul className="pl-5">
             <li className="py-2">
               <Link
-                href="nosotros"
+                href="/"
                 className="text-2xl mt-5 text-green-900 font-medium flex space-x-3"
               >
                 <svg
@@ -230,7 +230,7 @@ export default function NavBarMarket() {
             </li>
             <li className="py-2">
               <Link
-                href="investments"
+                href="contact"
                 className="text-2xl mt-5 text-green-900 font-medium flex space-x-3"
               >
                 <svg
@@ -252,7 +252,7 @@ export default function NavBarMarket() {
             </li>
             <li className="py-2">
               <Link
-                href="investments"
+                href="policy"
                 className="text-2xl mt-5 text-green-900 font-medium flex space-x-3"
               >
                 <svg
