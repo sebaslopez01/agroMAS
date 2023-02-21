@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import logoAgro from "@/public/agro-icon.ico";
 

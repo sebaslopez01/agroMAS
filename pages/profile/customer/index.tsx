@@ -1,18 +1,38 @@
-import Meta from "@/components/Meta";
-import CustomerMenu from "@/components/navigation/CustomerMenu";
-import Footer from "@/components/navigation/Footer";
-import NavBarMarket from "@/components/navigation/NavBarMarket";
+import { GetServerSideProps } from "next";
 
-export default function CustomerIndexProfile() {
+import { getUser } from "@/utils/auth";
+import { User } from "@prisma/client";
+import LayoutMarket from "@/components/LayoutMarket";
+import CustomerMenu from "@/components/navigation/CustomerMenu";
+
+interface CustomerIndexProfileProps {
+  user: User | null;
+}
+
+export default function CustomerIndexProfile({
+  user,
+}: CustomerIndexProfileProps) {
   return (
-    <>
-      <Meta />
-      <NavBarMarket />
+    <LayoutMarket>
       <div className="flex justify-center items-center mx-auto mt-10">
-        <CustomerMenu userName="Elkin to" role="Comprador" />
+        {user && user.role === "BUYER" ? (
+          <CustomerMenu userName={`${user.firstName} ${user.lastName}`} />
+        ) : (
+          <span>
+            Por favor inicia sesión como comprador para acceder al dashboard
+          </span>
+        )}
       </div>
-      <Footer />
-    </>
+    </LayoutMarket>
   );
 }
 
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const user = await getUser(req, res);
+
+  return {
+    props: {
+      user,
+    },
+  };
+};

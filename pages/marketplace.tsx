@@ -1,13 +1,11 @@
-import Meta from "@/components/Meta";
-import ItemMarket from "@/components/cards/ItemMarket";
-import NavBarMarket from "@/components/navigation/NavBarMarket";
-import Footer from "@/components/navigation/Footer";
 import { GetServerSideProps } from "next";
 import { Product } from "@prisma/client";
-import { useState } from "react";
+
 import { capitalizeString } from "@/utils/helpers";
 import prisma from "@/lib/prisma";
+import ItemMarket from "@/components/cards/ItemMarket";
 import Filters from "@/components/marketplace/Filters";
+import LayoutMarket from "@/components/LayoutMarket";
 
 interface MarketplaceProps {
   products: (Product & {
@@ -21,20 +19,16 @@ interface MarketplaceProps {
 }
 
 export default function Marketplace({ products }: MarketplaceProps) {
-  const [prods, setProds] = useState(products);
-
   return (
-    <>
-      <Meta />
-      <NavBarMarket />
+    <LayoutMarket>
       <div className="flex flex-col lg:w-[90%] lg:m-auto">
         <div className="flex justify-center w-full mt-7 mb-5">
           <span className="text-2xl font-semibold text-gray-700"></span>
         </div>
         <Filters />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-5 lg:gap-8 justify-items-center w-[90%] mx-auto">
-          {prods.length > 0 ? (
-            prods.map((product) => (
+          {products.length > 0 ? (
+            products.map((product) => (
               <ItemMarket
                 key={product.id}
                 productId={product.id}
@@ -51,8 +45,7 @@ export default function Marketplace({ products }: MarketplaceProps) {
           )}
         </div>
       </div>
-      <Footer />
-    </>
+    </LayoutMarket>
   );
 }
 

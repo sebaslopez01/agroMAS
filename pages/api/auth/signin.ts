@@ -12,7 +12,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { email, password } = req.body;
+  const { email, password, remember } = req.body;
 
   if (req.method !== "POST")
     res.status(424).json({ message: "Invalid method!" });
@@ -35,7 +35,7 @@ export default async function handler(
   setCookie("token", token, {
     req,
     res,
-    maxAge: 60 * 60 * 24,
+    maxAge: remember ? undefined : 60 * 60 * 24,
     path: "/",
   });
 

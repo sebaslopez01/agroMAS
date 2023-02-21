@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useContext, useState, useEffect } from "react";
+
 import agroIcon from "@/public/agro-icon.ico";
 import ModalNavbarMarket from "@/components/modals/ModalNavbarMarket";
 import agroLogo from "@/public/logo.svg";
@@ -23,7 +24,7 @@ function NavBarMarket() {
 
   return (
     <>
-      <div className="w-[100%] fixed flex items-center bg-green-900/80 rounded-b-xl z-50 h-[60px] py-1">
+      <div className="w-full fixed flex items-center bg-green-900/80 rounded-b-xl z-50 h-[60px] py-1">
         {/* Agro logo */}
         <div className="w-[20%] hidden lg:flex lg:pl-5">
           <Link href="/">
@@ -59,10 +60,10 @@ function NavBarMarket() {
               width="24"
               height="24"
               viewBox="0 0 24 24"
-              stroke-width="2"
+              strokeWidth="2"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
               <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
@@ -74,18 +75,21 @@ function NavBarMarket() {
 
         {/* Menu and Cart */}
         <div className="flex justify-end items-center w-[25%] text-white md:justify-end space-x-3 pr-5 md:space-x-5">
-          <Link href="shoppingCart">
+          <Link href="/carro-de-compras" className="flex items-center">
+            <span className="text-white px-2 py-1 text-xs rounded-full bg-red-600 font-bold">
+              {cartItemsCount}
+            </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="icon icon-tabler icon-tabler-shopping-cart cursor-pointer"
               width="30"
               height="30"
               viewBox="0 0 24 24"
-              stroke-width="1.3"
+              strokeWidth="1.3"
               stroke="white"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
               <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
@@ -93,7 +97,6 @@ function NavBarMarket() {
               <path d="M17 17h-11v-14h-2"></path>
               <path d="M6 5l14 1l-1 7h-13"></path>
             </svg>
-            {cartItemsCount > 0 && <span>{cartItemsCount}</span>}
           </Link>
           {!menu ? (
             <svg
@@ -102,11 +105,11 @@ function NavBarMarket() {
               width="30"
               height="30"
               viewBox="0 0 24 24"
-              stroke-width="2"
+              strokeWidth="2"
               stroke="none"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               onClick={handleMenu}
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -121,11 +124,11 @@ function NavBarMarket() {
               width="30"
               height="30"
               viewBox="0 0 24 24"
-              stroke-width="2"
+              strokeWidth="2"
               stroke="white"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               onClick={handleMenu}
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -160,10 +163,10 @@ function NavBarMarket() {
                 width="48"
                 height="48"
                 viewBox="0 0 24 24"
-                stroke-width="2"
+                strokeWidth="2"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 onClick={handleMenu}
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -183,10 +186,10 @@ function NavBarMarket() {
                   xmlns="http://www.w3.org/2000/svg"
                   className="icon icon-tabler icon-tabler-home w-[30px] h-[30px] stroke-green-900"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <path d="M5 12l-2 0l9 -9l9 9l-2 0"></path>
@@ -205,10 +208,10 @@ function NavBarMarket() {
                   xmlns="http://www.w3.org/2000/svg"
                   className="icon icon-tabler icon-tabler-users w-[30px] h-[30px] stroke-green-900"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
@@ -228,10 +231,10 @@ function NavBarMarket() {
                   xmlns="http://www.w3.org/2000/svg"
                   className="icon icon-tabler icon-tabler-timeline w-[30px] h-[30px] stroke-green-900"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <path d="M4 16l6 -7l5 5l5 -6"></path>
@@ -252,10 +255,10 @@ function NavBarMarket() {
                   xmlns="http://www.w3.org/2000/svg"
                   className="icon icon-tabler icon-tabler-message-2 w-[30px] h-[30px] stroke-green-900"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <path d="M12 20l-3 -3h-2a3 3 0 0 1 -3 -3v-6a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-2l-3 3"></path>
@@ -274,10 +277,10 @@ function NavBarMarket() {
                   xmlns="http://www.w3.org/2000/svg"
                   className="icon icon-tabler icon-tabler-license w-[30px] h-[30px] stroke-green-900"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <path d="M15 21h-9a3 3 0 0 1 -3 -3v-1h10v2a2 2 0 0 0 4 0v-14a2 2 0 1 1 2 2h-2m2 -4h-11a3 3 0 0 0 -3 3v11"></path>

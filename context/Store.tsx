@@ -10,6 +10,7 @@ interface ReducerData {
 interface CarData {
   id: string;
   quantity: number;
+  price: number;
 }
 
 interface StoreAction {

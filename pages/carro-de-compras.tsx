@@ -1,19 +1,17 @@
-import Meta from "@/components/Meta";
-import ItemCart from "@/components/marketplace/ItemCart";
-import Footer from "@/components/navigation/Footer";
-import NavBarMarket from "@/components/navigation/NavBarMarket";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import useSWRMutation from "swr/mutation";
+import { Product } from "@prisma/client";
+
 import { Store } from "@/context/Store";
 import { capitalizeString, postFetcher } from "@/utils/helpers";
-import { Product } from "@prisma/client";
-import PaymentButton from "@/components/payment/PaymentButton";
 import { StoreActionKind } from "@/lib/enums";
+import PaymentButton from "@/components/payment/PaymentButton";
+import ItemCart from "@/components/marketplace/ItemCart";
+import LayoutMarket from "@/components/LayoutMarket";
 
-export default function shoppingCart() {
+export default function ShoppingCart() {
   const { state, dispatch } = useContext(Store);
-  const [subTotal, setSubTotal] = useState(0);
-  const { data, trigger, error, isMutating } = useSWRMutation(
+  const { data, trigger } = useSWRMutation(
     "/api/marketplace/list-cart",
     postFetcher
   );
@@ -21,8 +19,12 @@ export default function shoppingCart() {
   const resetCartHandler = () => {
     dispatch({
       type: StoreActionKind.CART_RESET,
-      payload: { id: "", quantity: 0 },
+      payload: { id: "", quantity: 0, price: 0 },
     });
+  };
+
+  const getSubtotal = () => {
+    return state.cart.reduce((a, prod) => a + prod.quantity * prod.price, 0);
   };
 
   useEffect(() => {
@@ -40,11 +42,7 @@ export default function shoppingCart() {
   const products: Product[] = data.products;
 
   return (
-    <>
-      <Meta />
-      <NavBarMarket />
-
-      {/* Container Parent*/}
+    <LayoutMarket title="Carro de Compras | AgroMAS">
       <div className="w-[95%] lg:w-[90%] 2xl:w-[80%] h-auto m-auto mt-5 flex flex-col space-y-5 lg:flex-row lg:space-y-0">
         {/* Container for items section */}
         <div className="w-[100%] lg:w-[70%] m-auto flex flex-col h-auto">
@@ -72,7 +70,6 @@ export default function shoppingCart() {
               productName={product.name}
               productPrice={product.price}
               productUndPer={capitalizeString(product.measure)}
-              setSubTotal={setSubTotal}
             />
           ))}
         </div>
@@ -88,17 +85,8 @@ export default function shoppingCart() {
             </div>
             <hr />
             <div className="w-[100%] flex justify-between">
-              <h2 className="text-gray-500">Subtotal</h2>
-              <span>$ {subTotal}</span>
-            </div>
-            <div className="w-[100%] flex justify-between">
-              <h2 className="text-gray-500">Envío</h2>
-              <span>$ 15.000</span>
-            </div>
-            <hr />
-            <div className="w-[100%] flex justify-between">
               <h2 className="text-xl font-bold">Total</h2>
-              <span className="text-lg font-semibold">$ 60.000</span>
+              <span className="text-lg font-semibold">$ {getSubtotal()}</span>
             </div>
 
             <div className="w-[100%] lg:h-[100px] flex justify-evenly xl:justify-between lg:flex-col lg:items-center xl:flex-row 2xl:justify-evenly">
@@ -106,7 +94,7 @@ export default function shoppingCart() {
                 Ir a pagar
               </button> */}
               <PaymentButton
-                amount={subTotal}
+                amount={getSubtotal()}
                 buyerEmail="hjola"
                 legalId="1007778331"
               />
@@ -120,7 +108,6 @@ export default function shoppingCart() {
           </div>
         </div>
       </div>
-      <Footer />
-    </>
+    </LayoutMarket>
   );
 }

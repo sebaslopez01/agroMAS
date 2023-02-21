@@ -29,7 +29,7 @@ function Filters() {
   };
 
   return (
-    <div className="flex flex-row items-center justify-center">
+    <div className="flex flex-row items-center justify-center pb-5">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-row items-center justify-center space-x-4"

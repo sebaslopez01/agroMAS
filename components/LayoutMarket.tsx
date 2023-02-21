@@ -1,30 +1,27 @@
-import { ReactNode } from "react";
 import Head from "next/head";
-import { User } from "@prisma/client";
+import { ReactNode } from "react";
 
-import NavBar from "./navigation/NavBar";
 import Footer from "./navigation/Footer";
+import NavBarMarket from "./navigation/NavBarMarket";
 
-interface LayoutProps {
+interface LayoutMarketProps {
   title?: string;
   description?: string;
-  user: User | null;
   children: ReactNode;
 }
 
-export default function Layout({
+export default function LayoutMarket({
   title = "AgroMAS",
-  description = "Página de AgroMAS",
-  user,
+  description = "Marketplace AgroMAS",
   children,
-}: LayoutProps) {
+}: LayoutMarketProps) {
   return (
     <>
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
-      <NavBar user={user} />
+      <NavBarMarket />
       <main>{children}</main>
       <Footer />
     </>

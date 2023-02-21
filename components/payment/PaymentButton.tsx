@@ -15,24 +15,19 @@ function PaymentButton({ amount, buyerEmail, legalId }: PaymentButtonProps) {
   const [attrWompi, setAttrWompi] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  const getSignature = () => {
-    axios
-      .post("/api/payment/generate-signature", {
-        referenceCode,
-        amount,
-      })
-      .then((res) => {
-        setAttrWompi({
-          "data-signature:integrity": res.data.signature,
-          "data-customer-data:email": buyerEmail,
-          "data-customer-data:legal-id": legalId,
-          "data-customer-data:legal-id-type": "CC",
-        });
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const getSignature = async () => {
+    const res = await axios.post("/api/payment/generate-signature", {
+      referenceCode,
+      amount,
+    });
+
+    setAttrWompi({
+      "data-signature:integrity": res.data.signature,
+      "data-customer-data:email": buyerEmail,
+      "data-customer-data:legal-id": legalId,
+      "data-customer-data:legal-id-type": "CC",
+    });
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -68,7 +63,8 @@ function PaymentButton({ amount, buyerEmail, legalId }: PaymentButtonProps) {
         </svg>
       ) : (
         <form>
-          <Script
+          <script
+            async
             src="https://checkout.wompi.co/widget.js"
             data-render="button"
             data-public-key="pub_test_Q5yDA9xoKdePzhSGeVe9HAez7HgGORGf"

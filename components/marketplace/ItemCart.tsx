@@ -2,20 +2,13 @@ import { Store } from "@/context/Store";
 import { StoreActionKind } from "@/lib/enums";
 import pera from "@/public/pera.jpg";
 import Image from "next/image";
-import {
-  useContext,
-  useState,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-} from "react";
+import { useContext, useState } from "react";
 
 interface ItemCartProps {
   productId: string;
   productName: string;
   productPrice: number;
   productUndPer: string;
-  setSubTotal: Dispatch<SetStateAction<number>>;
 }
 
 export default function ItemCart({
@@ -23,7 +16,6 @@ export default function ItemCart({
   productName,
   productPrice,
   productUndPer,
-  setSubTotal,
 }: ItemCartProps) {
   const { state, dispatch } = useContext(Store);
   const [count, setCount] = useState(
@@ -33,21 +25,16 @@ export default function ItemCart({
   const addToCartHandler = (quantity: number) => {
     dispatch({
       type: StoreActionKind.CART_ADD_ITEM,
-      payload: { id: productId, quantity },
+      payload: { id: productId, quantity, price: productPrice },
     });
   };
 
   const removeFromCartHandler = () => {
     dispatch({
       type: StoreActionKind.CART_REMOVE_ITEM,
-      payload: { id: productId, quantity: 0 },
+      payload: { id: productId, quantity: 0, price: 0 },
     });
   };
-
-  useEffect(() => {
-    setSubTotal((currentTotal) => currentTotal + productPrice * count);
-    console.log(count);
-  }, [count]);
 
   return (
     <div className="w-[100%] h-[100px] md:h-[130px] lg:h-[150px] border-b border-gray-300 grid grid-cols-[45%_0%_20%_20%_15%] lg:grid-cols-[30%_25%_15%_15%_15%] justify-items-center items-center box-border">
@@ -76,23 +63,26 @@ export default function ItemCart({
         <div className="flex h-[30px] justify-between items-center border border-gray-300">
           <button
             onClick={() => {
-              if (count >= 2) setCount((c) => c - 1);
+              if (count >= 2)
+                setCount((c) => {
+                  addToCartHandler(c - 1);
+                  return c - 1;
+                });
             }}
             className="flex items-center justify-center w-[30%] h-[100%] hover:bg-gray-300 text-lg md:text-2xl"
           >
             -
           </button>
-          <input
-            onChange={(e) => {
-              const val = +e.target.value;
-              if (!isNaN(val)) setCount(val);
-            }}
-            className="flex items-center justify-center h-full w-[30%] text-sm md:text-xl text-center focus:outline-none bg-[#ECECEA]"
-            value={count}
-            maxLength={2}
-          />
+          <span className="flex px-4 items-center justify-center h-full w-[30%] text-sm md:text-xl text-center bg-[#ECECEA]">
+            {count}
+          </span>
           <button
-            onClick={() => setCount((c) => c + 1)}
+            onClick={() => {
+              setCount((c) => {
+                addToCartHandler(c + 1);
+                return c + 1;
+              });
+            }}
             className="flex items-center justify-center w-[30%] h-[100%] hover:bg-gray-300 text-lg md:text-2xl"
           >
             +
@@ -116,11 +106,11 @@ export default function ItemCart({
           width="24"
           height="24"
           viewBox="0 0 24 24"
-          stroke-width="2"
+          strokeWidth="2"
           stroke="#AE270A "
           fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <path d="M4 7l16 0"></path>
