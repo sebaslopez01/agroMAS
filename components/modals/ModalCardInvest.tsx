@@ -23,7 +23,7 @@ export default function ModalCard() {
   return (
     <>
       <button
-        className="p-2 border border-black hover:scale-110 duration-500 hover:bg-white"
+        className="p-2 border border-black hover:scale-110 duration-500 hover:bg-white rounded-md"
         onClick={() => setShow(!show)}
       >
         Conoce más

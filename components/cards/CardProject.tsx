@@ -34,7 +34,7 @@ export default function CardProject() {
             </span>
             <div className="w-full h-auto flex items-center justify-between">
               <div className="w-[80%] h-[10px] md:h-[13px] rounded-xl bg-gray-200">
-                <div className="w-[80%] h-full rounded-xl bg-gray-400"></div>
+                <div className="w-[80%] h-full rounded-xl bg-[#6D9773]"></div>
               </div>
               <span className="w-[10%] font-bold md:text-lg">80%</span>
             </div>
@@ -57,7 +57,7 @@ export default function CardProject() {
               </svg>
               <span className="text-md font-bold md:text-lg">Medellín, Antioquia</span>
             </div>
-            <button className="w-[40%] p-1 border border-black rounded-3xl rounded-br-none lg:rounded-tl-none lg:rounded-br-3xl font-semibold md:text-lg">
+            <button className="w-[40%] bg-[#6D9773] p-1 rounded-md text-white font-semibold md:text-lg hover:scale-105 duration-300">
               Invierte
             </button>
           </div>

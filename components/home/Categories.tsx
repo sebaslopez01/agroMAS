@@ -38,7 +38,7 @@ export default function Categories() {
                 intermediarios.
               </p>
               <Link
-                className="w-[60%] mx-auto lg:mx-0 md:w-[50%] lg:w-[37%] h-[40px] lg:h-[50px] border border-green-900 hover:scale-110 duration-500 text-black flex justify-center items-center text-md lg:text-lg font-medium"
+                className="w-[60%] mx-auto lg:mx-0 md:w-[50%] lg:w-[37%] h-[40px] lg:h-[50px] border border-green-900 hover:scale-110 duration-500 text-black flex justify-center items-center text-md lg:text-lg font-medium rounded-md"
                 href="marketplace"
               >
                 Comprar ahora
@@ -84,7 +84,7 @@ export default function Categories() {
                 intermediarios.
               </p>
               <Link
-                className="w-[60%] mx-auto md:w-[50%] lg:mx-0 lg:w-[37%] h-[40px] lg:h-[50px] border border-green-900 hover:scale-110 duration-500 text-black flex justify-center items-center text-md lg:text-lg font-medium"
+                className="w-[60%] mx-auto md:w-[50%] lg:mx-0 lg:w-[37%] h-[40px] lg:h-[50px] border border-green-900 hover:scale-110 duration-500 text-black flex justify-center items-center text-md lg:text-lg font-medium rounded-md"
                 href="investments"
               >
                 Invierte ahora
