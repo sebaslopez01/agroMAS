@@ -11,8 +11,6 @@ export default function SellerIndexProfile() {
       <Meta />
       <NavBarMarket />
       <div
-        // id="test"
-        // className="w-full h-24 md:h-36 lg:h-40 xl:h-40 bg-[#6d9773] rounded-b-xl"
         className="w-full h-24 md:h-36 lg:h-40 xl:h-40 bg-[#6d9773] rounded-b-xl"
       ></div>
       <div

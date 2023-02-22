@@ -5,6 +5,7 @@ import {
   IconSeeding,
   IconSettings,
   IconLogout,
+  IconReceipt,
 } from "@tabler/icons-react";
 ("@tabler/icons-react");
 
@@ -64,6 +65,20 @@ export default function SellerMenu({
           <Link href="/" className="flex h-10 items-center">
             <IconHome className="w-[22px] h-[22px] stroke-green-900 stroke-[1.2px] mr-2" />
             <span className="">Ir al inicio</span>
+          </Link>
+        </div>
+
+        {/* my purchases link */}
+        <div
+          id="glass-bg"
+          className="rounded-xl p-3 hover:translate-x-5 duration-300"
+        >
+          <Link
+            href="/profile/seller/my-purchases"
+            className="flex h-10 items-center"
+          >
+            <IconReceipt className="w-[22px] h-[22px] stroke-green-900 stroke-[1.2px] mr-2" />
+            <span className="">Mis compras</span>
           </Link>
         </div>
 
