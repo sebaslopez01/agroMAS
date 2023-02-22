@@ -1,25 +1,25 @@
-import { ReactNode } from "react";
 import Head from "next/head";
+import { ReactNode } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import NavBar from "./navigation/NavBar";
-import Footer from "./navigation/Footer";
 import { FullUser } from "@/lib/types";
+import Footer from "./navigation/Footer";
+import NavBarMarket from "./navigation/NavBarMarket";
 
-interface LayoutProps {
+interface LayoutMarketProps {
   title?: string;
   description?: string;
   user: FullUser;
   children: ReactNode;
 }
 
-export default function Layout({
+export default function LayoutMarket({
   title = "AgroMAS",
-  description = "Página de AgroMAS",
+  description = "Marketplace AgroMAS",
   user,
   children,
-}: LayoutProps) {
+}: LayoutMarketProps) {
   return (
     <>
       <Head>
@@ -27,7 +27,7 @@ export default function Layout({
         <meta name="description" content={description} />
       </Head>
       <ToastContainer position="bottom-center" limit={1} />
-      <NavBar user={user} />
+      <NavBarMarket user={user} />
       <main>{children}</main>
       <Footer />
     </>

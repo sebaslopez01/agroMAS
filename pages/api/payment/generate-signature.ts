@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import sha256 from "crypto-js/sha256";
+// import crypto from "crypto";
 
 type Data = {
   message: string;
@@ -16,7 +17,14 @@ export default async function handler(
   const { referenceCode, amount } = req.body;
 
   const signature = `${referenceCode}${amount}COP${process.env
-    .SIGNATURE_TOKEN!}`;
+    .WOMPI_INTEGRITY_KEY!}`;
+
+  // const encodedText = new TextEncoder().encode(signature);
+  // const hashBuffer = await crypto.subtle.digest("SHA-256", encodedText);
+  // const hashArray = Array.from(new Uint8Array(hashBuffer));
+  // const hashHex = hashArray
+  //   .map((b) => b.toString(16).padStart(2, "0"))
+  //   .join("");
 
   const encryptedSignature = sha256(signature).toString();
 

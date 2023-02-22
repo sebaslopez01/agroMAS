@@ -1,17 +1,36 @@
-import Meta from "@/components/Meta";
-import Footer from "@/components/navigation/Footer";
-import NavBarMarket from "@/components/navigation/NavBarMarket";
+import { GetServerSideProps } from "next";
+
+import { getUser } from "@/utils/auth";
+import { User } from "@prisma/client";
+import LayoutMarket from "@/components/LayoutMarket";
 import SellerMenu from "@/components/navigation/SellerMenu";
 
-export default function SellerIndexProfile() {
+interface SellerIndexProfileProps {
+  user: User | null;
+}
+
+export default function SellerIndexProfile({ user }: SellerIndexProfileProps) {
   return (
-    <>
-      <Meta />
-      <NavBarMarket />
+    <LayoutMarket>
       <div className="flex justify-center items-center mx-auto mt-10">
-        <SellerMenu userName="Don Jacinto" role="Vendedor" />
+        {user && user.role === "SELLER" ? (
+          <SellerMenu userName={`${user.firstName} ${user.lastName}`} />
+        ) : (
+          <span>
+            Por favor inicia sesión como vendedor para acceder al dashboard
+          </span>
+        )}
       </div>
-      <Footer />
-    </>
+    </LayoutMarket>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const user = await getUser(req, res);
+
+  return {
+    props: {
+      user,
+    },
+  };
+};

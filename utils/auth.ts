@@ -1,11 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import { compare } from "bcrypt";
-import { getCookie, removeCookies } from "cookies-next";
+import { getCookie } from "cookies-next";
 import jwt from "jsonwebtoken";
+import { IncomingMessage, ServerResponse } from "http";
 import { User } from "@prisma/client";
 
 import prisma from "@/lib/prisma";
-import { useRouter } from "next/router";
 
 type CookieData = {
   userId: string;
@@ -30,7 +29,15 @@ export function generateToken(user: User) {
   return jwt.sign(payload, process.env.TOKEN_SECRET!, { expiresIn: "1d" });
 }
 
-export async function getUser(req: NextApiRequest, res: NextApiResponse) {
+type ReqData = IncomingMessage & {
+  cookies: Partial<{
+    [key: string]: string;
+  }>;
+};
+
+type ResData = ServerResponse<IncomingMessage>;
+
+export async function getUser(req: ReqData, res: ResData) {
   const token = getCookie("token", { req, res })?.toString();
 
   if (!token) return null;
@@ -41,17 +48,14 @@ export async function getUser(req: NextApiRequest, res: NextApiResponse) {
       where: {
         id: data.userId,
       },
+      include: {
+        seller: true,
+        buyer: true,
+      },
     });
 
     return user;
   } catch (e) {
     return null;
   }
-}
-
-export function signout() {
-  const router = useRouter();
-
-  removeCookies("token");
-  router.push("/");
 }
