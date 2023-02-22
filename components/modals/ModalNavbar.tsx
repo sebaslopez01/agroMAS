@@ -13,7 +13,6 @@ const ModalHeader = dynamic(
 
 export default function modalNavbar() {
   const [showLogin, setShowLogin] = useState(false);
-  const [showSignin, setShowSignin] = useState(false);
 
   return (
     <>
@@ -24,7 +23,7 @@ export default function modalNavbar() {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler icon-tabler-user-circle cursor-pointer w-[30px] h-[30px] lg:w-[32px] lg:h-[32px] stroke-white stroke-[1.5] lg:stroke-[1.3]"
+          className="icon icon-tabler icon-tabler-user-circle cursor-pointer w-[22px] h-[22px] lg:w-[32px] lg:h-[32px] stroke-white stroke-[1.5] lg:stroke-[1.3]"
           viewBox="0 0 24 24"
           fill="none"
           stroke-linecap="round"
@@ -35,7 +34,7 @@ export default function modalNavbar() {
           <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
           <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
         </svg>
-        <div className="lg:hidden text-2xl text-white font-medium">
+        <div className="lg:hidden text-xl text-white font-medium">
           Iniciar sesión
         </div>
       </div>
@@ -50,18 +49,18 @@ export default function modalNavbar() {
       >
         <ModalHeader className="h-0"></ModalHeader>
         <div className="w-full flex flex-col items-center justify-center pb-10 pt-5 space-y-5">
-          <h1 className="text-xl font-bold">Inicar sesión</h1>
+          <h1 className="text-xl font-bold">Iniciar sesión</h1>
           <div className="w-[80%] flex flex-col space-y-3">
-            <label htmlFor="">Correo electrónico</label>
+            <label htmlFor="" className="text-lg text-gray-700">Correo electrónico</label>
             <input
-              className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
+              className="focus:border-gray-300 focus:shadow-md focus:ring-0 h-[40px] rounded-lg text-base p-0 pl-3 border border-gray-300"
               type="email"
-              placeholder="ejemplo@gmail.com"
+              placeholder="email@ejemplo.com"
               required
             />
-            <label htmlFor="">Contraseña</label>
+            <label htmlFor="" className="text-lg text-gray-700">Contraseña</label>
             <input
-              className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
+              className="focus:border-gray-300 focus:shadow-md focus:ring-0 h-[40px] rounded-lg text-base p-0 pl-3 border border-gray-300"
               type="password"
               required
             />
@@ -69,147 +68,27 @@ export default function modalNavbar() {
           <div className="w-[80%] text-sm flex justify-between">
             <div className="space-x-1 flex items-center">
               <input
-                className="rounded-full checked:bg-gray-500 cursor-pointer"
+                className="checked:bg-[#6D9773] cursor-pointer focus:border-gray-300 focus:shadow-md focus:ring-0"
                 type="checkbox"
               />
               <label htmlFor="">Recordarme</label>
             </div>
-            <button className="underline text-gray-700">
+            <button className="underline text-gray-700 hover:scale-105 duration-200">
               Restablecer contraseña
             </button>
           </div>
           <button
             type="submit"
-            className="p-1 border border-black hover:scale-110 duration-500 hover:bg-white w-[30%]"
+            className="p-1 bg-[#6D9773] hover:scale-110 duration-500 rounded-md w-[30%] text-white"
           >
-            Inicar sesión
+            Iniciar sesión
           </button>
           <div className="w-[80%] flex justify-center space-x-2">
             <span>¿No tienes cuenta?</span>
-            <button
-              onClick={() => {
-                setShowSignin(!showSignin);
-                setShowLogin(!showLogin);
-              }}
-              className="underline text-gray-700"
-            >
+            <Link href="registro" className="underline text-gray-700 hover:scale-105 duration-200">
               Regístrate
-            </button>
+            </Link>
           </div>
-        </div>
-      </Modal>
-
-      {/* Modal SignIn */}
-      <Modal
-        show={showSignin}
-        size="md"
-        popup={true}
-        onClose={() => setShowSignin(!showSignin)}
-        className="h-[120vh]"
-      >
-        <ModalHeader className="h-0 p-0"></ModalHeader>
-        <div className="w-full flex flex-col items-center justify-center pb-5 pt-3 space-y-2">
-          <h1 className="text-xl font-bold">Registro</h1>
-          <div className="w-[80%] flex flex-col space-y-3">
-            <div className="flex flex-col">
-              <label htmlFor="">Nombres</label>
-              <input
-                className="h-[30px] rounded-full border-gray-400 focus:ring focus:ring-gray-300"
-                type="text"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="">Apellidos</label>
-              <input
-                className="h-[30px] rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
-                type="text"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="">Celular</label>
-              <input
-                className="h-[30px] rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
-                type="number"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="">Registrarte como:</label>
-              <select
-                name="rol"
-                id="roles"
-                required
-                className="h-[30px] p-0 pl-2 text-sm rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
-              >
-                <option value="seleccionar" selected>
-                  Seleccionar
-                </option>
-                <option value="buyer">Cliente</option>
-                <option value="seller">Vendedor</option>
-              </select>
-            </div>
-            {/* Documento */}
-            {/* <div className="flex flex-col">
-              <label htmlFor="">Tipo de documento</label>
-              <select
-                name="idTypes"
-                id="ids"
-                required
-                className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
-              >
-                <option className="cursor-pointer" value="seleccionar" selected>
-                  Seleccionar
-                </option>
-                <option className="cursor-pointer" value="cedula">
-                  Cédula de Ciudadanía
-                </option>
-                <option className="cursor-pointer" value="tarjetaDeIdentidad">
-                  Cédula de Extranjería
-                </option>
-                <option className="cursor-pointer" value="Contraseña">
-                  Pasaporte
-                </option>
-              </select>
-            </div> */}
-            {/* <div className="flex flex-col">
-              <label htmlFor="nId">Nº de documento</label>
-              <input
-                className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
-                type="text"
-                placeholder="Nº de documento"
-              />
-            </div> */}
-            <div className="flex flex-col">
-              <label htmlFor="">Correo electrónico</label>
-              <input
-                className="h-[30px] rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
-                type="email"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="">Contraseña</label>
-              <input
-                className="h-[30px] rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
-                type="password"
-              />
-            </div>
-          </div>
-          <div className="w-[80%] space-x-1">
-            <input
-              className="rounded-full appearance-none checked:bg-slate-600 cursor-pointer focus:outline-none"
-              type="checkbox"
-            />
-            <label className="text-sm" htmlFor="">
-              He leído y acepto los{" "}
-              <Link className="text-gray-500 underline" href="/">
-                términos y condiciones
-              </Link>
-            </label>
-          </div>
-          <input
-            type="submit"
-            value="Registrarse"
-            className="p-1 border border-black hover:scale-110 duration-500 hover:bg-white w-[30%] cursor-pointer"
-          />
         </div>
       </Modal>
     </>
