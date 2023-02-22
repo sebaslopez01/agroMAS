@@ -1,14 +1,14 @@
 import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { User } from "@prisma/client";
 
 import ModalNavbar from "@/components/modals/ModalNavbar";
 import agroLogo from "@/public/logo.svg";
 import { Store } from "@/context/Store";
+import { FullUser } from "@/lib/types";
 
 interface NavBarProps {
-  user: User | null;
+  user: FullUser;
 }
 
 export default function NavBar({ user }: NavBarProps) {

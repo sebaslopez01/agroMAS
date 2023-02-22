@@ -1,6 +1,7 @@
 import axios from "axios";
 import Image from "next/image";
-import { useRouter } from "next/router";
+
+import { capitalizeString } from "@/utils/helpers";
 
 interface SellerProductProps {
   id: string;
@@ -19,8 +20,6 @@ export default function SellerProduct({
   publishDate,
   getProducts,
 }: SellerProductProps) {
-  const router = useRouter();
-
   const deleteProduct = async (productId: string) => {
     const res = await axios.post("/api/dashboard/delete-product", {
       id: productId,
@@ -49,7 +48,7 @@ export default function SellerProduct({
       ></div>
       <div className="flex flex-col items-center col-start-1 col-span-4 row-start-3 z-10">
         <span className="text-lg lg:text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r to-green-800 from-emerald-600">
-          {name}
+          {capitalizeString(name)}
         </span>
         <span className="text-xs text-gray-500">
           Publicado el {new Date(publishDate).toLocaleDateString()}

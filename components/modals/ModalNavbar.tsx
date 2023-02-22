@@ -1,19 +1,10 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
 
 import { FullUser } from "@/lib/types";
 import LoginForm from "../forms/LoginForm";
 import RegisterForm from "../forms/RegisterForm";
-
-const Modal = dynamic(() => import("flowbite-react").then((mod) => mod.Modal), {
-  ssr: false,
-});
-
-const ModalHeader = dynamic(
-  () => import("flowbite-react").then((mod) => mod.Modal.Header),
-  { ssr: false }
-);
+import { Modal, ModalHeader } from "../dynamic/Modal";
 
 interface ModelNavBarProps {
   user: FullUser;
