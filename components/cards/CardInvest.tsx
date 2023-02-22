@@ -2,45 +2,66 @@ import Avatar from "../Avatar";
 import Image from "next/image";
 import Meta from "../Meta";
 import ModalCard from "@/components/modals/ModalCardInvest";
-
+import { Carousel } from "flowbite-react";
+import img1 from "@/public/backgrounds/1.jpg";
+import img2 from "@/public/backgrounds/2.jpg";
+import img3 from "@/public/backgrounds/3.jpg";
+import Link from "next/link";
 export default function CardInvest() {
   return (
     <>
       <Meta />
-      <div
-        className=" h-fit w-[100%] md:w-[80%] lg:w-[40%] xl:w-[30%] rounded-3xl m-2 p-1 bg-white"
-      >
-        <div className="flex flex-col justify-center items-center">
-          <Avatar />
-          <div className="flex flex-col justify-center items-center m-2 w-[90%]">
-            <span className="text-3xl font-semibold text-gray-700">
-              María Pérez
-            </span>
-            <div className="flex flex-row justify-start">
-              <Image
-                src="/loc.png"
-                alt="location"
-                height={1}
-                width={30}
-                className="scale-75"
-              ></Image>
-              <span className="text-xl text-gray-700">Cali, Valle</span>
+      <div className="h-[400px] xl:h-[500px] 2xl:h-[600px] w-full">
+        <Carousel>
+          <div className="flex h-full items-center justify-center relative">
+            <Image
+              src={img1}
+              alt=""
+              className="w-[100%] h-[100%] object-cover"
+            />
+            <div id="glass-bg" className="absolute top-2 left-2 rounded-md p-1 xl:p-3">
+              <h2 className="text-white text-lg font-bold xl:text-xl">Frontino, proyecto</h2>
             </div>
+            <Link
+              href="/investments"
+              className="bg-[#6D9773] absolute bottom-12 right-[50%] translate-x-[50%] rounded-md text-white xl:p-3 xl:text-xl hover:scale-110 duration-300 p-2 flex justify-center items-center shadow-xl"
+            >
+              Conoce más
+            </Link>
           </div>
-        </div>
-
-        <div className="w-[90%] mb-5 mx-auto">
-          <span className="text-gray-500">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
-            voluptatibus sapiente modi totam rem! Recusandae quo rerum tempora
-            delectus fuga minima voluptate, facilis culpa corrupti?
-          </span>
-        </div>
-
-        {/* Conoce mas button */}
-        <div className="flex w-[100%] h-[80px] justify-center items-center">
-          <ModalCard />
-        </div>
+          <div className="flex h-full items-center justify-center relative">
+            <Image
+              src={img2}
+              alt=""
+              className="w-[100%] h-[100%] object-cover"
+            />
+            <div id="glass-bg" className="absolute top-2 left-2 rounded-md p-1 xl:p-3">
+              <h2 className="text-white text-lg font-bold xl:text-xl">Guarne, proyecto</h2>
+            </div>
+            <Link
+              href="/investments"
+              className="bg-[#6D9773] absolute bottom-12 right-[50%] translate-x-[50%] rounded-md text-white xl:p-3 xl:text-xl hover:scale-110 duration-300 p-2 flex justify-center items-center shadow-xl"
+            >
+              Conoce más
+            </Link>
+          </div>
+          <div className="flex h-full items-center justify-center relative">
+            <Image
+              src={img3}
+              alt=""
+              className="w-[100%] h-[100%] object-cover"
+            />
+            <div id="glass-bg" className="absolute top-2 left-2 rounded-md p-1 xl:p-3">
+              <h2 className="text-white text-lg font-bold xl:text-xl">Gómez Plata, proyecto</h2>
+            </div>
+            <Link
+              href="/investments"
+              className="bg-[#6D9773] absolute bottom-12 right-[50%] translate-x-[50%] rounded-md text-white xl:p-3 xl:text-xl hover:scale-110 duration-300 p-2 flex justify-center items-center shadow-xl"
+            >
+              Conoce más
+            </Link>
+          </div>
+        </Carousel>
       </div>
     </>
   );

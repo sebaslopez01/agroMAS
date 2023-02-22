@@ -1,13 +1,13 @@
 import Footer from "@/components/navigation/Footer";
-import NavBarMarket from "@/components/navigation/NavBarMarket";
+import NavBarGeneral from "@/components/navigation/NavbarGeneral";
 import Link from "next/link";
 
 export default function Registro() {
   return (
     <>
-      <NavBarMarket />
+      <NavBarGeneral namePage="Registro" />
       <div className="w-[100%] lg:w-[80%] mx-auto mt-5 flex flex-col items-center justify-center p-3 space-y-5">
-        <h1 className="text-3xl font-bold text-gray-700">Registro</h1>
+        {/* <h1 className="text-3xl font-bold text-gray-700">Registro</h1> */}
 
         <div className="w-[100%] md:w-[90%] lg:w-[80%] flex flex-col space-y-5">
 

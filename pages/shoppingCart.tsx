@@ -1,14 +1,14 @@
 import Meta from "@/components/Meta";
 import ItemCart from "@/components/others/ItemCart";
 import Footer from "@/components/navigation/Footer";
-import NavBarMarket from "@/components/navigation/NavBarMarket";
+import NavbarGeneral from "@/components/navigation/NavbarGeneral";
 
 export default function shoppingCart() {
 
   return (
     <>
       <Meta />
-      <NavBarMarket />
+      <NavbarGeneral namePage="Carrito de compras" />
 
       {/* Container Parent*/}
       <div className="w-[95%] lg:w-[90%] 2xl:w-[80%] h-auto m-auto mt-5 flex flex-col space-y-5 lg:flex-row lg:space-y-0">
