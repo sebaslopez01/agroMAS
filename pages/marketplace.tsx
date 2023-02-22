@@ -6,8 +6,11 @@ import prisma from "@/lib/prisma";
 import ItemMarket from "@/components/cards/ItemMarket";
 import Filters from "@/components/marketplace/Filters";
 import LayoutMarket from "@/components/LayoutMarket";
+import { getUser } from "@/utils/auth";
+import { FullUser } from "@/lib/types";
 
 interface MarketplaceProps {
+  user: FullUser;
   products: (Product & {
     seller: {
       user: {
@@ -18,9 +21,9 @@ interface MarketplaceProps {
   })[];
 }
 
-export default function Marketplace({ products }: MarketplaceProps) {
+export default function Marketplace({ user, products }: MarketplaceProps) {
   return (
-    <LayoutMarket>
+    <LayoutMarket user={user}>
       <div className="flex flex-col lg:w-[90%] lg:m-auto">
         <div className="flex justify-center w-full mt-7 mb-5">
           <span className="text-2xl font-semibold text-gray-700"></span>
@@ -34,6 +37,7 @@ export default function Marketplace({ products }: MarketplaceProps) {
                 productId={product.id}
                 productName={capitalizeString(product.name)}
                 seller={`${product.seller.user.firstName} ${product.seller.user.lastName}`}
+                productQuantity={product.quantity}
                 productPrice={product.price}
                 undPerItem="Kg"
                 productCity={product.city}
@@ -49,7 +53,13 @@ export default function Marketplace({ products }: MarketplaceProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+  req,
+  res,
+}) => {
+  const user = await getUser(req, res);
+
   try {
     const productsName = (query["name"] as string) || undefined;
     const productsState = (query["state"] as string) || undefined;
@@ -79,6 +89,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
     return {
       props: {
+        user,
         products,
       },
     };
@@ -88,6 +99,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   return {
     props: {
+      user,
       products: [],
     },
   };

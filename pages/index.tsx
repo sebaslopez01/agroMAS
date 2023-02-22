@@ -1,14 +1,14 @@
 import { GetServerSideProps } from "next";
-import { User } from "@prisma/client";
 
 import { getUser } from "@/utils/auth";
 import Header from "@/components/home/Header";
 import Layout from "@/components/Layout";
 import Categories from "@/components/home/Categories";
 import Oportunities from "@/components/home/Oportunities";
+import { FullUser } from "@/lib/types";
 
 interface HomeProps {
-  user: User | null;
+  user: FullUser;
 }
 
 export default function Home({ user }: HomeProps) {

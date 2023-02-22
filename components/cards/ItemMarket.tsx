@@ -1,5 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import { useState, useContext } from "react";
+import { toast } from "react-toastify";
 
 import { Store } from "@/context/Store";
 import { StoreActionKind } from "@/lib/enums";
@@ -9,6 +10,7 @@ interface ItemMarketProps {
   productId: string;
   productName: string;
   seller: string;
+  productQuantity: number;
   productPrice: number;
   undPerItem: string;
   productCity: string;
@@ -20,6 +22,7 @@ export default function ItemMarket({
   productId,
   productName,
   seller,
+  productQuantity,
   productPrice,
   undPerItem,
   productCity,
@@ -32,6 +35,10 @@ export default function ItemMarket({
   );
 
   const addToCartHandler = (quantity: number) => {
+    if (quantity > productQuantity) {
+      return toast.error("Producto al limite de inventario");
+    }
+
     dispatch({
       type: StoreActionKind.CART_ADD_ITEM,
       payload: { id: productId, quantity, price: productPrice },

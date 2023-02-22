@@ -2,13 +2,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { useContext, useState, useEffect } from "react";
 
+import { Store } from "@/context/Store";
+import { FullUser } from "@/lib/types";
 import agroIcon from "@/public/agro-icon.ico";
-import ModalNavbarMarket from "@/components/modals/ModalNavbarMarket";
 import agroLogo from "@/public/logo.svg";
 import SearchBox from "../marketplace/SearchBox";
-import { Store } from "@/context/Store";
+import ModalNavBar from "../modals/ModalNavbar";
 
-function NavBarMarket() {
+interface NavBarMarketProps {
+  user: FullUser;
+}
+
+export default function NavBarMarket({ user }: NavBarMarketProps) {
   const [menu, setMenu] = useState(true);
   const [cartItemsCount, setCartItemCount] = useState(0);
   const { state } = useContext(Store);
@@ -48,29 +53,6 @@ function NavBarMarket() {
         </Link>
 
         {/* Search */}
-        {/* <div className="flex justify-center h-8 w-[65%] lg:w-[55%]">
-          <input
-            className="w-[70%] md:w-[70%] p-1 pl-3 focus:outline-none placeholder-gray-400 lg:text-lg lg:font-medium rounded-l-xl"
-            placeholder="¿Qué buscas?..."
-          ></input>
-          <button className="flex w-[20%] md:w-[10%] justify-center items-center rounded-r-xl p-1 bg-white">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-search cursor-pointer stroke-green-900"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
-              <path d="M21 21l-6 -6"></path>
-            </svg>
-          </button>
-        </div> */}
         <SearchBox />
 
         {/* Menu and Cart */}
@@ -174,7 +156,7 @@ function NavBarMarket() {
                 <path d="M6 6l12 12"></path>
               </svg>
             </div>
-            <ModalNavbarMarket />
+            <ModalNavBar user={user} isMarket />
           </div>
           <ul className="pl-5">
             <li className="py-2">
@@ -297,5 +279,3 @@ function NavBarMarket() {
     </>
   );
 }
-
-export default NavBarMarket;

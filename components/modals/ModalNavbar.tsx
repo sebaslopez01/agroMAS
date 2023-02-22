@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import { User } from "@prisma/client";
+
+import { FullUser } from "@/lib/types";
 import LoginForm from "../forms/LoginForm";
 import RegisterForm from "../forms/RegisterForm";
-import { useRouter } from "next/router";
 
 const Modal = dynamic(() => import("flowbite-react").then((mod) => mod.Modal), {
   ssr: false,
@@ -15,10 +16,14 @@ const ModalHeader = dynamic(
 );
 
 interface ModelNavBarProps {
-  user: User | null;
+  user: FullUser;
+  isMarket?: boolean;
 }
 
-export default function ModalNavBar({ user }: ModelNavBarProps) {
+export default function ModalNavBar({
+  user,
+  isMarket = false,
+}: ModelNavBarProps) {
   const router = useRouter();
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
@@ -52,7 +57,13 @@ export default function ModalNavBar({ user }: ModelNavBarProps) {
           <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
           <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
         </svg>
-        <div className="lg:hidden text-2xl text-white font-medium">
+        <div
+          className={
+            isMarket
+              ? "text-2xl text-white font-medium"
+              : "lg:hidden text-2xl text-white font-medium"
+          }
+        >
           {user ? "Ir al Dashboard" : "Iniciar sesión"}
         </div>
       </button>

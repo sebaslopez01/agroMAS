@@ -1,13 +1,16 @@
+import Image from "next/image";
+import { useContext, useState } from "react";
+import { toast } from "react-toastify";
+
 import { Store } from "@/context/Store";
 import { StoreActionKind } from "@/lib/enums";
 import pera from "@/public/pera.jpg";
-import Image from "next/image";
-import { useContext, useState } from "react";
 
 interface ItemCartProps {
   productId: string;
   productName: string;
   productPrice: number;
+  productQuantity: number;
   productUndPer: string;
 }
 
@@ -15,6 +18,7 @@ export default function ItemCart({
   productId,
   productName,
   productPrice,
+  productQuantity,
   productUndPer,
 }: ItemCartProps) {
   const { state, dispatch } = useContext(Store);
@@ -23,6 +27,10 @@ export default function ItemCart({
   );
 
   const addToCartHandler = (quantity: number) => {
+    if (quantity > productQuantity) {
+      return toast.error("Producto al limite de inventario");
+    }
+
     dispatch({
       type: StoreActionKind.CART_ADD_ITEM,
       payload: { id: productId, quantity, price: productPrice },
@@ -79,7 +87,9 @@ export default function ItemCart({
           <button
             onClick={() => {
               setCount((c) => {
-                addToCartHandler(c + 1);
+                const error = addToCartHandler(c + 1);
+                if (error) return c;
+
                 return c + 1;
               });
             }}

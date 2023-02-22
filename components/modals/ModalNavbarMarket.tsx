@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import Link from "next/link";
+
+import { FullUser } from "@/lib/types";
 import LoginForm from "../forms/LoginForm";
 import RegisterForm from "../forms/RegisterForm";
 
@@ -13,16 +15,30 @@ const ModalHeader = dynamic(
   { ssr: false }
 );
 
-export default function ModalNavbar() {
+interface ModalNavBarMarketProps {
+  user: FullUser;
+}
+
+export default function ModalNavbarMarket({ user }: ModalNavBarMarketProps) {
+  const router = useRouter();
   const [showLogin, setShowLogin] = useState(false);
-  const [showSignin, setShowSignin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
 
   return (
     <>
       {/* Icon session */}
       <div
         className="flex justify-start items-center space-x-2 cursor-pointer"
-        onClick={() => setShowLogin(!showLogin)}
+        onClick={() => {
+          if (!user) {
+            setShowLogin(!showLogin);
+            return;
+          }
+
+          user.role === "SELLER"
+            ? router.push("/profile/seller")
+            : router.push("/profile/buyer");
+        }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +53,9 @@ export default function ModalNavbar() {
           <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
           <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
         </svg>
-        <div className="text-2xl text-white font-medium">Iniciar sesión</div>
+        <div className="text-2xl text-white font-medium">
+          {user ? "Ir al Dashboard" : "Iniciar sesión"}
+        </div>
       </div>
 
       {/* Modal LogIn */}
@@ -49,21 +67,21 @@ export default function ModalNavbar() {
         className="h-[120vh]"
       >
         <ModalHeader className="h-0"></ModalHeader>
-        <LoginForm setShowLogin={setShowLogin} setShowSignup={setShowSignin} />
+        <LoginForm setShowLogin={setShowLogin} setShowSignup={setShowSignup} />
       </Modal>
 
       {/* Modal SignIn */}
       <Modal
-        show={showSignin}
+        show={showSignup}
         size="md"
         popup={true}
-        onClose={() => setShowSignin(!showSignin)}
+        onClose={() => setShowSignup(!showSignup)}
         className="h-[120vh]"
       >
         <ModalHeader className="h-0 p-0"></ModalHeader>
         <RegisterForm
           setShowLogin={setShowLogin}
-          setShowSignup={setShowSignin}
+          setShowSignup={setShowSignup}
         />
       </Modal>
     </>
