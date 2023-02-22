@@ -12,7 +12,7 @@ export default function CardInvest() {
     <>
       <Meta />
       <div className="h-[400px] xl:h-[500px] 2xl:h-[600px] w-full">
-        <Carousel>
+        <Carousel className="shadow-2xl">
           <div className="flex h-full items-center justify-center relative">
             <Image
               src={img1}
@@ -24,7 +24,7 @@ export default function CardInvest() {
             </div>
             <Link
               href="/investments"
-              className="bg-[#6D9773] absolute bottom-12 right-[50%] translate-x-[50%] rounded-md text-white xl:p-3 xl:text-xl hover:scale-110 duration-300 p-2 flex justify-center items-center shadow-xl"
+              className="bg-white absolute bottom-12 right-[50%] translate-x-[50%] rounded-md font-medium text-black xl:p-3 xl:text-xl hover:scale-110 duration-300 p-2 flex justify-center items-center shadow-xl"
             >
               Conoce más
             </Link>
@@ -40,7 +40,7 @@ export default function CardInvest() {
             </div>
             <Link
               href="/investments"
-              className="bg-[#6D9773] absolute bottom-12 right-[50%] translate-x-[50%] rounded-md text-white xl:p-3 xl:text-xl hover:scale-110 duration-300 p-2 flex justify-center items-center shadow-xl"
+              className="bg-white absolute bottom-12 right-[50%] translate-x-[50%] rounded-md font-medium text-black xl:p-3 xl:text-xl hover:scale-110 duration-300 p-2 flex justify-center items-center shadow-xl"
             >
               Conoce más
             </Link>
@@ -56,7 +56,7 @@ export default function CardInvest() {
             </div>
             <Link
               href="/investments"
-              className="bg-[#6D9773] absolute bottom-12 right-[50%] translate-x-[50%] rounded-md text-white xl:p-3 xl:text-xl hover:scale-110 duration-300 p-2 flex justify-center items-center shadow-xl"
+              className="bg-white absolute bottom-12 right-[50%] translate-x-[50%] rounded-md font-medium text-black xl:p-3 xl:text-xl hover:scale-110 duration-300 p-2 flex justify-center items-center shadow-xl"
             >
               Conoce más
             </Link>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import test from "@/public/backgrounds/1.jpg";
 import Link from "next/link";
+import ModalInvestment from "../modals/ModalInvestement";
 
 export default function CardProject() {
   return (
@@ -58,9 +59,10 @@ export default function CardProject() {
               </svg>
               <span className="text-md font-bold md:text-lg">Medellín, Antioquia</span>
             </div>
-            <Link href="/" className="w-[40%] bg-[#6D9773] p-1 rounded-md text-white font-semibold md:text-lg hover:scale-105 duration-300 flex justify-center">
+            <ModalInvestment />
+            {/* <Link href="/" className="w-[40%] bg-[#6D9773] p-1 rounded-md text-white font-semibold md:text-lg hover:scale-105 duration-300 flex justify-center">
               Invierte
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
