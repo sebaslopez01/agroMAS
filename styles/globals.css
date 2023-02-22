@@ -11,26 +11,22 @@ html, body {
     background-color: #ECECEA;
 }
 
-input:focus {
-    border: none;
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
 }
 
-label {
-    font-weight: 900;
+.input {
+    @apply border-transparent focus:border-transparent focus:shadow-md focus:ring-0 h-[30px] rounded-lg text-base p-0 pl-3
+}
+.label {
+    @apply text-gray-600 lg:text-xl 2xl:text-2xl font-semibold
 }
 
 #phrase {
     font-family: 'Kumbh Sans', sans-serif;
     /* text-shadow: black 0 0 12px; */
-}
-
-#bg-Navbar {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 30%, black 150%);
-}
-
-#bg-Navbar-Market {
-    position: fixed;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 10%, black 150%);
 }
 
 #card {
@@ -66,8 +62,4 @@ label {
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.17);
-}
-
-.modal {
-    background: rgba(255, 255, 255, 0.3);
 }

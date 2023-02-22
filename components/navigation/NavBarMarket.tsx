@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import agroIcon from "@/public/agro-icon.ico";
 import ModalNavbarMarket from "@/components/modals/ModalNavbarMarket";
+import ModalNavbar from "@/components/modals/ModalNavbar";
 import agroLogo from "@/public/logo.svg";
 
 export default function NavBarMarket() {
@@ -40,7 +41,7 @@ export default function NavBarMarket() {
         {/* Search */}
         <div className="flex justify-center h-8 w-[65%] lg:w-[55%]">
           <input
-            className="w-[70%] md:w-[70%] p-1 pl-3 focus:outline-none placeholder-gray-400 lg:text-lg lg:font-medium rounded-l-xl"
+            className="w-[70%] md:w-[70%] p-1 pl-3 focus:outline-none placeholder-gray-400 lg:text-lg lg:font-medium rounded-l-xl focus:shadow-lg"
             placeholder="¿Qué buscas?..."
           ></input>
           <button className="flex w-[20%] md:w-[10%] justify-center items-center rounded-r-xl p-1 bg-white">
@@ -134,10 +135,10 @@ export default function NavBarMarket() {
               : "fixed right-[-100%]"
           }
         >
-          <div className="w-[100%] h-[160px] xl:h-[180px] flex flex-col justify-between bg-[#6D9773] p-5">
+          <div className="w-[100%] h-[160px] xl:h-[180px] flex flex-col justify-between bg-[#6D9773] p-4 rounded-b-md">
             <div className="w-full h-auto flex justify-between items-center">
               <Link href="/">
-                <Image src={agroLogo} alt="" className="w-[48px] h-[48px] object-contain" />
+                <Image src={agroLogo} alt="" className="w-[45px] h-[45px] object-contain" />
               </Link>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -159,14 +160,14 @@ export default function NavBarMarket() {
             <ModalNavbarMarket />
           </div>
           <ul className="pl-5">
-            <li className="py-2">
+            <li className="py-2 hover:translate-x-3 duration-300">
               <Link
                 href="/"
-                className="text-2xl mt-5 text-green-900 font-medium flex space-x-3"
+                className="text-xl mt-5 text-green-900 font-medium flex items-center space-x-3"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-home w-[30px] h-[30px] stroke-green-900"
+                  className="icon icon-tabler icon-tabler-home w-[22px] h-[22px] stroke-green-900"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   fill="none"
@@ -178,17 +179,17 @@ export default function NavBarMarket() {
                   <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
                   <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
                 </svg>
-                <span id="shadowText">Inicio</span>
+                <span>Inicio</span>
               </Link>
             </li>
-            <li className="py-2">
+            <li className="py-2 hover:translate-x-3 duration-300">
               <Link
                 href="nosotros"
-                className="text-2xl mt-5 text-green-900 font-medium flex space-x-3"
+                className="text-xl mt-5 text-green-900 font-medium flex items-center space-x-3"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-users w-[30px] h-[30px] stroke-green-900"
+                  className="icon icon-tabler icon-tabler-users w-[22px] h-[22px] stroke-green-900"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   fill="none"
@@ -201,17 +202,17 @@ export default function NavBarMarket() {
                   <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                   <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
                 </svg>
-                <span id="shadowText">Nosotros</span>
+                <span>Nosotros</span>
               </Link>
             </li>
-            <li className="py-2">
+            <li className="py-2 hover:translate-x-3 duration-300">
               <Link
                 href="investments"
-                className="text-2xl mt-5 text-green-900 font-medium flex space-x-3"
+                className="text-xl mt-5 text-green-900 font-medium flex items-center space-x-3"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-timeline w-[30px] h-[30px] stroke-green-900"
+                  className="icon icon-tabler icon-tabler-timeline w-[22px] h-[22px] stroke-green-900"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   fill="none"
@@ -225,17 +226,17 @@ export default function NavBarMarket() {
                   <path d="M4 16m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
                   <path d="M20 8m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
                 </svg>
-                <span id="shadowText">Invierte</span>
+                <span>Invierte</span>
               </Link>
             </li>
-            <li className="py-2">
+            <li className="py-2 hover:translate-x-3 duration-300">
               <Link
                 href="contact"
-                className="text-2xl mt-5 text-green-900 font-medium flex space-x-3"
+                className="text-xl mt-5 text-green-900 font-medium flex items-center space-x-3"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-message-2 w-[30px] h-[30px] stroke-green-900"
+                  className="icon icon-tabler icon-tabler-message-2 w-[22px] h-[22px] stroke-green-900"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   fill="none"
@@ -247,17 +248,17 @@ export default function NavBarMarket() {
                   <path d="M8 9l8 0"></path>
                   <path d="M8 13l6 0"></path>
                 </svg>
-                <span id="shadowText">Contacto</span>
+                <span>Contacto</span>
               </Link>
             </li>
-            <li className="py-2">
+            <li className="py-2 hover:translate-x-3 duration-300">
               <Link
                 href="policy"
-                className="text-2xl mt-5 text-green-900 font-medium flex space-x-3"
+                className="text-xl mt-5 text-green-900 font-medium flex items-center space-x-3"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-license w-[30px] h-[30px] stroke-green-900"
+                  className="icon icon-tabler icon-tabler-license w-[22px] h-[22px] stroke-green-900"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   fill="none"
@@ -269,7 +270,7 @@ export default function NavBarMarket() {
                   <path d="M9 7l4 0"></path>
                   <path d="M9 11l4 0"></path>
                 </svg>
-                <span id="shadowText">Políticas</span>
+                <span>Políticas</span>
               </Link>
             </li>
           </ul>
