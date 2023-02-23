@@ -106,7 +106,7 @@ export default function NavBarMarket({ user }: NavBarMarketProps) {
               width="30"
               height="30"
               viewBox="0 0 24 24"
-              stroke-width="2"
+              strokeWidth="2"
               stroke="white"
               fill="none"
               strokeLinecap="round"
@@ -133,7 +133,11 @@ export default function NavBarMarket({ user }: NavBarMarketProps) {
           <div className="w-full h-[160px] xl:h-[180px] flex flex-col justify-between bg-[#6D9773] p-4 rounded-b-md">
             <div className="w-full h-auto flex justify-between items-center">
               <Link href="/">
-                <Image src={agroLogo} alt="" className="w-[45px] h-[45px] object-contain" />
+                <Image
+                  src={agroLogo}
+                  alt=""
+                  className="w-[45px] h-[45px] object-contain"
+                />
               </Link>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -141,7 +145,7 @@ export default function NavBarMarket({ user }: NavBarMarketProps) {
                 width="40"
                 height="40"
                 viewBox="0 0 24 24"
-                stroke-width="2"
+                strokeWidth="2"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -164,7 +168,7 @@ export default function NavBarMarket({ user }: NavBarMarketProps) {
                   xmlns="http://www.w3.org/2000/svg"
                   className="icon icon-tabler icon-tabler-home w-[22px] h-[22px] stroke-green-900"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -186,7 +190,7 @@ export default function NavBarMarket({ user }: NavBarMarketProps) {
                   xmlns="http://www.w3.org/2000/svg"
                   className="icon icon-tabler icon-tabler-users w-[22px] h-[22px] stroke-green-900"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -209,7 +213,7 @@ export default function NavBarMarket({ user }: NavBarMarketProps) {
                   xmlns="http://www.w3.org/2000/svg"
                   className="icon icon-tabler icon-tabler-timeline w-[22px] h-[22px] stroke-green-900"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -233,7 +237,7 @@ export default function NavBarMarket({ user }: NavBarMarketProps) {
                   xmlns="http://www.w3.org/2000/svg"
                   className="icon icon-tabler icon-tabler-message-2 w-[22px] h-[22px] stroke-green-900"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -255,7 +259,7 @@ export default function NavBarMarket({ user }: NavBarMarketProps) {
                   xmlns="http://www.w3.org/2000/svg"
                   className="icon icon-tabler icon-tabler-license w-[22px] h-[22px] stroke-green-900"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"

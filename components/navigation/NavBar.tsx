@@ -1,27 +1,46 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
+
 import ModalNavbar from "@/components/modals/ModalNavbar";
 import agroLogo from "@/public/logo.svg";
+import { Store } from "@/context/Store";
+import { FullUser } from "@/lib/types";
 
-export default function NavBar() {
+interface NavBarProps {
+  user: FullUser;
+}
+
+export default function NavBar({ user }: NavBarProps) {
   const [menu, setMenu] = useState(true);
   const [backg, setBackg] = useState(false);
+  const [cartItemsCount, setCartItemCount] = useState(0);
+  const { state } = useContext(Store);
+  const { cart } = state;
+
+  useEffect(() => {
+    setCartItemCount(cart.reduce((a, c) => a + c.quantity, 0));
+  }, [cart]);
 
   const handleMenu = () => {
     setMenu(!menu);
   };
 
+  const handleBackg = () => {
+    if (window.scrollY >= 100) {
+      setBackg(true);
+    } else {
+      setBackg(false);
+    }
+  };
+
   useEffect(() => {
-    const handleBackg = () => {
-      if (window.scrollY >= 100) {
-        setBackg(true);
-      } else {
-        setBackg(false);
-      }
-    };
     window.addEventListener("scroll", handleBackg);
-  });
+
+    return () => {
+      window.removeEventListener("scroll", handleBackg);
+    };
+  }, []);
 
   return (
     <div
@@ -56,19 +75,25 @@ export default function NavBar() {
 
       {/* Cart and user */}
       <div className="w-[30%] pr-6 justify-between hidden lg:flex">
-        <div className="w-[100%] flex justify-end space-x-10">
-          <Link href="shoppingCart" className="self-center">
+        <div className="w-full flex justify-end space-x-10">
+          <Link
+            href="/carro-de-compras"
+            className="self-center flex items-center"
+          >
+            <span className="text-white px-2 py-1 text-xs rounded-full bg-red-600 font-bold">
+              {cartItemsCount}
+            </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="icon icon-tabler icon-tabler-shopping-cart cursor-pointer"
               width="32"
               height="32"
               viewBox="0 0 24 24"
-              stroke-width="1.3"
+              strokeWidth="1.3"
               stroke="white"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
               <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
@@ -77,24 +102,27 @@ export default function NavBar() {
               <path d="M6 5l14 1l-1 7h-13"></path>
             </svg>
           </Link>
-          <ModalNavbar />
+          <ModalNavbar user={user} />
         </div>
       </div>
 
       {/* Menu and Cart icon */}
       <div className="flex justify-end items-center space-x-5 w-[50%] lg:hidden text-white pr-2 md:pr-5">
-        <Link href="shoppingCart">
+        <Link href="/carro-de-compras" className="flex items-center">
+          <span className="text-white px-2 py-1 text-xs rounded-full bg-red-600 font-bold">
+            {cartItemsCount}
+          </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon icon-tabler icon-tabler-shopping-cart cursor-pointer"
             width="30"
             height="30"
             viewBox="0 0 24 24"
-            stroke-width="1.3"
+            strokeWidth="1.3"
             stroke="white"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
@@ -110,11 +138,11 @@ export default function NavBar() {
             width="30"
             height="30"
             viewBox="0 0 24 24"
-            stroke-width="2"
+            strokeWidth="2"
             stroke="white"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             onClick={handleMenu}
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -129,11 +157,11 @@ export default function NavBar() {
             width="30"
             height="30"
             viewBox="0 0 24 24"
-            stroke-width="2"
+            strokeWidth="2"
             stroke="white"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             onClick={handleMenu}
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -168,10 +196,10 @@ export default function NavBar() {
               width="35"
               height="35"
               viewBox="0 0 24 24"
-              stroke-width="2"
+              strokeWidth="2"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               onClick={handleMenu}
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -179,7 +207,7 @@ export default function NavBar() {
               <path d="M6 6l12 12"></path>
             </svg>
           </div>
-          <ModalNavbar />
+          <ModalNavbar user={user} />
         </div>
         <ul className="pl-5">
           <li className="py-2">
@@ -191,10 +219,10 @@ export default function NavBar() {
                 xmlns="http://www.w3.org/2000/svg"
                 className="icon icon-tabler icon-tabler-home w-[22px] h-[22px] stroke-green-900"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M5 12l-2 0l9 -9l9 9l-2 0"></path>
@@ -213,10 +241,10 @@ export default function NavBar() {
                 xmlns="http://www.w3.org/2000/svg"
                 className="icon icon-tabler icon-tabler-users w-[22px] h-[22px] stroke-green-900"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
@@ -236,10 +264,10 @@ export default function NavBar() {
                 xmlns="http://www.w3.org/2000/svg"
                 className="icon icon-tabler icon-tabler-timeline w-[22px] h-[22px] stroke-green-900"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M4 16l6 -7l5 5l5 -6"></path>
@@ -260,10 +288,10 @@ export default function NavBar() {
                 xmlns="http://www.w3.org/2000/svg"
                 className="icon icon-tabler icon-tabler-message-2 w-[22px] h-[22px] stroke-green-900"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M12 20l-3 -3h-2a3 3 0 0 1 -3 -3v-6a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-2l-3 3"></path>
@@ -282,10 +310,10 @@ export default function NavBar() {
                 xmlns="http://www.w3.org/2000/svg"
                 className="icon icon-tabler icon-tabler-license w-[22px] h-[22px] stroke-green-900"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M15 21h-9a3 3 0 0 1 -3 -3v-1h10v2a2 2 0 0 0 4 0v-14a2 2 0 1 1 2 2h-2m2 -4h-11a3 3 0 0 0 -3 3v11"></path>

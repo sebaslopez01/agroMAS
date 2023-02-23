@@ -6,9 +6,9 @@ import { getFetcher } from "@/utils/helpers";
 import { useRouter } from "next/router";
 
 const styles = {
-  container: "relative text-left h-full w-[70%] md:w-[70%]",
+  container: "relative text-left w-[70%]",
   input:
-    "w-full h-full p-3 focus:outline-none text-gray-600 placeholder-gray-400 lg:text-xl lg:font-medium rounded-l-xl",
+    "w-full p-1 pl-3 focus:outline-none placeholder-gray-400 lg:text-lg lg:font-medium rounded-l-xl",
   listbox:
     "w-full bg-white sm:border sm:border-darkBlue sm:rounded text-left sm:mt-2 p-2 sm:drop-shadow-xl",
   highlightedItem:
@@ -47,9 +47,8 @@ function SearchBox() {
   };
 
   return (
-    <div className="flex justify-center items-center h-10 w-[65%] lg:w-[40%]">
+    <div className="flex justify-center items-center h-8 w-[65%] lg:w-[55%]">
       <Turnstone
-        id="glass-bg"
         name="searchMarket"
         listbox={listbox}
         listboxIsImmutable
@@ -63,18 +62,16 @@ function SearchBox() {
         placeholder="¿Qué buscas?..."
       />
       <button
-        id="card"
-        className="flex w-[20%] md:w-[10%] h-full justify-center items-center rounded-r-xl"
+        className="flex w-[20%] md:w-[10%] justify-center items-center rounded-r-xl bg-white p-1"
         onClick={() => onSelect(item)}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler icon-tabler-search cursor-pointer"
+          className="icon icon-tabler icon-tabler-search stroke-green-900"
           width="24"
           height="24"
           viewBox="0 0 24 24"
           strokeWidth="2"
-          stroke="white"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"

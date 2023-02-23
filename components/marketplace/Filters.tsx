@@ -1,8 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { State, City } from "country-state-city";
-import { Dispatch, SetStateAction, useState } from "react";
-import { Product } from "@prisma/client";
-import axios from "axios";
+import { useState } from "react";
 import { useRouter } from "next/router";
 
 interface FiltersData {
@@ -29,7 +27,7 @@ function Filters() {
   };
 
   return (
-    <div className="flex flex-row items-center justify-center">
+    <div className="flex flex-row items-center justify-center pb-5">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-row items-center justify-center space-x-4"

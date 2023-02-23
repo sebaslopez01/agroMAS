@@ -1,15 +1,12 @@
 import { createContext, Dispatch, ReactNode, useReducer } from "react";
 import { getCookie, hasCookie, setCookie } from "cookies-next";
+
 import { StoreActionKind } from "@/lib/enums";
+import { CarData } from "@/lib/interfaces";
 
 interface ReducerData {
   state: StoreState;
   dispatch: Dispatch<StoreAction>;
-}
-
-interface CarData {
-  id: string;
-  quantity: number;
 }
 
 interface StoreAction {

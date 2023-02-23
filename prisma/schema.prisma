@@ -142,6 +142,7 @@ model BuyersOnInvestments {
   investment      Investment @relation(fields: [investmentId], references: [id])
   buyerId         String     @map("buyer_id")
   buyer           Buyer      @relation(fields: [buyerId], references: [id])
+  invested        Float
   investmentTerms Boolean    @default(false) @map("investment_terms")
   assignedAt      DateTime   @default(now()) @map("assigned_at")
 
