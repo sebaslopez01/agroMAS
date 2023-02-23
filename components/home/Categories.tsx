@@ -1,4 +1,4 @@
-import category1 from "@/public/categoryImages/1.1.jpg";
+import category1 from "@/public/categoryImages/2.jpg";
 import category2 from "@/public/categoryImages/8.jpg";
 import Link from "next/link";
 
@@ -7,18 +7,66 @@ import Image from "next/image";
 export default function Categories() {
   return (
     <>
-      <div className="flex my-3 w-[50%] lg:w-[70%] mx-auto p-4">
+      <div
+        id="glass-bg"
+        className="flex mt-3 w-[30%] px-20 -mb-20 z-10 bg-green-900 rounded-r-xl "
+      >
         <h1
           id="phrase"
-          className="text-5xl lg:text-2xl text-center text-gray-300"
+          className="text-5xl lg:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-r to-green-800 from-green-500"
         >
           ¿Qué hacemos?
         </h1>
       </div>
+      <div className="flex justify-end items-center w-[90%] h-72 px-10 bg-[#4c8655] rounded-r-xl mt-10 mb-10">
+        <div className="flex flex-col px-10 text-gray-100 space-y-5">
+          <span className="text-2xl font-semibold">Mercado Virtual</span>
+          <span className="text-lg">
+            Un sitio para el beneficio tanto del consumidor como de los
+            campesinos. Un mercado con precios justos donde compras sin
+            intermediarios.
+          </span>
+        </div>
+        <Image
+          src={category1}
+          className="shadow-lg w-[40%] h-[160%] object-bottom object-cover rounded-xl"
+          alt=""
+        />
+      </div>
+
+      <div className=" h-36"></div>
+
+      {/* investment platform */}
+      {/* <div id="glass-bg" className="flex mt-3 w-[30%] px-20 -mb-14 z-10 bg-gray-100 rounded-l-xl ml-auto mr-0">
+        <h1
+          id="phrase"
+          className="text-right text-5xl lg:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-r to-green-800 from-green-500"
+        >
+          ¿Qué hacemos?
+        </h1>
+      </div> */}
+
+      <div className="flex items-center w-[90%] h-72 px-10 bg-[#4c8655] rounded-l-xl mt-10 mb-10 ml-auto mr-0">
+        <Image
+          src={category1}
+          className="shadow-lg w-[40%] h-[160%] object-cover rounded-xl"
+          alt=""
+        />
+        <div className="flex flex-col px-10 text-gray-100 space-y-5">
+          <span className="text-2xl font-semibold">Mercado Virtual</span>
+          <span className="text-lg">
+            Un sitio para el beneficio tanto del consumidor como de los
+            campesinos. Un mercado con precios justos donde compras sin
+            intermediarios.
+          </span>
+        </div>
+      </div>
+
+      <div className=" h-36"></div>
 
       <div className="w-[100%] lg:w-[80%] h-auto space-y-10 lg:space-y-0 flex flex-col justify-center mx-auto">
         {/* Mercado virtual */}
-        <div className="flex justify-end w-[100%] h-[500px]">
+        {/* <div className="flex justify-end w-[100%] h-[500px]">
           <div className="w-[100%] lg:w-[90%] h-full flex flex-col lg:flex-row justify-center items-center">
             <div
               id="glass-bg"
@@ -54,10 +102,10 @@ export default function Categories() {
               />
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Inversion */}
-        <div className="flex justify-start w-[100%] h-[500px]">
+        {/* <div className="flex justify-start w-[100%] h-[500px]">
           <div className="w-[100%] lg:w-[90%] h-full flex flex-col lg:flex-row justify-center items-center">
             <div className="w-[60%] lg:w-[40%] h-[80%] -mb-10 lg:mb-0 rounded-3xl">
               <Image
@@ -92,8 +140,8 @@ export default function Categories() {
                 Invierte ahora
               </Link>
             </div>
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </div>
     </>
   );
