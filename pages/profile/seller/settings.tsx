@@ -1,4 +1,3 @@
-import NavBarMarket from "@/components/navigation/NavBarMarket";
 import Footer from "@/components/navigation/Footer";
 import Image from "next/image";
 import pic from "@/public/perfil1.jpg";
@@ -13,11 +12,12 @@ import {
   IconPhotoEdit,
   IconPhotoOff
 } from "@tabler/icons-react";
+import NavbarGeneral from "@/components/navigation/NavbarGeneral";
 
 export default function Settings() {
   return (
     <>
-      <NavBarMarket />
+      <NavbarGeneral namePage="Configuración" />
       <div className="w-full h-24 rounded-b-xl md:h-36 lg:h-40 xl:h-40 bg-[#6d9773]"></div>
       <Image
         src={pic}
