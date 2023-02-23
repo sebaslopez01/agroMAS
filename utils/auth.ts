@@ -1,7 +1,8 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import { compare } from "bcrypt";
 import { getCookie } from "cookies-next";
 import jwt from "jsonwebtoken";
+import { IncomingMessage, ServerResponse } from "http";
+import { User } from "@prisma/client";
 
 import prisma from "@/lib/prisma";
 
@@ -20,7 +21,23 @@ export function confirmPasswordHash(
   });
 }
 
-export async function getUser(req: NextApiRequest, res: NextApiResponse) {
+export function generateToken(user: User) {
+  const payload = {
+    userId: user.id,
+  };
+
+  return jwt.sign(payload, process.env.TOKEN_SECRET!, { expiresIn: "1d" });
+}
+
+type ReqData = IncomingMessage & {
+  cookies: Partial<{
+    [key: string]: string;
+  }>;
+};
+
+type ResData = ServerResponse<IncomingMessage>;
+
+export async function getUser(req: ReqData, res: ResData) {
   const token = getCookie("token", { req, res })?.toString();
 
   if (!token) return null;
@@ -30,6 +47,10 @@ export async function getUser(req: NextApiRequest, res: NextApiResponse) {
     const user = await prisma.user.findUnique({
       where: {
         id: data.userId,
+      },
+      include: {
+        seller: true,
+        buyer: true,
       },
     });
 

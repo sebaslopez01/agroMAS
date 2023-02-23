@@ -1,23 +1,41 @@
-import Meta from "@/components/Meta";
-import ProfileInvest from "@/components/cards/ProfileInvest";
-import Link from "next/link";
-import NavBarGeneral from "@/components/navigation/NavbarGeneral";
-import Footer from "@/components/navigation/Footer";
-import ModalInvestment from "@/components/modals/ModalInvestement";
-import Image from "next/image";
-import test from "@/public/backgrounds/1.jpg";
+import { GetServerSideProps } from "next";
 
-export default function CustomerInvestments() {
+import { getUser } from "@/utils/auth";
+import { User } from "@prisma/client";
+import ProfileInvest from "@/components/cards/ProfileInvest";
+import LayoutMarket from "@/components/LayoutMarket";
+import NavBarGeneral from "@/components/navigation/NavbarGeneral";
+
+interface CustomerInvestmentsProps {
+  user: User | null;
+}
+
+export default function CustomerInvestments({
+  user,
+}: CustomerInvestmentsProps) {
   return (
-    <>
-      <Meta />
-      <NavBarGeneral namePage="Mis inversiones" />
-      <div className="w-[80%] mx-auto h-auto flex flex-col mt-10 space-y-16">
-        <ProfileInvest />
-        <ProfileInvest />
-        <ProfileInvest />
-      </div>
-      <Footer />
-    </>
+    <LayoutMarket user={user}>
+      {user && user.role === "BUYER" ? (
+        <div className="w-[80%] mx-auto h-auto flex flex-col mt-10 space-y-16">
+          <ProfileInvest />
+          <ProfileInvest />
+          <ProfileInvest />
+        </div>
+      ) : (
+        <span>
+          Por favor inicia sesión como comprador para acceder al dashboard
+        </span>
+      )}
+    </LayoutMarket>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const user = await getUser(req, res);
+
+  return {
+    props: {
+      user,
+    },
+  };
+};

@@ -7,6 +7,7 @@ import img1 from "@/public/backgrounds/1.jpg";
 import img2 from "@/public/backgrounds/2.jpg";
 import img3 from "@/public/backgrounds/3.jpg";
 import Link from "next/link";
+
 export default function CardInvest() {
   return (
     <>
@@ -19,8 +20,13 @@ export default function CardInvest() {
               alt=""
               className="w-[100%] h-[100%] object-cover"
             />
-            <div id="glass-bg" className="absolute top-2 left-2 rounded-md p-1 xl:p-3">
-              <h2 className="text-white text-lg font-bold xl:text-xl">Frontino, proyecto</h2>
+            <div
+              id="glass-bg"
+              className="absolute top-2 left-2 rounded-md p-1 xl:p-3"
+            >
+              <h2 className="text-white text-lg font-bold xl:text-xl">
+                Frontino, proyecto
+              </h2>
             </div>
             <Link
               href="/investments"
@@ -35,8 +41,13 @@ export default function CardInvest() {
               alt=""
               className="w-[100%] h-[100%] object-cover"
             />
-            <div id="glass-bg" className="absolute top-2 left-2 rounded-md p-1 xl:p-3">
-              <h2 className="text-white text-lg font-bold xl:text-xl">Guarne, proyecto</h2>
+            <div
+              id="glass-bg"
+              className="absolute top-2 left-2 rounded-md p-1 xl:p-3"
+            >
+              <h2 className="text-white text-lg font-bold xl:text-xl">
+                Guarne, proyecto
+              </h2>
             </div>
             <Link
               href="/investments"
@@ -51,8 +62,13 @@ export default function CardInvest() {
               alt=""
               className="w-[100%] h-[100%] object-cover"
             />
-            <div id="glass-bg" className="absolute top-2 left-2 rounded-md p-1 xl:p-3">
-              <h2 className="text-white text-lg font-bold xl:text-xl">Gómez Plata, proyecto</h2>
+            <div
+              id="glass-bg"
+              className="absolute top-2 left-2 rounded-md p-1 xl:p-3"
+            >
+              <h2 className="text-white text-lg font-bold xl:text-xl">
+                Gómez Plata, proyecto
+              </h2>
             </div>
             <Link
               href="/investments"

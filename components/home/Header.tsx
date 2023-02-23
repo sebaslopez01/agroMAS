@@ -1,19 +1,20 @@
 import Link from "next/link";
-import bg from "@/public/backgrounds/1.jpg";
 import Image from "next/image";
+
+import bg from "@/public/backgrounds/1.jpg";
 
 export default function Header() {
   return (
-    <div className="w-full h-[100vh] relative">
+    <div className="w-full h-screen relative">
       <Image
-        className="w-[100%] h-[100%] object-cover absolute"
+        className="w-full h-full object-cover absolute"
         src={bg}
         alt="background-home"
-      ></Image>
+      />
 
       <div
         // id="glass-bg"
-        className="w-[92%] mx-auto lg:w-[47%] h-[100%] rounded-b-3xl flex flex-col relative lg:ml-5"
+        className="w-[92%] mx-auto lg:w-[47%] h-full rounded-b-3xl flex flex-col relative lg:ml-5"
       >
         <div className="w-[90%] lg:w-[90%] h-[50%] lg:h-[70%] mx-auto flex flex-col justify-end lg:justify-end items-center">
           {/* Phrase */}

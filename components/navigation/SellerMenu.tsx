@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import {
   IconHome,
   IconBuildingStore,
@@ -7,7 +8,8 @@ import {
   IconLogout,
   IconReceipt,
 } from "@tabler/icons-react";
-("@tabler/icons-react");
+
+import { signout } from "@/utils/helpers";
 
 interface SellerMenuProps {
   sellerSales: number;
@@ -24,6 +26,8 @@ export default function SellerMenu({
   sellerInvestors,
   sellerTotalEarnings,
 }: SellerMenuProps) {
+  const router = useRouter();
+
   return (
     <div className="h-[100vh] lg:h-[65vh] w-full flex flex-col lg:flex-row items-center justify-center space-y-2 lg:space-x-2 lg:space-y-0">
       <div className="flex h-[100%] w-[80%] lg:w-[25%] justify-center items-center mb-2 lg:mb-0">
@@ -31,21 +35,33 @@ export default function SellerMenu({
           <div className="flex w-[100%] h-[33%]  space-x-2">
             <div className="flex flex-col justify-center items-center w-[50%] h-[100%] text-sm bg-secondary/50 rounded-xl">
               <span className="text-2xl text-gray-900">{sellerSales}</span>
-              <span className="text-sm text-gray-700">{sellerSales == 1 ? "Venta" : "Ventas"}</span>
+              <span className="text-sm text-gray-700">
+                {sellerSales == 1 ? "Venta" : "Ventas"}
+              </span>
             </div>
             <div className="flex flex-col justify-center items-center w-[50%] h-[100%] text-sm bg-secondary/50 y rounded-xl">
-              <span className="text-2xl text-gray-900">{sellerTotalProducts}</span>
-              <span className="text-sm text-gray-700">{sellerTotalProducts == 1 ? "Producto" : "Productos"}</span>
+              <span className="text-2xl text-gray-900">
+                {sellerTotalProducts}
+              </span>
+              <span className="text-sm text-gray-700">
+                {sellerTotalProducts == 1 ? "Producto" : "Productos"}
+              </span>
             </div>
           </div>
           <div className="flex w-[100%] h-[33%]  space-x-2">
             <div className="flex flex-col justify-center items-center w-[50%] h-[100%] text-sm bg-secondary/50 rounded-xl">
-              <span className="text-2xl text-gray-900">{sellerTotalProjects}</span>
-              <span className="text-sm text-gray-700">{sellerTotalProjects == 1 ? "Proyecto" : "Proyectos"}</span>
+              <span className="text-2xl text-gray-900">
+                {sellerTotalProjects}
+              </span>
+              <span className="text-sm text-gray-700">
+                {sellerTotalProjects == 1 ? "Proyecto" : "Proyectos"}
+              </span>
             </div>
             <div className="flex flex-col justify-center items-center w-[50%] h-[100%] text-sm bg-secondary/50 rounded-xl">
               <span className="text-2xl text-gray-900">{sellerInvestors}</span>
-              <span className="text-sm text-gray-700">{sellerInvestors == 1 ? "Inversionista" : "Inversionistas"}</span>
+              <span className="text-sm text-gray-700">
+                {sellerInvestors == 1 ? "Inversionista" : "Inversionistas"}
+              </span>
             </div>
           </div>
           <div className="flex flex-col items-center justify-center w-[100%] h-[33%] bg-[#6d9773] rounded-xl">
@@ -129,7 +145,10 @@ export default function SellerMenu({
           id="glass-bg"
           className="rounded-xl p-3 hover:translate-x-5 duration-300"
         >
-          <button className="flex h-10 items-center">
+          <button
+            onClick={() => signout(router)}
+            className="flex h-10 items-center"
+          >
             <IconLogout className="w-[22px] h-[22px] stroke-green-900 stroke-[1.2px] mr-2" />
             <span> Cerrar sesión</span>
           </button>

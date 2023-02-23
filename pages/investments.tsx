@@ -1,20 +1,31 @@
-import Meta from "@/components/Meta";
-import Layout from "@/components/Layout";
-import CardProject from "@/components/cards/CardProject";
-import NavBarMarket from "@/components/navigation/NavBarMarket";
-import Footer from "@/components/navigation/Footer";
+import { GetServerSideProps } from "next";
 
-export default function Investments() {
+import { getUser } from "@/utils/auth";
+import { FullUser } from "@/lib/types";
+import CardProject from "@/components/cards/CardProject";
+import LayoutMarket from "@/components/LayoutMarket";
+
+interface InvestmentProps {
+  user: FullUser;
+}
+
+export default function Investments({ user }: InvestmentProps) {
   return (
-    <>
-      <Meta />
-      <NavBarMarket />
-      {/* <div className="w-full h-[100px]"></div> */}
+    <LayoutMarket user={user}>
       <div className="w-[90%] xl:w-[80%] 2xl:w-[70%] h-auto mx-auto mt-10 flex flex-col space-y-8">
         <CardProject />
         <CardProject />
       </div>
-      <Footer />
-    </>
+    </LayoutMarket>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const user = await getUser(req, res);
+
+  return {
+    props: {
+      user,
+    },
+  };
+};
