@@ -21,12 +21,12 @@ export default function NavbarGeneral({ namePage }: NavBarGeneralProps) {
       <div className="w-full h-[60px] flex justify-between items-center bg-[#6D9773] fixed p-3 z-50">
         <IconChevronLeft
           onClick={() => window.history.back()}
-          className="stroke-1 w-[35px] h-[35px] stroke-white cursor-pointer"
+          className="stroke-[1.5px] w-[40px] h-[40px] stroke-white cursor-pointer"
         />
-        <h1 className="text-white text-xl font-bold">{namePage}</h1>
+        <h1 className="text-white text-xl lg:text-2xl font-semibold">{namePage}</h1>
         <IconMenu2
           onClick={handleMenu}
-          className="stroke-1 w-[35px] h-[35px] stroke-white cursor-pointer"
+          className="stroke-[1.5px] w-[35px] h-[35px] stroke-white cursor-pointer"
         />
       </div>
       <div
@@ -52,10 +52,10 @@ export default function NavbarGeneral({ namePage }: NavBarGeneralProps) {
               width="40"
               height="40"
               viewBox="0 0 24 24"
-              stroke-width="2"
+              strokeWidth="2"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               onClick={handleMenu}
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -75,10 +75,10 @@ export default function NavbarGeneral({ namePage }: NavBarGeneralProps) {
                 xmlns="http://www.w3.org/2000/svg"
                 className="icon icon-tabler icon-tabler-home w-[22px] h-[22px] stroke-green-900"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M5 12l-2 0l9 -9l9 9l-2 0"></path>
@@ -97,10 +97,10 @@ export default function NavbarGeneral({ namePage }: NavBarGeneralProps) {
                 xmlns="http://www.w3.org/2000/svg"
                 className="icon icon-tabler icon-tabler-users w-[22px] h-[22px] stroke-green-900"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
@@ -120,10 +120,10 @@ export default function NavbarGeneral({ namePage }: NavBarGeneralProps) {
                 xmlns="http://www.w3.org/2000/svg"
                 className="icon icon-tabler icon-tabler-timeline w-[22px] h-[22px] stroke-green-900"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M4 16l6 -7l5 5l5 -6"></path>
@@ -144,10 +144,10 @@ export default function NavbarGeneral({ namePage }: NavBarGeneralProps) {
                 xmlns="http://www.w3.org/2000/svg"
                 className="icon icon-tabler icon-tabler-message-2 w-[22px] h-[22px] stroke-green-900"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M12 20l-3 -3h-2a3 3 0 0 1 -3 -3v-6a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-2l-3 3"></path>
@@ -166,10 +166,10 @@ export default function NavbarGeneral({ namePage }: NavBarGeneralProps) {
                 xmlns="http://www.w3.org/2000/svg"
                 className="icon icon-tabler icon-tabler-license w-[22px] h-[22px] stroke-green-900"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M15 21h-9a3 3 0 0 1 -3 -3v-1h10v2a2 2 0 0 0 4 0v-14a2 2 0 1 1 2 2h-2m2 -4h-11a3 3 0 0 0 -3 3v11"></path>

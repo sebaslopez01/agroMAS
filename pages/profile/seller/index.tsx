@@ -1,6 +1,6 @@
 import Meta from "@/components/Meta";
 import Footer from "@/components/navigation/Footer";
-import NavBarMarket from "@/components/navigation/NavBarMarket";
+import NavbarGeneral from "@/components/navigation/NavbarGeneral";
 import SellerMenu from "@/components/navigation/SellerMenu";
 import pic from "@/public/perfil1.jpg";
 import Image from "next/image";
@@ -9,7 +9,7 @@ export default function SellerIndexProfile() {
   return (
     <>
       <Meta />
-      <NavBarMarket />
+      <NavbarGeneral namePage="Mi perfil" />
       <div
         className="w-full h-24 md:h-36 lg:h-40 xl:h-40 bg-[#6d9773] rounded-b-xl"
       ></div>

@@ -23,7 +23,7 @@ export default function CardPurchase({
       <div className="flex justify-between w-[100%] items-end mt-2 px-5">
         <h1 className="text-xl font-medium">Pedido #{purchaseId}</h1>
         {purchaseCompleted ? (
-          <div className="flex justify-center items-center h-8 w-40 border-x border-x-secondary">
+          <div className="flex justify-center items-center h-8 w-40 border-x border-x-[#6d9773] rounded-lg">
             <p className="font-medium text-sm">Completado</p>
           </div>
         ) : (
@@ -49,7 +49,7 @@ export default function CardPurchase({
           <span className="text-xl font-medium text-black"> $ 12000</span>
         </p>
       </div>
-      <div className="flex justify-between items-center px-5 mb-3">
+      <div className="flex justify-between items-center px-3 mb-3">
         <div className="flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -57,11 +57,11 @@ export default function CardPurchase({
             width="22"
             height="22"
             viewBox="0 0 24 24"
-            stroke-width="1"
+            strokeWidth="1"
             stroke="black"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <path d="M12 11m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
@@ -71,7 +71,7 @@ export default function CardPurchase({
             {purchaseCity}, {PurchaseState}
           </span>
         </div>
-        <div className=" flex justify-center items-center h-8 w-40 px-3 bg-secondary text-sm">
+        <div className=" flex justify-center items-center h-8 w-40 px-3 rounded-lg bg-[#6d9773] text-sm text-white">
           <span>Ordenar de nuevo</span>
         </div>
       </div>
