@@ -22,7 +22,7 @@ export default function ModalUpdateProduct({
     <>
       <button
         onClick={() => setShowUpdateProduct(true)}
-        className="border border-green-200  text-xs lg:text-sm hover:bg-green-300 p-2 w-[80%]"
+        className="border rounded-lg border-[#6d9773] text-xs lg:text-sm hover:bg-[#6d9773] hover:text-white p-2 w-[50%]"
       >
         Editar
       </button>

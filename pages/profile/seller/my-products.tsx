@@ -6,9 +6,8 @@ import { Product } from "@prisma/client";
 import { getUser } from "@/utils/auth";
 import { FullUser } from "@/lib/types";
 import SellerProduct from "@/components/cards/SellerProduct";
-import LayoutMarket from "@/components/LayoutMarket";
 import ModalAddProduct from "@/components/modals/ModalAddProduct";
-import NavbarGeneral from "@/components/navigation/NavbarGeneral";
+import LayoutGeneral from "@/components/LayoutGeneral";
 
 interface SellerProductsProps {
   user: FullUser;
@@ -35,7 +34,7 @@ export default function SellerProducts({ user }: SellerProductsProps) {
   }, []);
 
   return (
-    <LayoutMarket user={user}>
+    <LayoutGeneral user={user} pageName="Mis productos">
       {user && user.role === "SELLER" ? (
         <div>
           <div className="w-[90%] mx-auto pt-12">
@@ -58,7 +57,7 @@ export default function SellerProducts({ user }: SellerProductsProps) {
           Por favor inicia sesión como vendedor para acceder al dashboard
         </span>
       )}
-    </LayoutMarket>
+    </LayoutGeneral>
   );
 }
 
