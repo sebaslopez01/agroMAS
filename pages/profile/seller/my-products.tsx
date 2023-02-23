@@ -4,15 +4,13 @@ import SellerProduct from "@/components/cards/SellerProduct";
 import Layout from "@/components/Layout";
 import NavBarMarket from "@/components/navigation/NavBarMarket";
 import Footer from "@/components/navigation/Footer";
+import NavbarGeneral from "@/components/navigation/NavbarGeneral";
 
 export default function SellerProducts() {
   return (
     <>
       <Meta />
-      <NavBarMarket />
-      <div className="w-[90%] mx-auto pt-12">
-          <h1 className="text-md lg:text-2xl font-semibold">Mis productos</h1>
-      </div>
+      <NavbarGeneral namePage="Mis productos" />
 
       <button className="fixed right-0 bottom-0 z-50 h-16 lg:h-20 w-16 lg:w-20 m-7 lg:m-10 rounded-full flex items-center justify-center bg-green-900 hover:scale-125 duration-300 hover:bg-green-700">
         <svg

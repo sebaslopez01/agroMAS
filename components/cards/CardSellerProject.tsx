@@ -1,10 +1,8 @@
 import Image from "next/image";
 import test from "@/public/backgrounds/1.jpg";
-import Link from "next/link";
-import ModalInvestment from "../modals/ModalInvestement";
 import { IconMapPin, IconUser } from "@tabler/icons-react";
 
-export default function CardProject() {
+export default function CardSellerProject() {
   return (
     <>
       <div className="w-full h-auto rounded-3xl rounded-br-none lg:rounded-br-3xl lg:rounded-tr-none bg-white shadow-lg flex flex-col lg:flex-row space-y-5 lg:space-y-0">
@@ -25,7 +23,7 @@ export default function CardProject() {
             <span className="text-md md:text-lg font-semibold text-gray-600">
               Patricia Terán
             </span>
-          </div>{" "}
+          </div>
           <p className="text-sm md:text-lg">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
             dolorem delectus ex? Tempore, illo! Sequi aliquid dolor eum autem?
@@ -33,14 +31,14 @@ export default function CardProject() {
           </p>
           <div className="w-full h-auto flex justify-between md:justify-evenly">
             <div className="flex flex-col justify-center text-center">
-              <span className="text-lg font-semibold text-gray-700 ">15%</span>
-              <span className="text-md text-gray-500">Retorno</span>
+              <span className="text-lg font-semibold text-gray-700 ">0</span>
+              <span className="text-md text-gray-500">Inversionistas</span>
             </div>
             <div className="flex flex-col justify-center text-center">
               <span className="text-lg font-semibold text-gray-700 ">
-                150 mil
+                $ 1'500.000
               </span>
-              <span className="text-md text-gray-500">Monto mínimo</span>
+              <span className="text-md text-gray-500">Invertido</span>
             </div>
           </div>
           <div className="w-full h-auto flex flex-col">
@@ -57,15 +55,11 @@ export default function CardProject() {
           </div>
           <div className="w-full h-auto flex justify-between">
             <div className="flex space-x-2 items-center">
-              <IconMapPin className="stroke-[1.2px] w-[19px] h-[19px] md:w-[21px] md:h-[21px] stroke-gray-600" />
+                <IconMapPin className="stroke-[1.2px] w-[19px] h-[19px] md:w-[21px] md:h-[21px] stroke-gray-600"/>
               <span className="text-md font-semibold md:text-lg text-gray-600">
                 Medellín, Antioquia
               </span>
-            </div>
-            <ModalInvestment />
-            {/* <Link href="/" className="w-[40%] bg-[#6D9773] p-1 rounded-md text-white font-semibold md:text-lg hover:scale-105 duration-300 flex justify-center">
-              Invierte
-            </Link> */}
+            </div>            
           </div>
         </div>
       </div>
