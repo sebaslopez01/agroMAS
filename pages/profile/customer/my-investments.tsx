@@ -1,36 +1,21 @@
 import Meta from "@/components/Meta";
 import ProfileInvest from "@/components/cards/ProfileInvest";
 import Link from "next/link";
-import NavBarMarket from "@/components/navigation/NavBarMarket";
+import NavBarGeneral from "@/components/navigation/NavbarGeneral";
 import Footer from "@/components/navigation/Footer";
+import ModalInvestment from "@/components/modals/ModalInvestement";
+import Image from "next/image";
+import test from "@/public/backgrounds/1.jpg";
 
 export default function CustomerInvestments() {
   return (
     <>
       <Meta />
-      <NavBarMarket />
-      
-      <div className="flex flex-col w-full justify-center pt-5">
-        <ProfileInvest
-          proyectName="Compra de burritos sabaneros"
-          proyectOwner="Un campeche"
-          shortDescription="Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, eos. Saepe, quae deserunt similique recusandae laboriosam ea maxime illum illo fuga aspernatur explicabo, voluptatum dolore quaerat earum ipsum animi quam."
-        />
-        <ProfileInvest
-          proyectName="Platica pa' sembrar maíz"
-          proyectOwner="Otro campeche"
-          shortDescription="Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, eos. Saepe, quae deserunt similique recusandae laboriosam ea maxime illum illo fuga aspernatur explicabo, voluptatum dolore quaerat earum ipsum animi quam."
-        />
-        <ProfileInvest
-          proyectName="Platica pa' sembrar maíz"
-          proyectOwner="Otro campeche"
-          shortDescription="Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, eos. Saepe, quae deserunt similique recusandae laboriosam ea maxime illum illo fuga aspernatur explicabo, voluptatum dolore quaerat earum ipsum animi quam."
-        />
-        <ProfileInvest
-          proyectName="Platica pa' sembrar maíz"
-          proyectOwner="Otro campeche"
-          shortDescription="Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, eos. Saepe, quae deserunt similique recusandae laboriosam ea maxime illum illo fuga aspernatur explicabo, voluptatum dolore quaerat earum ipsum animi quam."
-        />
+      <NavBarGeneral namePage="Mis inversiones" />
+      <div className="w-[80%] mx-auto h-auto flex flex-col mt-10 space-y-16">
+        <ProfileInvest />
+        <ProfileInvest />
+        <ProfileInvest />
       </div>
       <Footer />
     </>
