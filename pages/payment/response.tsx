@@ -11,15 +11,32 @@ import LayoutMarket from "@/components/LayoutMarket";
 interface ResponseWompiProps {
   email: string;
   user: FullUser;
+  transactionId: string;
 }
 
-export default function ResponseWompi({ email, user }: ResponseWompiProps) {
+export default function ResponseWompi({
+  email,
+  user,
+  transactionId,
+}: ResponseWompiProps) {
   const resRef = useRef(true);
   const { state, dispatch } = useContext(Store);
 
   const increaseSales = async () => {
     try {
       await axios.post("/api/payment/increase-sales", state.cart);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const createPurchase = async () => {
+    try {
+      const data = {
+        paymentId: transactionId,
+      };
+
+      await axios.post("/api/payment/create-purchase");
     } catch (e) {
       console.log(e);
     }
@@ -71,6 +88,7 @@ export const getServerSideProps: GetServerSideProps = async ({
       props: {
         email,
         user,
+        transactionId,
       },
     };
   } catch (e) {

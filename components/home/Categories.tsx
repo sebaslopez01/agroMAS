@@ -1,8 +1,8 @@
+import Link from "next/link";
+import Image from "next/image";
+
 import category1 from "@/public/categoryImages/1.1.jpg";
 import category2 from "@/public/categoryImages/8.jpg";
-import Link from "next/link";
-
-import Image from "next/image";
 
 export default function Categories() {
   return (
@@ -88,7 +88,7 @@ export default function Categories() {
               </p>
               <Link
                 className="w-[60%] mx-auto md:w-[50%] lg:mx-0 lg:w-[37%] h-[40px] lg:h-[50px] border border-green-900 hover:scale-110 duration-500 text-black flex justify-center items-center text-md lg:text-lg font-medium"
-                href="marketplace"
+                href="/investments"
               >
                 Invierte ahora
               </Link>

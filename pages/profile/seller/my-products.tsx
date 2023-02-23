@@ -45,12 +45,9 @@ export default function SellerProducts({ user }: SellerProductsProps) {
             {prods?.map((product) => (
               <SellerProduct
                 key={product.id}
-                id={product.id}
-                name={product.name}
-                price={product.price}
-                sold={product.quantitySold}
-                publishDate={product.createdAt}
+                product={product}
                 getProducts={getProducts}
+                user={user}
               />
             ))}
           </div>
