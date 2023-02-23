@@ -39,12 +39,12 @@ export default function Contact() {
             Déjanos un mensaje
           </label>
           <textarea
-            maxLength={200}
             className="border-transparent focus:border-transparent focus:shadow-md focus:ring-0 rounded-md p-3 h-[100px] placeholder:text-gray-400 resize-none"
             name=""
             id=""
             cols={30}
             rows={10}
+            maxLength={250}
             placeholder="Escribe tu mensaje..."
           ></textarea>
         </div>
