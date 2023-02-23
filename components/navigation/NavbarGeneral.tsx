@@ -1,15 +1,20 @@
-import { IconChevronLeft, IconMenu2, IconX } from "@tabler/icons-react";
+import { IconChevronLeft, IconMenu2 } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import ModalNavbarMarket from "@/components/modals/ModalNavbarMarket";
+import { useState } from "react";
+import { useRouter } from "next/router";
+
+import { FullUser } from "@/lib/types";
 import agroLogo from "@/public/logo.svg";
+import ModalNavBar from "../modals/ModalNavbar";
 
 interface NavBarGeneralProps {
-  namePage: string;
+  pageName: string;
+  user: FullUser;
 }
 
-export default function NavbarGeneral({ namePage }: NavBarGeneralProps) {
+export default function NavbarGeneral({ pageName, user }: NavBarGeneralProps) {
+  const router = useRouter();
   const [menu, setMenu] = useState(false);
 
   const handleMenu = () => {
@@ -20,10 +25,12 @@ export default function NavbarGeneral({ namePage }: NavBarGeneralProps) {
     <>
       <div className="w-full h-[60px] flex justify-between items-center bg-[#6D9773] fixed p-3 z-50">
         <IconChevronLeft
-          onClick={() => window.history.back()}
+          onClick={() => router.back()}
           className="stroke-[1.5px] w-[40px] h-[40px] stroke-white cursor-pointer"
         />
-        <h1 className="text-white text-xl lg:text-2xl font-semibold">{namePage}</h1>
+        <h1 className="text-white text-xl lg:text-2xl font-semibold">
+          {pageName}
+        </h1>
         <IconMenu2
           onClick={handleMenu}
           className="stroke-[1.5px] w-[35px] h-[35px] stroke-white cursor-pointer"
@@ -63,7 +70,7 @@ export default function NavbarGeneral({ namePage }: NavBarGeneralProps) {
               <path d="M6 6l12 12"></path>
             </svg>
           </div>
-          <ModalNavbarMarket />
+          <ModalNavBar user={user} isMarket />
         </div>
         <ul className="pl-5">
           <li className="py-2 hover:translate-x-3 duration-300">
@@ -90,7 +97,7 @@ export default function NavbarGeneral({ namePage }: NavBarGeneralProps) {
           </li>
           <li className="py-2 hover:translate-x-3 duration-300">
             <Link
-              href="nosotros"
+              href="/nosotros"
               className="text-xl mt-5 text-green-900 font-medium flex items-center space-x-3"
             >
               <svg

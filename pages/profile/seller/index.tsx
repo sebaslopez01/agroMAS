@@ -2,19 +2,18 @@ import Image from "next/image";
 import { GetServerSideProps } from "next";
 
 import { getUser } from "@/utils/auth";
-import { User } from "@prisma/client";
-import LayoutMarket from "@/components/LayoutMarket";
+import { FullUser } from "@/lib/types";
 import SellerMenu from "@/components/navigation/SellerMenu";
 import pic from "@/public/perfil1.jpg";
-import NavbarGeneral from "@/components/navigation/NavbarGeneral";
+import LayoutGeneral from "@/components/LayoutGeneral";
 
 interface SellerIndexProfileProps {
-  user: User | null;
+  user: FullUser;
 }
 
 export default function SellerIndexProfile({ user }: SellerIndexProfileProps) {
   return (
-    <LayoutMarket user={user}>
+    <LayoutGeneral user={user} pageName="Dashboard">
       <div className="w-full h-24 md:h-36 lg:h-40 xl:h-40 bg-[#6d9773] rounded-b-xl"></div>
       {user && user.role === "SELLER" ? (
         <>
@@ -30,7 +29,7 @@ export default function SellerIndexProfile({ user }: SellerIndexProfileProps) {
             <div className="flex flex-col justify-center text-center lg:text-left p-5">
               <span className="text-gray-500">Hola,</span>
               <span className="text-3xl font-semibold text-gray-700">
-                Cualquier nombre
+                {`${user.firstName} ${user.lastName}`}
               </span>
               <span className="text-gray-500">
                 Estás registrado como: <b>Vendedor</b>
@@ -52,7 +51,7 @@ export default function SellerIndexProfile({ user }: SellerIndexProfileProps) {
           Por favor inicia sesión como vendedor para acceder al dashboard
         </span>
       )}
-    </LayoutMarket>
+    </LayoutGeneral>
   );
 }
 

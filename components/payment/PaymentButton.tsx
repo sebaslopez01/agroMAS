@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 
 import { FullUser } from "@/lib/types";
 import LoginForm from "../forms/LoginForm";
-import RegisterForm from "../forms/RegisterForm";
 import { Modal, ModalHeader } from "../dynamic/Modal";
 
 interface PaymentButtonProps {
@@ -18,7 +17,6 @@ export default function PaymentButton({ amount, user }: PaymentButtonProps) {
   // const [integrityCode, setIntegrityCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
-  const [showSignup, setShowSignup] = useState(false);
 
   // const getSignature = async () => {
   //   const res = await axios.post("/api/payment/generate-signature", {
@@ -109,22 +107,7 @@ export default function PaymentButton({ amount, user }: PaymentButtonProps) {
         className="h-[120vh]"
       >
         <ModalHeader className="h-0"></ModalHeader>
-        <LoginForm setShowLogin={setShowLogin} setShowSignup={setShowSignup} />
-      </Modal>
-
-      {/* Modal SignIn */}
-      <Modal
-        show={showSignup}
-        size="md"
-        popup={true}
-        onClose={() => setShowSignup(!showSignup)}
-        className="h-[120vh]"
-      >
-        <ModalHeader className="h-0 p-0"></ModalHeader>
-        <RegisterForm
-          setShowLogin={setShowLogin}
-          setShowSignup={setShowSignup}
-        />
+        <LoginForm setShowLogin={setShowLogin} />
       </Modal>
     </>
   );
