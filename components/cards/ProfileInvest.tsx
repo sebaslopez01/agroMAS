@@ -1,5 +1,6 @@
 import Image from "next/image";
 import test from "@/public/backgrounds/1.jpg";
+import { IconMapPin, IconUser } from "@tabler/icons-react";
 
 export default function ProfileInvest() {
   return (
@@ -17,16 +18,28 @@ export default function ProfileInvest() {
         {/* Description */}
         <div className="w-[100%] lg:w-[50%] lg:h-full flex flex-col space-y-4 md:space-y-6 p-5 lg:pb-0 ">
           <h1 className="text-lg md:text-2xl font-bold">Cañas gordas</h1>
-          <h2 className="text-md md:text-lg font-semibold">Patricia Terán</h2>
+          <div className="flex space-x-2">
+            <IconUser className="stroke-[1.2px] stroke-gray-600" />
+            <span className="text-md md:text-lg font-semibold text-gray-600">
+              Patricia Terán
+            </span>
+          </div>{" "}
           <p className="text-sm md:text-lg">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
             dolorem delectus ex? Tempore, illo! Sequi aliquid dolor eum autem?
             Nemo cum iste dolores quam atque, soluta porro dolore officia est!
           </p>
           <div className="w-full h-auto flex justify-between md:justify-evenly">
-            <div className="p-5 rounded-full shadow-lg">15%</div>
-            <div className="p-5 rounded-full shadow-lg">150</div>
-            <div className="p-5 rounded-full shadow-lg">Aro</div>
+            <div className="flex flex-col justify-center text-center">
+              <span className="text-lg font-semibold text-gray-700 ">15%</span>
+              <span className="text-md text-gray-500">Retorno</span>
+            </div>
+            <div className="flex flex-col justify-center text-center">
+              <span className="text-lg font-semibold text-gray-700 ">
+                150 mil
+              </span>
+              <span className="text-md text-gray-500">Monto mínimo</span>
+            </div>
           </div>
           <div className="w-full h-auto flex flex-col">
             <span className="md:text-lg font-bold text-gray-600">
@@ -38,24 +51,12 @@ export default function ProfileInvest() {
               </div>
               <span className="w-[10%] font-bold md:text-lg">80%</span>
             </div>
+            <span className="md:text-lg text-gray-600">Meta: $ 45'000.000</span>
           </div>
           <div className="w-full h-auto flex justify-between">
             <div className="flex space-x-2 items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-map-pin w-[19px] h-[19px] md:w-[21px] md:h-[21px]"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="black"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M12 11m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-                <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"></path>
-              </svg>
-              <span className="text-md font-bold md:text-lg">
+              <IconMapPin className="stroke-[1.2px] w-[19px] h-[19px] md:w-[21px] md:h-[21px] stroke-gray-600" />
+              <span className="text-md font-semibold md:text-lg text-gray-600">
                 Medellín, Antioquia
               </span>
             </div>
