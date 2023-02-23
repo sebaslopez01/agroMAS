@@ -1,25 +1,16 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
-import dynamic from "next/dynamic";
 import { toast } from "react-toastify";
 
 import { FullUser } from "@/lib/types";
 import LoginForm from "../forms/LoginForm";
 import RegisterForm from "../forms/RegisterForm";
+import { Modal, ModalHeader } from "../dynamic/Modal";
 
 interface PaymentButtonProps {
   amount: number;
   user: FullUser;
 }
-
-const Modal = dynamic(() => import("flowbite-react").then((mod) => mod.Modal), {
-  ssr: false,
-});
-
-const ModalHeader = dynamic(
-  () => import("flowbite-react").then((mod) => mod.Modal.Header),
-  { ssr: false }
-);
 
 export default function PaymentButton({ amount, user }: PaymentButtonProps) {
   // const effectRun = useRef(true);

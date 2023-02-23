@@ -1,8 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { State, City } from "country-state-city";
-import { Dispatch, SetStateAction, useState } from "react";
-import { Product } from "@prisma/client";
-import axios from "axios";
+import { useState } from "react";
 import { useRouter } from "next/router";
 
 interface FiltersData {

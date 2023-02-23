@@ -31,19 +31,22 @@ export default function Marketplace({ user, products }: MarketplaceProps) {
         <Filters />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-5 lg:gap-8 justify-items-center w-[90%] mx-auto">
           {products.length > 0 ? (
-            products.map((product) => (
-              <ItemMarket
-                key={product.id}
-                productId={product.id}
-                productName={capitalizeString(product.name)}
-                seller={`${product.seller.user.firstName} ${product.seller.user.lastName}`}
-                productQuantity={product.quantity}
-                productPrice={product.price}
-                undPerItem="Kg"
-                productCity={product.city}
-                productState={product.state}
-              />
-            ))
+            products.map(
+              (product) =>
+                product.quantity > 0 && (
+                  <ItemMarket
+                    key={product.id}
+                    productId={product.id}
+                    productName={capitalizeString(product.name)}
+                    seller={`${product.seller.user.firstName} ${product.seller.user.lastName}`}
+                    productQuantity={product.quantity}
+                    productPrice={product.price}
+                    undPerItem="Kg"
+                    productCity={product.city}
+                    productState={product.state}
+                  />
+                )
+            )
           ) : (
             <span>No se encontraron productos, prueba con otra busqueda</span>
           )}

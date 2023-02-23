@@ -97,13 +97,13 @@ export default function ShoppingCart({ user }: ShoppingCartProps) {
             </div>
             <hr />
             <div className="w-full flex justify-between">
-              <h2 className="text-xl font-bold">Total</h2>
-              <span className="text-lg font-semibold">$ {getSubtotal()}</span>
+              <h2 className="text-lg font-bold">Cantidad</h2>
+              <span className="font-semibold">{getQuantity()}</span>
             </div>
             <hr />
             <div className="w-full flex justify-between">
-              <h2 className="text-lg font-bold">Cantidad</h2>
-              <span className="font-semibold">{getQuantity()}</span>
+              <h2 className="text-xl font-bold">Total</h2>
+              <span className="text-lg font-semibold">$ {getSubtotal()}</span>
             </div>
 
             <div className="w-full lg:h-[100px] flex justify-evenly xl:justify-between lg:flex-col lg:items-center xl:flex-row 2xl:justify-evenly">

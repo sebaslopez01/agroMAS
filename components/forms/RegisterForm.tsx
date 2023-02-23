@@ -35,7 +35,7 @@ function RegisterForm({ setShowLogin, setShowSignup }: RegisterFormProps) {
     if (res.status === 200) {
       setShowLogin(false);
       setShowSignup(false);
-      router.push("/");
+      router.push(router.asPath);
     }
   };
 
@@ -89,37 +89,6 @@ function RegisterForm({ setShowLogin, setShowSignup }: RegisterFormProps) {
             <option value="seller">Vendedor</option>
           </select>
         </div>
-        {/* Documento */}
-        {/* <div className="flex flex-col">
-              <label htmlFor="">Tipo de documento</label>
-              <select
-                name="idTypes"
-                id="ids"
-                required
-                className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
-              >
-                <option className="cursor-pointer" value="seleccionar" selected>
-                  Seleccionar
-                </option>
-                <option className="cursor-pointer" value="cedula">
-                  Cédula de Ciudadanía
-                </option>
-                <option className="cursor-pointer" value="tarjetaDeIdentidad">
-                  Cédula de Extranjería
-                </option>
-                <option className="cursor-pointer" value="Contraseña">
-                  Pasaporte
-                </option>
-              </select>
-            </div> */}
-        {/* <div className="flex flex-col">
-              <label htmlFor="nId">Nº de documento</label>
-              <input
-                className="rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
-                type="text"
-                placeholder="Nº de documento"
-              />
-            </div> */}
         <div className="flex flex-col">
           <label>Correo electrónico</label>
           <input
