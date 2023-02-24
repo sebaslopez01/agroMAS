@@ -188,7 +188,7 @@ export default function AddInvestmentForm({
       </div>
       <button
         type="submit"
-        className="p-1 border whitespace-nowrap rounded-md border-black hover:scale-110 duration-300 hover:bg-white w-[30%]"
+        className="p-1 border w-[50%] rounded-md border-black hover:scale-110 duration-300 hover:bg-white "
       >
         Agregar Proyecto
       </button>
