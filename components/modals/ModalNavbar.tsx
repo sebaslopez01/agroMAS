@@ -30,7 +30,7 @@ export default function ModalNavBar({
 
           user.role === "SELLER"
             ? router.push("/profile/seller")
-            : router.push("/profile/buyer");
+            : router.push("/profile/customer");
         }}
       >
         <svg

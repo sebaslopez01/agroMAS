@@ -4,6 +4,7 @@ import Image from "next/image";
 import test from "@/public/backgrounds/1.jpg";
 import ModalInvestment from "../modals/ModalInvestement";
 import { Investment } from "@prisma/client";
+import { FullUser } from "@/lib/types";
 
 interface CardProjectProps {
   investment: Investment & {
@@ -14,9 +15,10 @@ interface CardProjectProps {
       };
     };
   };
+  user: FullUser;
 }
 
-export default function CardProject({ investment }: CardProjectProps) {
+export default function CardProject({ investment, user }: CardProjectProps) {
   return (
     <div className="w-full h-auto rounded-3xl rounded-br-none lg:rounded-br-3xl lg:rounded-tr-none bg-white shadow-lg flex flex-col lg:flex-row space-y-5 lg:space-y-0">
       {/* Image */}
@@ -74,7 +76,7 @@ export default function CardProject({ investment }: CardProjectProps) {
               {`${investment.city}, ${investment.state}`}
             </span>
           </div>
-          <ModalInvestment />
+          <ModalInvestment user={user} />
           {/* <Link href="/" className="w-[40%] bg-[#6D9773] p-1 rounded-md text-white font-semibold md:text-lg hover:scale-105 duration-300 flex justify-center">
               Invierte
             </Link> */}
