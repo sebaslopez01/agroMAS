@@ -38,10 +38,10 @@ export default async function handler(
 
     res
       .status(200)
-      .json({ investments, message: "Productos encontrados con éxito" });
+      .json({ investments, message: "Inversiones encontradas con éxito" });
   } catch (e) {
     console.log(e);
 
-    res.status(400).json({ message: "Error buscando los productos" });
+    res.status(400).json({ message: "Error buscando las inversiones" });
   }
 }
