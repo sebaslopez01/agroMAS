@@ -15,7 +15,7 @@ interface ItemMarketProps {
   undPerItem: string;
   productCity: string;
   productState: string;
-  productImage?: StaticImageData;
+  productImage?: string | StaticImageData | null;
 }
 
 export default function ItemMarket({
@@ -53,7 +53,9 @@ export default function ItemMarket({
       <div className="flex h-[55%] w-full rounded-xl">
         <Image
           className="rounded-2xl w-full h-full object-cover"
-          src={fruta1}
+          src={productImage || fruta1}
+          width={200}
+          height={200}
           alt="Perita"
         />
       </div>

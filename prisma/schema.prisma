@@ -40,6 +40,7 @@ model Product {
   measure       Measure   @default(KG)
   quantity      Float
   quantitySold  Int       @default(0) @map("quantity_sold")
+  image         String?
   discountPrice Float?    @map("discount_price")
   description   String    @db.VarChar(250)
   city          String    @db.VarChar(60)
