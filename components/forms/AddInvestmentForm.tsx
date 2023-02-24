@@ -6,47 +6,54 @@ import { State, City } from "country-state-city";
 
 import { FullUser } from "@/lib/types";
 
-interface AddProductData {
-  name: string;
-  price: string;
-  quantity: string;
-  measure: "KG" | "LB" | "UND";
-  description: string;
+interface AddInvestmentData {
+  title: string;
+  investmentTarget: string;
+  returnInvestment: string;
+  minimumAmount: string;
+  shortDescription: string;
   city: string;
   state: string;
 }
 
-interface AddProductFormProps {
-  setShowAddProduct: Dispatch<SetStateAction<boolean>>;
-  getProducts: () => Promise<void>;
+interface AddInvestmentFormProps {
+  setShowAddInvestment: Dispatch<SetStateAction<boolean>>;
+  getInvestments: () => Promise<void>;
   user: FullUser;
 }
 
-export default function AddProductForm({
-  setShowAddProduct,
-  getProducts,
+export default function AddInvestmentForm({
+  setShowAddInvestment,
+  getInvestments,
   user,
-}: AddProductFormProps) {
-  const { register, handleSubmit, control, reset } = useForm<AddProductData>();
+}: AddInvestmentFormProps) {
+  const { register, handleSubmit, control, reset } =
+    useForm<AddInvestmentData>();
   const [stateCode, setStateCode] = useState("");
 
-  const onSubmit: SubmitHandler<AddProductData> = async (data) => {
-    const price = parseInt(data.price.replaceAll(".", "").slice(1));
-    const quantity = parseInt(data.quantity);
+  const onSubmit: SubmitHandler<AddInvestmentData> = async (data) => {
+    const investmentTarget = parseInt(
+      data.investmentTarget.replaceAll(".", "").slice(1)
+    );
+    const minimumAmount = parseInt(
+      data.minimumAmount.replaceAll(".", "").slice(1)
+    );
+    const returnInvestment = parseInt(data.returnInvestment.slice(0, -2)) / 100;
     const state = State.getStateByCodeAndCountry(data.state, "CO")?.name;
 
     const res = await axios.post("/api/dashboard/add-product", {
       ...data,
-      price,
-      quantity,
+      investmentTarget,
+      minimumAmount,
+      returnInvestment,
       state,
       sellerId: user?.seller?.id,
     });
 
     if (res.status === 201) {
-      setShowAddProduct(false);
+      setShowAddInvestment(false);
       reset();
-      getProducts();
+      getInvestments();
     }
   };
 
@@ -55,12 +62,12 @@ export default function AddProductForm({
       onSubmit={handleSubmit(onSubmit)}
       className="w-full flex flex-col items-center justify-center pb-5 pt-3 space-y-2"
     >
-      <h1 className="text-xl font-bold">Nuevo Producto</h1>
+      <h1 className="text-xl font-bold">Nuevo Proyecto</h1>
       <div className="w-[80%] flex flex-col space-y-3">
         <div className="flex flex-col">
-          <label>Nombre</label>
+          <label>Nombre del proyecto</label>
           <input
-            {...register("name", { required: true, maxLength: 60 })}
+            {...register("title", { required: true, maxLength: 60 })}
             className="h-[30px] rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
             type="text"
             required
@@ -68,9 +75,9 @@ export default function AddProductForm({
           />
         </div>
         <div className="flex flex-col">
-          <label>Precio</label>
+          <label>Objetivo de inversión</label>
           <Controller
-            name="price"
+            name="investmentTarget"
             control={control}
             render={({ field: { onChange, name, value } }) => (
               <NumericFormat
@@ -89,27 +96,39 @@ export default function AddProductForm({
           />
         </div>
         <div className="flex flex-col">
-          <label>Medida</label>
-          <select
-            {...register("measure", { required: true })}
-            name="measure"
-            id="roles"
-            required
-            className="h-[30px] p-0 pl-2 text-sm rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
-          >
-            <option value="KG">Kilogramos</option>
-            <option value="LB">Libras</option>
-            <option value="UND">Unidad</option>
-          </select>
-        </div>
-        <div className="flex flex-col">
-          <label>Cantidad disponible</label>
+          <label>Retorno de la inversión</label>
           <Controller
-            name="quantity"
+            name="returnInvestment"
             control={control}
             render={({ field: { onChange, name, value } }) => (
               <NumericFormat
                 allowNegative={false}
+                suffix=" %"
+                isAllowed={(values) => {
+                  const value = parseInt(values.value);
+                  return isNaN(value) || value <= 100;
+                }}
+                decimalScale={0}
+                className="h-[30px] rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
+                onChange={onChange}
+                name={name}
+                value={value}
+                required
+              />
+            )}
+          />
+        </div>
+        <div className="flex flex-col">
+          <label>Inversión mínima</label>
+          <Controller
+            name="minimumAmount"
+            control={control}
+            render={({ field: { onChange, name, value } }) => (
+              <NumericFormat
+                allowNegative={false}
+                prefix="$"
+                thousandSeparator="."
+                decimalSeparator=","
                 decimalScale={0}
                 className="h-[30px] rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
                 onChange={onChange}
@@ -123,7 +142,10 @@ export default function AddProductForm({
         <div className="flex flex-col">
           <label>Descripción</label>
           <input
-            {...register("description", { required: true, maxLength: 250 })}
+            {...register("shortDescription", {
+              required: true,
+              maxLength: 250,
+            })}
             className="h-[30px] rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
             type="text"
             required
@@ -170,7 +192,7 @@ export default function AddProductForm({
         type="submit"
         className="p-1 border whitespace-nowrap rounded-md border-black hover:scale-110 duration-300 hover:bg-white w-[30%]"
       >
-        Agregar Producto
+        Agregar Proyecto
       </button>
     </form>
   );
