@@ -27,12 +27,13 @@ function Filters() {
   };
 
   return (
-    <div className="flex flex-row items-center justify-center pb-5">
+    <div className="flex flex-col lg:flex-row items-center justify-center pb-5">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-row items-center justify-center space-x-4"
+        className="flex flex-col lg:flex-row items-center justify-center space-y-4 lg:space-y-0 lg:space-x-4 rounded-md border-gray-500"
       >
         <select
+          className="h-[30px] w-[80%] p-0 pl-2 text-sm rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
           {...register("state")}
           onChange={(e) => {
             setStateCode(e.target.value);
@@ -45,7 +46,10 @@ function Filters() {
             </option>
           ))}
         </select>
-        <select {...register("city")}>
+        <select
+          className="h-[30px] p-0 pl-2 text-sm rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
+          {...register("city")}
+        >
           <option>Ciudad:</option>
           {City.getCitiesOfState("CO", stateCode).map((city, index) => (
             <option key={index} value={city.name}>
@@ -53,7 +57,12 @@ function Filters() {
             </option>
           ))}
         </select>
-        <button type="submit">Filtrar</button>
+        <button
+          className="p-1 border border-black rounded-md hover:scale-110 duration-500 hover:bg-white w-[30%]"
+          type="submit"
+        >
+          Filtrar
+        </button>
       </form>
     </div>
   );
