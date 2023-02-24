@@ -26,6 +26,7 @@ export default async function handler(
     phone,
     email,
     password,
+    terms,
   } = req.body;
 
   const userExists = await prisma.user.findFirst({
@@ -46,7 +47,7 @@ export default async function handler(
       lastName,
       city,
       state,
-      terms: true,
+      terms,
       documentType,
       documentNumber,
       phone,
