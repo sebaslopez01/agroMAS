@@ -30,10 +30,10 @@ function Filters() {
     <div className="flex flex-col lg:flex-row items-center justify-center pb-5">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col lg:flex-row items-center justify-center space-y-4 lg:space-y-0 lg:space-x-4 rounded-md border-gray-500"
+        className="w-[80%] flex flex-col lg:flex-row items-center justify-center space-y-4 lg:space-y-0 lg:space-x-4 rounded-md border-gray-500"
       >
         <select
-          className="h-[30px] w-[80%] p-0 pl-2 text-sm rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
+          className="h-[30px] w-full lg:w-1/3 p-0 pl-2 text-sm rounded-md border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
           {...register("state")}
           onChange={(e) => {
             setStateCode(e.target.value);
@@ -47,7 +47,7 @@ function Filters() {
           ))}
         </select>
         <select
-          className="h-[30px] p-0 pl-2 text-sm rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
+          className="h-[30px] w-full lg:w-1/3 p-0 pl-2 text-sm rounded-md border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
           {...register("city")}
         >
           <option>Ciudad:</option>
@@ -58,7 +58,7 @@ function Filters() {
           ))}
         </select>
         <button
-          className="p-1 border border-black rounded-md hover:scale-110 duration-500 hover:bg-white w-[30%]"
+          className="p-1 h-[30px] text-center w-full lg:w-1/3 border text-white bg-[#6D9773] rounded-md hover:scale-110 duration-500 "
           type="submit"
         >
           Filtrar
