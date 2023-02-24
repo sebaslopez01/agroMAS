@@ -38,7 +38,6 @@ export default function UpdateProductForm({
   );
 
   const onSubmit: SubmitHandler<UpdateProductData> = async (data) => {
-    console.log(data);
     const price = parseInt(data.price.replaceAll(".", "").slice(1));
     const quantity = parseInt(data.quantity);
     const state = State.getStateByCodeAndCountry(data.state, "CO")?.name;

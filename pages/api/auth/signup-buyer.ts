@@ -24,7 +24,6 @@ export default async function handler(
     city,
     state,
     terms,
-    role,
   } = req.body;
 
   if (req.method !== "POST")
@@ -60,7 +59,7 @@ export default async function handler(
         },
       },
       isActive: true,
-      role,
+      role: "BUYER",
     },
   });
 

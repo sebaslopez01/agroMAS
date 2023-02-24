@@ -24,7 +24,11 @@ export default function Investments({ user, investments }: InvestmentProps) {
     <LayoutMarket user={user}>
       <div className="w-[90%] xl:w-[80%] 2xl:w-[70%] h-auto mx-auto mt-10 flex flex-col space-y-8">
         {investments.map((investment) => (
-          <CardProject key={investment.id} investment={investment} />
+          <CardProject
+            key={investment.id}
+            investment={investment}
+            user={user}
+          />
         ))}
       </div>
     </LayoutMarket>

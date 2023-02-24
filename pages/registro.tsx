@@ -35,12 +35,17 @@ export default function Register({ user }: RegisterProps) {
   const [stateCode, setStateCode] = useState("");
 
   const onSubmit: SubmitHandler<RegisterData> = async (data) => {
+    console.log(data);
+    const state = State.getStateByCodeAndCountry(data.state, "CO")?.name;
     const endpoint =
       data.role === "SELLER"
         ? "/api/auth/signup-seller"
         : "/api/auth/signup-buyer";
 
-    const res = await axios.post(endpoint, data);
+    const res = await axios.post(endpoint, {
+      ...data,
+      state,
+    });
 
     if (res.status === 201) {
       router.push("/");
@@ -50,11 +55,10 @@ export default function Register({ user }: RegisterProps) {
   return (
     <LayoutGeneral user={user} pageName="Registro">
       <form
+        id="registerForm"
         onSubmit={handleSubmit(onSubmit)}
         className="w-full lg:w-[80%] mx-auto mt-5 flex flex-col items-center justify-center p-3 space-y-5"
       >
-        {/* <h1 className="text-3xl font-bold text-gray-700">Registro</h1> */}
-
         <div className="w-full md:w-[90%] lg:w-[80%] flex flex-col space-y-5">
           <div className="flex flex-col items-center space-y-2 md:space-y-0 md:flex-row w-full h-auto md:space-x-5 ">
             <div className="w-[80%] md:w-[50%] flex flex-col space-y-2">
@@ -89,7 +93,6 @@ export default function Register({ user }: RegisterProps) {
               </label>
               <select
                 {...register("documentType", { required: true })}
-                name="idTypes"
                 id="ids"
                 required
                 className="input cursor-pointer"
@@ -115,7 +118,7 @@ export default function Register({ user }: RegisterProps) {
                   maxLength: 20,
                 })}
                 className="input"
-                type="number"
+                type="text"
                 required
                 maxLength={20}
               />
@@ -134,7 +137,6 @@ export default function Register({ user }: RegisterProps) {
               </label>
               <select
                 {...register("role", { required: true })}
-                name="rol"
                 id="roles"
                 required
                 className="input cursor-pointer"
@@ -149,7 +151,6 @@ export default function Register({ user }: RegisterProps) {
               </label>
               <select
                 {...register("state", { required: true })}
-                name="departamentos"
                 id="state"
                 required
                 className="input cursor-pointer"
@@ -170,7 +171,6 @@ export default function Register({ user }: RegisterProps) {
               </label>
               <select
                 {...register("city", { required: true })}
-                name="ciudades"
                 id="city"
                 required
                 className="input cursor-pointer"
@@ -189,11 +189,12 @@ export default function Register({ user }: RegisterProps) {
                 Correo electrónico
               </label>
               <input
-                {...register("email", { required: true })}
+                {...register("email", { required: true, maxLength: 80 })}
                 className="input"
                 type="email"
                 placeholder="email@ejemplo.com"
                 required
+                maxLength={80}
               />
             </div>
             <div className="w-[80%] md:w-[50%] flex flex-col space-y-2">
@@ -201,10 +202,11 @@ export default function Register({ user }: RegisterProps) {
                 Contraseña
               </label>
               <input
-                {...register("password", { required: true })}
+                {...register("password", { required: true, maxLength: 255 })}
                 className="input"
                 type="password"
                 required
+                maxLength={255}
               />
             </div>
           </div>
@@ -229,6 +231,7 @@ export default function Register({ user }: RegisterProps) {
         </div>
         <button
           type="submit"
+          form="registerForm"
           className="p-1 bg-[#6D9773] hover:scale-110 duration-500 text-white w-[40%] md:w-[20%] rounded-md"
         >
           Registrarse

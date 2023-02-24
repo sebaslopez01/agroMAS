@@ -80,6 +80,7 @@ function LoginForm({ setShowLogin }: LoginFormProps) {
         <Link
           href="/registro"
           className="underline text-gray-700 hover:scale-105 duration-200"
+          onClick={() => setShowLogin(false)}
         >
           Regístrate
         </Link>
