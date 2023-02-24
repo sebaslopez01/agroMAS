@@ -157,7 +157,6 @@ export default function AddInvestmentForm({
           <select
             {...register("state", { required: true })}
             name="state"
-            id="roles"
             required
             className="h-[30px] p-0 pl-2 text-sm rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
             onChange={(e) => {
@@ -176,7 +175,6 @@ export default function AddInvestmentForm({
           <select
             {...register("city", { required: true })}
             name="city"
-            id="roles"
             required
             className="h-[30px] p-0 pl-2 text-sm rounded-full border-gray-400 focus:outline-none focus:ring focus:ring-gray-300"
           >
