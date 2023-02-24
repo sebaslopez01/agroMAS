@@ -43,7 +43,7 @@ export default function CardProject({ investment, user }: CardProjectProps) {
         <div className="w-full h-auto flex justify-between md:justify-evenly">
           <div className="flex flex-col justify-center text-center">
             <span className="text-lg font-semibold text-gray-700 ">
-              {investment.return * 100}%
+              {investment.returnInvestment * 100}%
             </span>
             <span className="text-md text-gray-500">Retorno</span>
           </div>
