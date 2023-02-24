@@ -41,7 +41,7 @@ export default function AddInvestmentForm({
     const returnInvestment = parseInt(data.returnInvestment.slice(0, -2)) / 100;
     const state = State.getStateByCodeAndCountry(data.state, "CO")?.name;
 
-    const res = await axios.post("/api/dashboard/add-product", {
+    const res = await axios.post("/api/dashboard/add-investment", {
       ...data,
       investmentTarget,
       minimumAmount,
