@@ -31,7 +31,7 @@ export default function SellerProjects({ user }: SellerProjectsProps) {
       sellerId: user?.seller?.id,
     });
 
-    setInvestment(res.data.products);
+    setInvestment(res.data.investments);
   };
 
   useEffect(() => {
