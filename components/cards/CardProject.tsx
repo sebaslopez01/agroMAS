@@ -24,8 +24,10 @@ export default function CardProject({ investment, user }: CardProjectProps) {
       {/* Image */}
       <div className="w-[100%] lg:h-[520px] lg:w-[50%]">
         <Image
-          src={test}
-          alt=""
+          src="https://media.istockphoto.com/id/1280160272/es/foto/zanahorias-frescas-cosecha-zanahorias-org%C3%A1nicas-en-el-suelo.jpg?s=612x612&w=0&k=20&c=ES0JsAy861JdRakYTyTvA8sJE9Hu5pP-hQfyRCtCCsk="
+          width={200}
+          height={200}
+          alt="Carrots"
           className="w-[100%] h-[100%] object-cover rounded-3xl rounded-tl-none lg:rounded-tl-3xl lg:rounded-br-3xl rounded-br-none lg:rounded-tr-none lg:rounded-bl-none"
         />
       </div>
@@ -72,14 +74,10 @@ export default function CardProject({ investment, user }: CardProjectProps) {
           <div className="flex space-x-2 items-center">
             <IconMapPin className="stroke-[1.2px] w-[19px] h-[19px] md:w-[21px] md:h-[21px] stroke-gray-600" />
             <span className="text-md font-semibold md:text-lg text-gray-600">
-              Medellín, Antioquia
               {`${investment.city}, ${investment.state}`}
             </span>
           </div>
           <ModalInvestment user={user} />
-          {/* <Link href="/" className="w-[40%] bg-[#6D9773] p-1 rounded-md text-white font-semibold md:text-lg hover:scale-105 duration-300 flex justify-center">
-              Invierte
-            </Link> */}
         </div>
       </div>
     </div>
