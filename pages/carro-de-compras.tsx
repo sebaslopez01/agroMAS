@@ -40,7 +40,7 @@ export default function ShoppingCart({ user }: ShoppingCartProps) {
 
   useEffect(() => {
     trigger(state.cart.map((prod) => prod.id));
-  }, [state]);
+  }, [state, trigger]);
 
   if (!data) {
     return (

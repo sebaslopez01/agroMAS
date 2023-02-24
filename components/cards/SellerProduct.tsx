@@ -35,7 +35,7 @@ export default function SellerProduct({
       id="glass-bg"
       className="flex flex-col h-fit w-[80%] space-y-3 rounded-xl p-3"
     >
-      <img
+      <Image
         src="/frura1.jpg"
         className=" w-[80%] mx-auto object-cover rounded-xl"
         alt=""
