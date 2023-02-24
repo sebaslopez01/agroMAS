@@ -82,6 +82,7 @@ export default function ShoppingCart({ user }: ShoppingCartProps) {
               productPrice={product.price}
               productQuantity={product.quantity}
               productUndPer={capitalizeString(product.measure)}
+              productImage={product.image}
             />
           ))}
         </div>

@@ -1,10 +1,10 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 
 import { Store } from "@/context/Store";
 import { StoreActionKind } from "@/lib/enums";
-import pera from "@/public/pera.jpg";
+import fruta1 from "@/public/frura1.jpg";
 
 interface ItemCartProps {
   productId: string;
@@ -12,6 +12,7 @@ interface ItemCartProps {
   productPrice: number;
   productQuantity: number;
   productUndPer: string;
+  productImage?: string | StaticImageData | null;
 }
 
 export default function ItemCart({
@@ -20,6 +21,7 @@ export default function ItemCart({
   productPrice,
   productQuantity,
   productUndPer,
+  productImage,
 }: ItemCartProps) {
   const { state, dispatch } = useContext(Store);
   const [count, setCount] = useState(
@@ -52,7 +54,7 @@ export default function ItemCart({
         <div className="w-[30%] md:w-[30%] lg:w-[40%] h-[80%] lg:h-[100%] flex items-center justify-start">
           <Image
             className="w-[80%] h-[60%] md:w-[100%] md:h-[80%] lg:w-[100%] lg:h-[60%] xl:w-[100%] xl:h-[70%] object-cover rounded-lg"
-            src={pera}
+            src={productImage || fruta1}
             alt="Perita dulce"
           />
         </div>
