@@ -1,15 +1,16 @@
-import Meta from "@/components/Meta";
 import CardPurchase from "@/components/cards/CardPurchase";
-import NavBarMarket from "@/components/navigation/NavBarMarket";
-import Footer from "@/components/navigation/Footer";
-import NavbarGeneral from "@/components/navigation/NavbarGeneral";
+import LayoutGeneral from "@/components/LayoutGeneral";
+import { FullUser } from "@/lib/types";
+import { getUser } from "@/utils/auth";
+import { GetServerSideProps } from "next";
 
-export default function CustomerPurchases() {
+interface CustomerPurchasesProps {
+  user: FullUser;
+}
+
+export default function CustomerPurchases({ user }: CustomerPurchasesProps) {
   return (
-    <>
-      <Meta />
-      <NavbarGeneral namePage="Mis compras"/>
-
+    <LayoutGeneral user={user} pageName="Mis compras">
       <div className="flex flex-col p-4 w-[75%] mx-auto">
         <CardPurchase
           purchaseId={3271}
@@ -19,7 +20,16 @@ export default function CustomerPurchases() {
           PurchaseState="Antioquia"
         />
       </div>
-      <Footer />
-    </>
+    </LayoutGeneral>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const user = await getUser(req, res);
+
+  return {
+    props: {
+      user,
+    },
+  };
+};
