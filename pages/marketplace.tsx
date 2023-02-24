@@ -44,6 +44,7 @@ export default function Marketplace({ user, products }: MarketplaceProps) {
                     undPerItem="Kg"
                     productCity={product.city}
                     productState={product.state}
+                    productImage={product.image}
                   />
                 )
             )
