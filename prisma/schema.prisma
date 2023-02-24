@@ -118,15 +118,15 @@ model Investment {
   title            String                @db.VarChar(60)
   investmentTarget Float                 @map("investment_target")
   invested         Float                 @default(0.0)
-  return           Float
+  returnInvestment Float
   minimumAmount    Float
-  startDate        DateTime              @map("start_date")
+  startDate        DateTime?             @map("start_date")
   city             String                @db.VarChar(60)
   state            String                @db.VarChar(60)
-  image            String
+  image            String?
   photos           String[]              @default([])
   videos           String[]              @default([])
-  description      String                @db.VarChar(1000)
+  description      String?               @db.VarChar(1000)
   shortDescription String                @map("short_description") @db.VarChar(200)
   isActive         Boolean               @default(true) @map("is_active")
   isCompleted      Boolean               @default(false) @map("is_completed")

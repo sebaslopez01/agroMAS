@@ -1,8 +1,22 @@
 import Image from "next/image";
 import test from "@/public/backgrounds/1.jpg";
 import { IconMapPin, IconUser } from "@tabler/icons-react";
+import { Investment } from "@prisma/client";
 
-export default function CardSellerProject() {
+interface CardSellerProjectProps {
+  investment: Investment & {
+    seller: {
+      user: {
+        firstName: string;
+        lastName: string;
+      };
+    };
+  };
+}
+
+export default function CardSellerProject({
+  investment,
+}: CardSellerProjectProps) {
   return (
     <>
       <div className="w-full h-auto rounded-3xl rounded-br-none lg:rounded-br-3xl lg:rounded-tr-none bg-white shadow-lg flex flex-col lg:flex-row space-y-5 lg:space-y-0">
@@ -21,14 +35,10 @@ export default function CardSellerProject() {
           <div className="flex space-x-2">
             <IconUser className="stroke-[1.2px] stroke-gray-600" />
             <span className="text-md md:text-lg font-semibold text-gray-600">
-              Patricia Terán
+              {`${investment.seller.user.firstName} ${investment.seller.user.lastName}`}
             </span>
           </div>
-          <p className="text-sm md:text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-            dolorem delectus ex? Tempore, illo! Sequi aliquid dolor eum autem?
-            Nemo cum iste dolores quam atque, soluta porro dolore officia est!
-          </p>
+          <p className="text-sm md:text-lg">{investment.shortDescription}</p>
           <div className="w-full h-auto flex justify-between md:justify-evenly">
             <div className="flex flex-col justify-center text-center">
               <span className="text-lg font-semibold text-gray-700 ">0</span>
@@ -36,7 +46,7 @@ export default function CardSellerProject() {
             </div>
             <div className="flex flex-col justify-center text-center">
               <span className="text-lg font-semibold text-gray-700 ">
-                $ 1&apos;500.000
+                $ {investment.invested}
               </span>
               <span className="text-md text-gray-500">Invertido</span>
             </div>
@@ -52,14 +62,14 @@ export default function CardSellerProject() {
               <span className="w-[10%] font-bold md:text-lg">80%</span>
             </div>
             <span className="md:text-lg text-gray-600">
-              Meta: $ 45&apos;000.000
+              Meta: $ {investment.investmentTarget}
             </span>
           </div>
           <div className="w-full h-auto flex justify-between">
             <div className="flex space-x-2 items-center">
               <IconMapPin className="stroke-[1.2px] w-[19px] h-[19px] md:w-[21px] md:h-[21px] stroke-gray-600" />
               <span className="text-md font-semibold md:text-lg text-gray-600">
-                Medellín, Antioquia
+                {`${investment.city}, ${investment.state}`}
               </span>
             </div>
           </div>
