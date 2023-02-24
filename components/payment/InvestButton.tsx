@@ -62,7 +62,7 @@ export default function InvestButton({ amount, user }: InvestButtonProps) {
         />
         <button
           type="submit"
-          className="w-[40%] bg-[#6D9773] p-1 rounded-md text-white font-semibold md:text-lg hover:scale-105 duration-300 flex justify-center"
+          className="bg-[#6D9773] p-1 rounded-md text-white font-semibold md:text-lg hover:scale-105 duration-300 flex whitespace-nowrap w-full justify-center"
           onClick={(e) => {
             if (amount === 0) {
               e.preventDefault();
