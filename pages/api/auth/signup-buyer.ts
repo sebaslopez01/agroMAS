@@ -13,7 +13,19 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { firstName, lastName, phone, email, password } = req.body;
+  const {
+    firstName,
+    lastName,
+    phone,
+    email,
+    password,
+    documentType,
+    documentNumber,
+    city,
+    state,
+    terms,
+    role,
+  } = req.body;
 
   if (req.method !== "POST")
     res.status(424).json({ message: "Invalid method!" });
@@ -35,12 +47,20 @@ export default async function handler(
       lastName,
       phone,
       email,
+      terms,
+      documentType,
+      documentNumber,
+      city,
+      state,
       password: hashedPassword,
       buyer: {
-        create: {},
+        create: {
+          purchases: {},
+          investments: {},
+        },
       },
       isActive: true,
-      role: "BUYER",
+      role,
     },
   });
 

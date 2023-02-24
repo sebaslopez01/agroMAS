@@ -1,10 +1,22 @@
-import Image from "next/image";
-import test from "@/public/backgrounds/1.jpg";
-import Link from "next/link";
-import ModalInvestment from "../modals/ModalInvestement";
 import { IconMapPin, IconUser } from "@tabler/icons-react";
+import Image from "next/image";
 
-export default function CardProject() {
+import test from "@/public/backgrounds/1.jpg";
+import ModalInvestment from "../modals/ModalInvestement";
+import { Investment } from "@prisma/client";
+
+interface CardProjectProps {
+  investment: Investment & {
+    seller: {
+      user: {
+        firstName: string;
+        lastName: string;
+      };
+    };
+  };
+}
+
+export default function CardProject({ investment }: CardProjectProps) {
   return (
     <div className="w-full h-auto rounded-3xl rounded-br-none lg:rounded-br-3xl lg:rounded-tr-none bg-white shadow-lg flex flex-col lg:flex-row space-y-5 lg:space-y-0">
       {/* Image */}
@@ -18,26 +30,24 @@ export default function CardProject() {
 
       {/* Description */}
       <div className="w-[100%] lg:w-[50%] lg:h-full flex flex-col space-y-4 md:space-y-6 p-5 lg:pb-0 ">
-        <h1 className="text-lg md:text-2xl font-bold">Cañas gordas</h1>
+        <h1 className="text-lg md:text-2xl font-bold">{investment.title}</h1>
         <div className="flex space-x-2">
           <IconUser className="stroke-[1.2px] stroke-gray-600" />
           <span className="text-md md:text-lg font-semibold text-gray-600">
-            Patricia Terán
+            {`${investment.seller.user.firstName} ${investment.seller.user.lastName}`}
           </span>
         </div>{" "}
-        <p className="text-sm md:text-lg">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-          dolorem delectus ex? Tempore, illo! Sequi aliquid dolor eum autem?
-          Nemo cum iste dolores quam atque, soluta porro dolore officia est!
-        </p>
+        <p className="text-sm md:text-lg">{investment.shortDescription}</p>
         <div className="w-full h-auto flex justify-between md:justify-evenly">
           <div className="flex flex-col justify-center text-center">
-            <span className="text-lg font-semibold text-gray-700 ">15%</span>
+            <span className="text-lg font-semibold text-gray-700 ">
+              {investment.return * 100}%
+            </span>
             <span className="text-md text-gray-500">Retorno</span>
           </div>
           <div className="flex flex-col justify-center text-center">
             <span className="text-lg font-semibold text-gray-700 ">
-              150 mil
+              {investment.minimumAmount}
             </span>
             <span className="text-md text-gray-500">Monto mínimo</span>
           </div>
@@ -52,13 +62,16 @@ export default function CardProject() {
             </div>
             <span className="w-[10%] font-bold md:text-lg">80%</span>
           </div>
-          <span className="md:text-lg text-gray-600">Meta: $ 45'000.000</span>
+          <span className="md:text-lg text-gray-600">
+            Meta: $ {investment.investmentTarget}
+          </span>
         </div>
         <div className="w-full h-auto flex justify-between">
           <div className="flex space-x-2 items-center">
             <IconMapPin className="stroke-[1.2px] w-[19px] h-[19px] md:w-[21px] md:h-[21px] stroke-gray-600" />
             <span className="text-md font-semibold md:text-lg text-gray-600">
               Medellín, Antioquia
+              {`${investment.city}, ${investment.state}`}
             </span>
           </div>
           <ModalInvestment />

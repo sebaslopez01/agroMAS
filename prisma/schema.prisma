@@ -118,6 +118,8 @@ model Investment {
   title            String                @db.VarChar(60)
   investmentTarget Float                 @map("investment_target")
   invested         Float                 @default(0.0)
+  return           Float
+  minimumAmount    Float
   startDate        DateTime              @map("start_date")
   city             String                @db.VarChar(60)
   state            String                @db.VarChar(60)

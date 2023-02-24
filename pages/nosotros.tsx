@@ -1,12 +1,16 @@
-import Footer from "@/components/navigation/Footer";
-import NavbarGeneral from "@/components/navigation/NavbarGeneral";
-import Navbar from "@/components/navigation/NavBar";
+import Layout from "@/components/Layout";
+import { FullUser } from "@/lib/types";
+import { getUser } from "@/utils/auth";
+import { GetServerSideProps } from "next";
 
-export default function nosotros() {
+interface NosotrosProps {
+  user: FullUser;
+}
+
+export default function Nosotros({user}: NosotrosProps) {
   return (
-    <>
+    <Layout user={user}>
       {/* <NavbarGeneral namePage="Nosotros"/> */}
-      <Navbar />
       <div className="w-full h-[200px] bg-[url('/backgrounds/4.jpg')] bg-cover bg-center mx-auto flex flex-col justify-end px-10 py-5">
         <h2 className="text-white text-5xl font-semibold">Nosotros</h2>
       </div>
@@ -15,7 +19,16 @@ export default function nosotros() {
           AgroMAS nace como una iniciativa para conectar el campo con las personas
         </p>
       </div>
-      <Footer />
-    </>
+    </Layout>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const user = await getUser(req, res);
+
+  return {
+    props: {
+      user,
+    },
+  };
+};

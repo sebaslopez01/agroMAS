@@ -36,7 +36,7 @@ export default function CardSellerProject() {
             </div>
             <div className="flex flex-col justify-center text-center">
               <span className="text-lg font-semibold text-gray-700 ">
-                $ 1'500.000
+                $ 1&apos;500.000
               </span>
               <span className="text-md text-gray-500">Invertido</span>
             </div>
@@ -51,15 +51,17 @@ export default function CardSellerProject() {
               </div>
               <span className="w-[10%] font-bold md:text-lg">80%</span>
             </div>
-            <span className="md:text-lg text-gray-600">Meta: $ 45'000.000</span>
+            <span className="md:text-lg text-gray-600">
+              Meta: $ 45&apos;000.000
+            </span>
           </div>
           <div className="w-full h-auto flex justify-between">
             <div className="flex space-x-2 items-center">
-                <IconMapPin className="stroke-[1.2px] w-[19px] h-[19px] md:w-[21px] md:h-[21px] stroke-gray-600"/>
+              <IconMapPin className="stroke-[1.2px] w-[19px] h-[19px] md:w-[21px] md:h-[21px] stroke-gray-600" />
               <span className="text-md font-semibold md:text-lg text-gray-600">
                 Medellín, Antioquia
               </span>
-            </div>            
+            </div>
           </div>
         </div>
       </div>

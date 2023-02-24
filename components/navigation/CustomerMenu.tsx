@@ -14,14 +14,12 @@ interface ProfileMenuProps {
   userPurchases: number;
   userInvestments: number;
   userInvested: number;
-  userName: string;
 }
 
 export default function CustomerMenu({
   userPurchases,
   userInvestments,
   userInvested,
-  userName,
 }: ProfileMenuProps) {
   const router = useRouter();
 

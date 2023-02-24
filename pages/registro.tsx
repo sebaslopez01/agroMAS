@@ -1,18 +1,24 @@
 import { GetServerSideProps } from "next";
 import Link from "next/link";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useState } from "react";
+import { State, City } from "country-state-city";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 import { FullUser } from "@/lib/types";
 import { getUser } from "@/utils/auth";
 import LayoutGeneral from "@/components/LayoutGeneral";
-import { SubmitHandler, useForm } from "react-hook-form";
 
 interface RegisterData {
   firstName: string;
   lastName: string;
   phone?: string;
-  role: "buyer" | "seller";
+  role: "BUYER" | "SELLER";
   documentType: "CC" | "CE" | "PP";
   documentNumber: string;
+  state: string;
+  city: string;
   email: string;
   password: string;
   terms: boolean;
@@ -24,9 +30,22 @@ interface RegisterProps {
 }
 
 export default function Register({ user }: RegisterProps) {
+  const router = useRouter();
   const { register, handleSubmit } = useForm<RegisterData>();
+  const [stateCode, setStateCode] = useState("");
 
-  const onSubmit: SubmitHandler<RegisterData> = async (data) => {};
+  const onSubmit: SubmitHandler<RegisterData> = async (data) => {
+    const endpoint =
+      data.role === "SELLER"
+        ? "/api/auth/signup-seller"
+        : "/api/auth/signup-buyer";
+
+    const res = await axios.post(endpoint, data);
+
+    if (res.status === 201) {
+      router.push("/");
+    }
+  };
 
   return (
     <LayoutGeneral user={user} pageName="Registro">
@@ -91,17 +110,21 @@ export default function Register({ user }: RegisterProps) {
                 Nº de documento
               </label>
               <input
-                {...register("documentNumber", { required: true })}
+                {...register("documentNumber", {
+                  required: true,
+                  maxLength: 20,
+                })}
                 className="input"
                 type="number"
                 required
+                maxLength={20}
               />
             </div>
             <div className="w-[80%] md:w-[33%] flex flex-col space-y-2">
               <label htmlFor="" className="label">
                 Celular
               </label>
-              <input className="input" type="number" />
+              <input {...register("phone")} className="input" type="text" />
             </div>
           </div>
           <div className="flex flex-col items-center space-y-2 md:space-y-0 md:flex-row w-full h-auto md:space-x-5 ">
@@ -110,16 +133,14 @@ export default function Register({ user }: RegisterProps) {
                 Registrarse como:
               </label>
               <select
+                {...register("role", { required: true })}
                 name="rol"
                 id="roles"
                 required
                 className="input cursor-pointer"
               >
-                <option value="seleccionar" selected>
-                  Seleccionar
-                </option>
-                <option value="buyer">Cliente</option>
-                <option value="seller">Vendedor</option>
+                <option value="BUYER">Cliente</option>
+                <option value="SELLER">Vendedor</option>
               </select>
             </div>
             <div className="w-[80%] md:w-[33%] flex flex-col space-y-2">
@@ -127,15 +148,20 @@ export default function Register({ user }: RegisterProps) {
                 Departamento
               </label>
               <select
+                {...register("state", { required: true })}
                 name="departamentos"
                 id="state"
                 required
                 className="input cursor-pointer"
+                onChange={(e) => {
+                  setStateCode(e.target.value);
+                }}
               >
-                <option value="seleccionar" selected>
-                  Seleccionar
-                </option>
-                <option value="antioquia">Antioquia</option>
+                {State.getStatesOfCountry("CO").map((state, index) => (
+                  <option key={index} value={state.isoCode}>
+                    {state.name}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="w-[80%] md:w-[33%] flex flex-col space-y-2">
@@ -143,15 +169,17 @@ export default function Register({ user }: RegisterProps) {
                 Ciudad
               </label>
               <select
+                {...register("city", { required: true })}
                 name="ciudades"
                 id="city"
                 required
                 className="input cursor-pointer"
               >
-                <option value="seleccionar" selected>
-                  Seleccionar
-                </option>
-                <option value="bello">Bello</option>
+                {City.getCitiesOfState("CO", stateCode).map((city, index) => (
+                  <option key={index} value={city.name}>
+                    {city.name}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
@@ -161,22 +189,30 @@ export default function Register({ user }: RegisterProps) {
                 Correo electrónico
               </label>
               <input
+                {...register("email", { required: true })}
                 className="input"
                 type="email"
                 placeholder="email@ejemplo.com"
+                required
               />
             </div>
             <div className="w-[80%] md:w-[50%] flex flex-col space-y-2">
               <label htmlFor="" className="label">
                 Contraseña
               </label>
-              <input className="input" type="password" />
+              <input
+                {...register("password", { required: true })}
+                className="input"
+                type="password"
+                required
+              />
             </div>
           </div>
         </div>
 
         <div className="w-[80%] space-x-2 md:space-x-1 flex md:items-center">
           <input
+            {...register("remember", { required: true })}
             required
             className="rounded-sm md:rounded-md border-none checked:bg-green-900 cursor-pointer focus:border-transparent focus:shadow-lg focus:ring-0"
             type="checkbox"
@@ -191,11 +227,12 @@ export default function Register({ user }: RegisterProps) {
             </Link>
           </label>
         </div>
-        <input
+        <button
           type="submit"
-          value="Registrarse"
-          className="p-1 bg-[#6D9773] hover:scale-110 duration-500 text-white w-[40%] md:w-[20%] cursor-pointer rounded-md"
-        />
+          className="p-1 bg-[#6D9773] hover:scale-110 duration-500 text-white w-[40%] md:w-[20%] rounded-md"
+        >
+          Registrarse
+        </button>
       </form>
     </LayoutGeneral>
   );

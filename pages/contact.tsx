@@ -1,10 +1,15 @@
-import Footer from "@/components/navigation/Footer";
-import NavbarGeneral from "@/components/navigation/NavbarGeneral";
+import LayoutGeneral from "@/components/LayoutGeneral";
+import { FullUser } from "@/lib/types";
+import { getUser } from "@/utils/auth";
+import { GetServerSideProps } from "next";
 
-export default function Contact() {
+interface ContactProps {
+  user: FullUser;
+}
+
+export default function Contact({ user }: ContactProps) {
   return (
-    <>
-      <NavbarGeneral namePage="Contacto" />
+    <LayoutGeneral user={user} pageName="Contacto">
       <div className="w-[80%] mx-auto h-auto flex flex-col mt-10 space-y-5">
         <div className="flex flex-col space-x-0 space-y-2 md:space-y-0 md:flex-row md:space-x-5">
           <div className="flex flex-col w-[100%] md:w-[50%] space-y-1">
@@ -56,7 +61,16 @@ export default function Contact() {
           />
         </div>
       </div>
-      <Footer />
-    </>
+    </LayoutGeneral>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const user = await getUser(req, res);
+
+  return {
+    props: {
+      user,
+    },
+  };
+};

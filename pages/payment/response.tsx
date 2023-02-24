@@ -55,7 +55,7 @@ export default function ResponseWompi({
     return () => {
       resRef.current = false;
     };
-  }, []);
+  });
 
   return (
     <LayoutMarket user={user}>

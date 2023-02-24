@@ -1,20 +1,19 @@
 import { GetServerSideProps } from "next";
 
 import { getUser } from "@/utils/auth";
-import { User } from "@prisma/client";
 import ProfileInvest from "@/components/cards/ProfileInvest";
-import LayoutMarket from "@/components/LayoutMarket";
-import NavBarGeneral from "@/components/navigation/NavbarGeneral";
+import { FullUser } from "@/lib/types";
+import LayoutGeneral from "@/components/LayoutGeneral";
 
 interface CustomerInvestmentsProps {
-  user: User | null;
+  user: FullUser;
 }
 
 export default function CustomerInvestments({
   user,
 }: CustomerInvestmentsProps) {
   return (
-    <LayoutMarket user={user}>
+    <LayoutGeneral user={user} pageName="Mis Inversiones">
       {user && user.role === "BUYER" ? (
         <div className="w-[80%] mx-auto h-auto flex flex-col mt-10 space-y-16">
           <ProfileInvest />
@@ -26,7 +25,7 @@ export default function CustomerInvestments({
           Por favor inicia sesión como comprador para acceder al dashboard
         </span>
       )}
-    </LayoutMarket>
+    </LayoutGeneral>
   );
 }
 

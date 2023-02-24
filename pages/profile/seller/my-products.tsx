@@ -31,7 +31,7 @@ export default function SellerProducts({ user }: SellerProductsProps) {
     return () => {
       prodsRef.current = false;
     };
-  }, []);
+  });
 
   return (
     <LayoutGeneral user={user} pageName="Mis productos">

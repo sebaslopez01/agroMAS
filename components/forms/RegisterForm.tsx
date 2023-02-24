@@ -32,7 +32,7 @@ function RegisterForm({ setShowLogin, setShowSignup }: RegisterFormProps) {
 
     const res = await axios.post(endpoint, data);
 
-    if (res.status === 200) {
+    if (res.status === 201) {
       setShowLogin(false);
       setShowSignup(false);
       router.push(router.asPath);

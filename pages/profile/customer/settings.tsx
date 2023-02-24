@@ -1,5 +1,3 @@
-import NavBarMarket from "@/components/navigation/NavBarMarket";
-import Footer from "@/components/navigation/Footer";
 import Image from "next/image";
 import pic from "@/public/perfil1.jpg";
 import Link from "next/link";
@@ -13,12 +11,18 @@ import {
   IconPhotoEdit,
   IconPhotoOff,
 } from "@tabler/icons-react";
-import NavbarGeneral from "@/components/navigation/NavbarGeneral";
+import LayoutGeneral from "@/components/LayoutGeneral";
+import { getUser } from "@/utils/auth";
+import { GetServerSideProps } from "next";
+import { FullUser } from "@/lib/types";
 
-export default function CustomerSettings() {
+interface CustomerSettingsProps {
+  user: FullUser;
+}
+
+export default function CustomerSettings({ user }: CustomerSettingsProps) {
   return (
-    <>
-      <NavbarGeneral namePage="Configuración" />
+    <LayoutGeneral user={user} pageName="Configuración">
       <div className="w-full h-24 rounded-b-xl md:h-36 lg:h-40 xl:h-40 bg-[#6d9773]"></div>
       <Image
         src={pic}
@@ -237,8 +241,16 @@ export default function CustomerSettings() {
           </div>
         </div>
       </div>
-
-      <Footer />
-    </>
+    </LayoutGeneral>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const user = await getUser(req, res);
+
+  return {
+    props: {
+      user,
+    },
+  };
+};

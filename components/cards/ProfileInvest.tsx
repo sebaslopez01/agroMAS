@@ -51,7 +51,9 @@ export default function ProfileInvest() {
               </div>
               <span className="w-[10%] font-bold md:text-lg">80%</span>
             </div>
-            <span className="md:text-lg text-gray-600">Meta: $ 45'000.000</span>
+            <span className="md:text-lg text-gray-600">
+              Meta: $ 45&apos;000.000
+            </span>
           </div>
           <div className="w-full h-auto flex justify-between">
             <div className="flex space-x-2 items-center">
